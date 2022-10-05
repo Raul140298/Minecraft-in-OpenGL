@@ -44,6 +44,6 @@ C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(165,
 C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(184,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
 C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(183,7): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
 C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(182,7): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
-C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(2794,15): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(2809,16): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(2830,15): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(2845,16): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
   MinecraftInOpenGL.vcxproj -> C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\x64\Debug\MinecraftInOpenGL.exe

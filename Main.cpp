@@ -2669,7 +2669,22 @@ void steve_en_pose()
 	glRotated(-45, 1, 0, 0);
 	steve_pierna_derecha();
 	glPopMatrix();
+}
 
+//ANIMACIONES---------------------------------------------------------------------
+void steve()
+{
+	steve_cabeza();
+
+	steve_cuerpo();
+
+	steve_brazo_izquierdo();
+
+	steve_brazo_derecho();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
 }
 
 void steve_caminando(float velocity)
@@ -2742,6 +2757,26 @@ void steve_caminando_con_espada(float velocity)
 	steve_cabeza();
 }
 
+void steve_picando(float velocity)
+{
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(45 * abs(std::sin(tiempo * velocity)), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	steve_brazo_derecho_con_espada();
+	glPopMatrix();
+
+	steve_brazo_izquierdo();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
+
+	steve_cuerpo();
+
+	steve_cabeza();
+}
+
 void dibujar() {
 	inicializarLuces(tiempoAnochese);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -2755,9 +2790,10 @@ void dibujar() {
 	pared(tiempoAnochese);
 	sol(tiempoAnochese);
 
-	//steve_en_pose();
+	steve();
 	//steve_caminando(4.5);
-	steve_caminando_con_espada(4.5);
+	//steve_caminando_con_espada(4.5);
+	//steve_picando(9);
 	//enderman();
 	//cerdo();
 
