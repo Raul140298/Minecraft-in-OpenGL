@@ -1,0 +1,49 @@
+﻿  Main.cpp
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(26,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(27,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(31,44): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(55,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(54,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(53,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(65,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(64,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(63,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(71,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(70,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(69,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(82,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(81,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(80,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(92,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(91,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(90,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(98,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(97,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(96,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(109,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(108,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(107,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(119,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(118,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(117,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(125,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(124,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(123,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(136,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(135,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(134,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(146,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(145,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(144,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(152,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(151,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(150,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(167,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(166,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(165,5): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(184,6): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(183,7): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(182,7): warning C4244: 'argumento': conversión de 'float' a 'GLubyte'; posible pérdida de datos
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(2794,15): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\Main.cpp(2809,16): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+  MinecraftInOpenGL.vcxproj -> C:\Users\raul1\Downloads\GRAFICOS EN COMPUTACION\MinecraftInOpenGL\x64\Debug\MinecraftInOpenGL.exe

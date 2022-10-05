@@ -174,7 +174,6 @@ void pared(float animationTime) {
 	glPopMatrix();
 }
 
-//2. creamos el piso
 void piso(float animationTime) {
 	glPushMatrix();
 	glTranslated(0, -0.1, 0);
@@ -348,7 +347,6 @@ void sol(float animationTime)
 	glPopMatrix();
 }
 
-//4. dibujamos los ejes
 void ejes() {
 	glPushMatrix();
 	glBegin(GL_LINES);
@@ -364,6 +362,930 @@ void ejes() {
 	glVertex3d(0, 0, 0);
 	glVertex3d(0, 0, 50);
 	glEnd();
+	glPopMatrix();
+}
+
+void cerdo_pata() {
+	glPushMatrix();
+	glColor3ub(224, 144, 142);
+	glTranslated(0, 3, 0);
+	glScaled(1, 1.5, 1);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3ub(35, 13, 13);
+	glTranslated(-1.4, 0.5, 1.7);
+	glScaled(1, 1, 1);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0.5, 0.5, 1.7);
+	glScaled(1, 1, 1);
+	glutSolidCube(1);
+	glPopMatrix();
+}
+
+void cerdo_patas() {
+	glPushMatrix();
+	glTranslated(3, 0, 6);
+	cerdo_pata();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-3, 0, 6);
+	cerdo_pata();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(3, 0, -6);
+	cerdo_pata();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-3, 0, -6);
+	cerdo_pata();
+	glPopMatrix();
+}
+
+void cerdo_cuerpo() {
+	glPushMatrix();
+	glColor3ub(224, 144, 142);
+	glTranslated(0, 10, 0);
+	glScaled(1.2, 1, 2);
+	glutSolidCube(8);
+	glPopMatrix();
+}
+
+void cerdo_cara() {
+	glPushMatrix();
+	glColor3ub(224, 144, 142);
+	glTranslated(0, 12, 11);
+	glutSolidCube(8);
+	glPopMatrix();
+}
+
+void cerdo_nariz() {
+	glPushMatrix();
+	glColor3ub(224, 144, 142);
+	glTranslated(0, 9.5, 14);
+	glScaled(1, 0.75, 1);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3ub(35, 13, 13);
+	glTranslated(-1.5, 9.5, 15.8);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(1.5, 9.5, 15.8);
+	glutSolidCube(1);
+	glPopMatrix();
+}
+
+void cerdo_ojo() {
+	glPushMatrix();
+	glColor3ub(255, 255, 255);
+	glTranslated(-3.5, 11.5, 14.6);
+	glutSolidCube(1);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glColor3ub(255, 255, 255);
+	glTranslated(3.5, 11.5, 14.6);
+	glutSolidCube(1);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glColor3ub(0, 0, 0);
+	glTranslated(-2.5, 11.5, 14.6);
+	glutSolidCube(1);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(2.5, 11.5, 14.6);
+	glutSolidCube(1);
+	glPopMatrix();
+}
+
+void cerdo()
+{
+	cerdo_patas();
+	cerdo_cuerpo();
+	cerdo_cara();
+	cerdo_nariz();
+	cerdo_ojo();
+}
+
+void color_enderman_principal() {
+	glColor3ub(6, 0, 6);
+}
+
+void color_enderman_sombra_primario() {
+	glColor3ub(60, 43, 77);
+}
+
+void color_enderman_sombra_secundario() {
+	glColor3ub(39, 26, 58);
+}
+
+void enderman_globo(int cubo) {
+	/* GLOBO MORADO */
+	glPushMatrix();
+	glTranslated(15, 38, 15);
+	glColor3ub(82, 67, 154);
+	glutSolidCube(cubo);
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(15, 36, 15);
+	glColor3ub(73, 60, 142);
+	glutSolidCube(cubo - 2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glColor3ub(101, 87, 174);
+	glTranslated(0, 0, -0.001);
+	glBegin(GL_QUADS);
+	glVertex3d(10, 33, 10);
+	glVertex3d(20, 33, 10);
+	glVertex3d(20, 43, 10);
+	glVertex3d(10, 43, 10);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(148, 138, 199);
+	glBegin(GL_QUADS);
+	glVertex3d(10, 42, 10);
+	glVertex3d(11, 42, 10);
+	glVertex3d(11, 36, 10);
+	glVertex3d(10, 36, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(11, 39, 10);
+	glVertex3d(11, 40, 10);
+	glVertex3d(12, 40, 10);
+	glVertex3d(12, 39, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(12, 34, 10);
+	glVertex3d(12, 36, 10);
+	glVertex3d(13, 36, 10);
+	glVertex3d(13, 34, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(12, 41, 10);
+	glVertex3d(12, 42, 10);
+	glVertex3d(13, 42, 10);
+	glVertex3d(13, 41, 10);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3d(15, 39, 10);
+	glVertex3d(15, 42, 10);
+	glVertex3d(17, 42, 10);
+	glVertex3d(17, 39, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(16, 42, 10);
+	glVertex3d(16, 43, 10);
+	glVertex3d(17, 43, 10);
+	glVertex3d(17, 42, 10);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3d(15, 37, 10);
+	glVertex3d(15, 39, 10);
+	glVertex3d(19, 39, 10);
+	glVertex3d(19, 37, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(14, 37, 10);
+	glVertex3d(14, 38, 10);
+	glVertex3d(15, 38, 10);
+	glVertex3d(15, 37, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(16, 35, 10);
+	glVertex3d(16, 37, 10);
+	glVertex3d(18, 37, 10);
+	glVertex3d(18, 35, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(15, 34, 10);
+	glVertex3d(15, 35, 10);
+	glVertex3d(20, 35, 10);
+	glVertex3d(20, 34, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(18, 33, 10);
+	glVertex3d(18, 34, 10);
+	glVertex3d(19, 34, 10);
+	glVertex3d(19, 33, 10);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(19, 35, 10);
+	glVertex3d(19, 37, 10);
+	glVertex3d(20, 37, 10);
+	glVertex3d(20, 35, 10);
+	glEnd();
+	glPopMatrix();
+
+	/* GLOBO ROSADO */
+	glPushMatrix();
+	glTranslated(15, 42, 25);
+	glColor3ub(255, 136, 254);
+	glutSolidCube(cubo);
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(15, 40, 25);
+	glColor3ub(255, 136, 254);
+	glutSolidCube(cubo - 2);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glColor3ub(255, 156, 255);
+	glTranslated(0, 0, -0.001);
+	glBegin(GL_QUADS);
+	glVertex3d(10, 47, 20);
+	glVertex3d(20, 47, 20);
+	glVertex3d(20, 37, 20);
+	glVertex3d(10, 37, 20);
+	glEnd();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+
+	glColor3ub(254, 186, 255);
+	glBegin(GL_QUADS);
+	glVertex3d(10, 46, 20);
+	glVertex3d(11, 46, 20);
+	glVertex3d(11, 40, 20);
+	glVertex3d(10, 40, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(11, 43, 20);
+	glVertex3d(11, 44, 20);
+	glVertex3d(12, 44, 20);
+	glVertex3d(12, 43, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(12, 38, 20);
+	glVertex3d(12, 40, 20);
+	glVertex3d(13, 40, 20);
+	glVertex3d(13, 38, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(12, 45, 20);
+	glVertex3d(12, 47, 20);
+	glVertex3d(13, 47, 20);
+	glVertex3d(13, 45, 20);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3d(15, 43, 20);
+	glVertex3d(15, 46, 20);
+	glVertex3d(17, 46, 20);
+	glVertex3d(17, 43, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(16, 46, 20);
+	glVertex3d(16, 47, 20);
+	glVertex3d(17, 47, 20);
+	glVertex3d(17, 46, 20);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3d(15, 41, 20);
+	glVertex3d(15, 43, 20);
+	glVertex3d(19, 43, 20);
+	glVertex3d(19, 41, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(14, 41, 20);
+	glVertex3d(14, 42, 20);
+	glVertex3d(15, 42, 20);
+	glVertex3d(15, 41, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(16, 39, 20);
+	glVertex3d(16, 41, 20);
+	glVertex3d(18, 41, 20);
+	glVertex3d(18, 39, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(15, 38, 20);
+	glVertex3d(15, 39, 20);
+	glVertex3d(20, 39, 20);
+	glVertex3d(20, 38, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(18, 37, 20);
+	glVertex3d(18, 38, 20);
+	glVertex3d(19, 38, 20);
+	glVertex3d(19, 37, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(19, 39, 20);
+	glVertex3d(19, 41, 20);
+	glVertex3d(20, 41, 20);
+	glVertex3d(20, 39, 20);
+	glEnd();
+	glPopMatrix();
+
+
+	/* GLOBO BARNI */
+	glPushMatrix();
+	glTranslated(4, 47, 25);
+	glColor3ub(100, 29, 128);
+	glutSolidCube(cubo);
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(4, 45, 25);
+	glColor3ub(100, 29, 128);
+	glutSolidCube(cubo - 2);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glColor3ub(121, 51, 150);
+	glTranslated(0, 0, -0.001);
+	glBegin(GL_QUADS);
+	glVertex3d(9, 52, 20);
+	glVertex3d(-1, 52, 20);
+	glVertex3d(-1, 42, 20);
+	glVertex3d(9, 42, 20);
+	glEnd();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+
+	glColor3ub(162, 112, 182);
+	glBegin(GL_QUADS);
+	glVertex3d(10 - 11, 51, 20);
+	glVertex3d(11 - 11, 51, 20);
+	glVertex3d(11 - 11, 45, 20);
+	glVertex3d(10 - 11, 45, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(11 - 11, 48, 20);
+	glVertex3d(11 - 11, 49, 20);
+	glVertex3d(12 - 11, 49, 20);
+	glVertex3d(12 - 11, 48, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(12 - 11, 43, 20);
+	glVertex3d(12 - 11, 45, 20);
+	glVertex3d(13 - 11, 45, 20);
+	glVertex3d(13 - 11, 43, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(12 - 11, 50, 20);
+	glVertex3d(12 - 11, 52, 20);
+	glVertex3d(13 - 11, 52, 20);
+	glVertex3d(13 - 11, 50, 20);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3d(15 - 11, 48, 20);
+	glVertex3d(15 - 11, 51, 20);
+	glVertex3d(17 - 11, 51, 20);
+	glVertex3d(17 - 11, 48, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(16 - 11, 51, 20);
+	glVertex3d(16 - 11, 52, 20);
+	glVertex3d(17 - 11, 52, 20);
+	glVertex3d(17 - 11, 51, 20);
+	glEnd();
+
+
+	glBegin(GL_QUADS);
+	glVertex3d(15 - 11, 46, 20);
+	glVertex3d(15 - 11, 48, 20);
+	glVertex3d(19 - 11, 48, 20);
+	glVertex3d(19 - 11, 46, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(14 - 11, 46, 20);
+	glVertex3d(14 - 11, 47, 20);
+	glVertex3d(15 - 11, 47, 20);
+	glVertex3d(15 - 11, 46, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(16 - 11, 44, 20);
+	glVertex3d(16 - 11, 46, 20);
+	glVertex3d(18 - 11, 46, 20);
+	glVertex3d(18 - 11, 44, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(15 - 11, 43, 20);
+	glVertex3d(15 - 11, 44, 20);
+	glVertex3d(20 - 11, 44, 20);
+	glVertex3d(20 - 11, 43, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(18 - 11, 42, 20);
+	glVertex3d(18 - 11, 43, 20);
+	glVertex3d(19 - 11, 43, 20);
+	glVertex3d(19 - 11, 42, 20);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3d(19 - 11, 44, 20);
+	glVertex3d(19 - 11, 46, 20);
+	glVertex3d(20 - 11, 46, 20);
+	glVertex3d(20 - 11, 44, 20);
+	glEnd();
+	glPopMatrix();
+}
+
+void enderman_pita_globo() {
+
+	glPushMatrix();
+	glTranslated(0, 5, -3);
+	glRotated(40, 0, 1, 0);
+	glPushMatrix();
+	glRotated(34, 1, 0, 0);
+	glTranslated(0, 25, 0);
+	glScaled(1, 150, 1);
+	glutSolidCube(0.2);
+	glPopMatrix();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 5, -3);
+	glRotated(40, 0, 1, 0);
+	glPushMatrix();
+	glRotated(40, 1, 0, 0);
+	glTranslated(0, 25, 0);
+	glScaled(1, 180, 1);
+	glutSolidCube(0.2);
+	glPopMatrix();
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotated(355, 0, 1, 0);
+	glTranslated(5, 5, -3);
+	glPushMatrix();
+	glRotated(35, 1, 0, 0);
+	glTranslated(0, 25, 0);
+	glScaled(1, 200, 1);
+	glutSolidCube(0.2);
+	glPopMatrix();
+	glPopMatrix();
+}
+
+void enderman_sombra_cabeza() {
+	/* Pelo Lado Derecho (Al costado cabeza)*/
+	glPushMatrix();
+	glTranslated(0.01, 0, 0);
+
+	color_enderman_sombra_secundario();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 30, -3);
+	glVertex3d(4, 31, -3);
+	glVertex3d(4, 31, -1);
+	glVertex3d(4, 30, -1);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 27, -2);
+	glVertex3d(4, 28, -2);
+	glVertex3d(4, 28, 1);
+	glVertex3d(4, 27, 1);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 29, 1);
+	glVertex3d(4, 31, 1);
+	glVertex3d(4, 31, 2);
+	glVertex3d(4, 29, 2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 25, -1);
+	glVertex3d(4, 26, -1);
+	glVertex3d(4, 26, 2);
+	glVertex3d(4, 25, 2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 26, 3);
+	glVertex3d(4, 30, 3);
+	glVertex3d(4, 30, 4);
+	glVertex3d(4, 26, 4);
+	glEnd();
+
+	color_enderman_sombra_primario();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 32, -4);
+	glVertex3d(4, 32, 4);
+	glVertex3d(4, 24, 4);
+	glVertex3d(4, 24, -4);
+	glEnd();
+
+	glPopMatrix();
+
+	/* Pelo Lado Izquierdo (Al costado cabeza)*/
+	glPushMatrix();
+	glTranslated(-0.01, 0, 0);
+
+	color_enderman_sombra_secundario();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 30, -3);
+	glVertex3d(-4, 31, -3);
+	glVertex3d(-4, 31, -1);
+	glVertex3d(-4, 30, -1);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 27, -2);
+	glVertex3d(-4, 28, -2);
+	glVertex3d(-4, 28, 1);
+	glVertex3d(-4, 27, 1);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 29, 1);
+	glVertex3d(-4, 31, 1);
+	glVertex3d(-4, 31, 2);
+	glVertex3d(-4, 29, 2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 25, -1);
+	glVertex3d(-4, 26, -1);
+	glVertex3d(-4, 26, 2);
+	glVertex3d(-4, 25, 2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 26, 3);
+	glVertex3d(-4, 30, 3);
+	glVertex3d(-4, 30, 4);
+	glVertex3d(-4, 26, 4);
+	glEnd();
+
+	color_enderman_sombra_primario();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 32, -4);
+	glVertex3d(-4, 32, 4);
+	glVertex3d(-4, 24, 4);
+	glVertex3d(-4, 24, -4);
+	glEnd();
+
+	glPopMatrix();
+
+}
+
+void enderman_cara() {
+	/*Ojo Blanco y Morado*/
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(238, 144, 255);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 28, -4);
+	glVertex3d(-1, 28, -4);
+	glVertex3d(-1, 27, -4);
+	glVertex3d(-4, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(221, 45, 246);
+	glBegin(GL_QUADS);
+	glVertex3d(-3, 28, -4);
+	glVertex3d(-2, 28, -4);
+	glVertex3d(-2, 27, -4);
+	glVertex3d(-3, 27, -4);
+	glEnd();
+	glPopMatrix();
+	/*--------------------*/
+
+	/*Ojo Blanco y Morado*/
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(238, 144, 255);
+	glBegin(GL_QUADS);
+	glVertex3d(4, 28, -4);
+	glVertex3d(1, 28, -4);
+	glVertex3d(1, 27, -4);
+	glVertex3d(4, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(221, 45, 246);
+	glBegin(GL_QUADS);
+	glVertex3d(3, 28, -4);
+	glVertex3d(2, 28, -4);
+	glVertex3d(2, 27, -4);
+	glVertex3d(3, 27, -4);
+	glEnd();
+	glPopMatrix();
+	/*--------------------*/
+}
+
+void enderman_cabeza() {
+	/* Cabeza (Cubo: ahi se superponen diseños faciales[rectangulos, circulos, etc])*/
+	glPushMatrix();
+	glTranslated(0, 28, 0);
+	color_enderman_principal();
+	glutSolidCube(8);
+	glPopMatrix();
+
+	enderman_cara();
+
+	enderman_sombra_cabeza();
+
+}
+
+void enderman_cuerpo() {
+	color_enderman_principal();
+	/* Cuerpo */
+	glPushMatrix();
+	glTranslated(-2, 22, 0);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 22, 0);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 18, 0);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 18, 0);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 16, 0);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 16, 0);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glBegin(GL_QUADS);
+	glVertex3d(-2, 24, -2);
+	glVertex3d(2, 24, -2);
+	glVertex3d(2, 23, -2);
+	glVertex3d(-2, 23, -2);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glBegin(GL_QUADS);
+	glVertex3d(-1, 23, -2);
+	glVertex3d(1, 23, -2);
+	glVertex3d(1, 22, -2);
+	glVertex3d(-1, 22, -2);
+	glEnd();
+	glPopMatrix();
+}
+
+void enderman_sombra_pierna() {
+
+}
+
+void enderman_pierna_izquierda() {
+	color_enderman_principal();
+	glPushMatrix();
+	glTranslated(-2, 13, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 11, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 9, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 7, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 5, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(-2, 3, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 1, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+}
+
+void enderman_pierna_derecha() {
+	color_enderman_principal();
+	glPushMatrix();
+	glTranslated(2, 13, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 11, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 9, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 7, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 5, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 3, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 1, 0);
+	glutSolidCube(2);
+	glPopMatrix();
+}
+
+void enderman_sombra_brazo() {
+	/* Sombra Brazo Izquierdo*/
+	glPushMatrix();
+	glTranslated(-0.001, 0, -2.9);
+	glRotated(15.5, 1, 0, 0);
+
+	color_enderman_sombra_secundario();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 9, -3);
+	glVertex3d(4, 14, -3);
+	glVertex3d(4, 14, -2);
+	glVertex3d(4, 9, -2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 15, -3);
+	glVertex3d(4, 16, -3);
+	glVertex3d(4, 16, -2);
+	glVertex3d(4, 15, -2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 9, -2);
+	glVertex3d(4, 11, -2);
+	glVertex3d(4, 11, -1);
+	glVertex3d(4, 9, -1);
+	glEnd();
+
+	color_enderman_sombra_primario();
+	glBegin(GL_QUADS);
+	glVertex3d(4, 9, -3);
+	glVertex3d(4, 24.5, -3);
+	glVertex3d(4, 24.5, -1);
+	glVertex3d(4, 9, -1);
+	glEnd();
+	glPopMatrix();
+
+
+	/* Sombra Brazo Derecho*/
+	glPushMatrix();
+	glTranslated(+0.001, 0, 7);
+	glRotated(360 - 15.5, 1, 0, 0);
+
+	color_enderman_sombra_secundario();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 9.5, -3);
+	glVertex3d(-4, 14, -3);
+	glVertex3d(-4, 14, -2);
+	glVertex3d(-4, 9.5, -2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 15, -3);
+	glVertex3d(-4, 16, -3);
+	glVertex3d(-4, 16, -2);
+	glVertex3d(-4, 15, -2);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 9.5, -2);
+	glVertex3d(-4, 11, -2);
+	glVertex3d(-4, 11, -1);
+	glVertex3d(-4, 9.5, -1);
+	glEnd();
+
+	color_enderman_sombra_primario();
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 9.5, -3);
+	glVertex3d(-4, 24.5, -3);
+	glVertex3d(-4, 24.5, -1);
+	glVertex3d(-4, 9.5, -1);
+	glEnd();
+	glPopMatrix();
+}
+
+void enderman_brazo_izquierdo() {
+	color_enderman_principal();
+	glPushMatrix();
+	glTranslated(-5.2, 18, 0);
+	glScaled(1, 8, 1);
+	glutSolidCube(2);
+	glPopMatrix();
+	enderman_sombra_brazo();
+}
+
+void enderman_brazo_derecho() {
+	color_enderman_principal();
+	glPushMatrix();
+	glTranslated(5.2, 18, 0);
+	glScaled(1, 8, 1);
+	glutSolidCube(2);
+	glPopMatrix();
+}
+
+void enderman()
+{
+	enderman_cabeza();
+	enderman_cuerpo();
+	enderman_pierna_izquierda();
+	enderman_pierna_derecha();
+
+	glPushMatrix();
+
+	glRotated(345, 1, 0, 0);
+	glTranslated(0, -2, +5);
+	enderman_brazo_izquierdo();
+	glPopMatrix();
+
+	enderman_pita_globo();
+	enderman_globo(10);
+
+	glPushMatrix();
+	glRotated(15.5, 1, 0, 0);
+	glTranslated(0, -2, -5);
+	enderman_brazo_derecho();
 	glPopMatrix();
 }
 
@@ -796,7 +1718,6 @@ void espada()
 	glPopMatrix();
 }
 
-//DIBUJAR 
 void steve_cara()
 {
 	glPushMatrix();
@@ -1581,6 +2502,27 @@ void steve_brazo_derecho()
 
 void steve_pierna_izquierda()
 {
+	//glPushMatrix();
+	//glTranslated(-1, 13, 1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(-3, 13, 1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(-1, 13, -1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(-3, 13, -1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+
 	glPushMatrix();
 	glTranslated(-2, 10, 0);
 	glColor3ub(13, 113, 173);
@@ -1621,6 +2563,27 @@ void steve_pierna_izquierda()
 
 void steve_pierna_derecha()
 {
+	//glPushMatrix();
+	//glTranslated(1, 13, 1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(3, 13, 1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(1, 13, -1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(3, 13, -1);
+	//glColor3ub(13, 113, 173);
+	//glutSolidCube(2);
+	//glPopMatrix();
+
 	glPushMatrix();
 	glTranslated(2, 10, 0);
 	glColor3ub(13, 113, 173);
@@ -1711,10 +2674,6 @@ void steve_en_pose()
 
 void steve_caminando(float velocity)
 {
-	steve_cabeza();
-
-	steve_cuerpo();
-
 	glPushMatrix();
 	glTranslated(0, 22, 0);
 	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
@@ -1730,16 +2689,57 @@ void steve_caminando(float velocity)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(0, 3.5, -7);
-	glRotated(45, 1, 0, 0);
+	glTranslated(0, 10, 0);
+	glRotated(45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -10, 0);
 	steve_pierna_izquierda();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(0, 3.5, 7);
-	glRotated(-45, 1, 0, 0);
+	glTranslated(0, 10, 0);
+	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -10, 0);
 	steve_pierna_derecha();
 	glPopMatrix();
+
+	steve_cuerpo();
+
+	steve_cabeza();
+}
+
+void steve_caminando_con_espada(float velocity)
+{
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	steve_brazo_izquierdo();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	steve_brazo_derecho_con_espada();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 10, 0);
+	glRotated(45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -10, 0);
+	steve_pierna_izquierda();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 10, 0);
+	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -10, 0);
+	steve_pierna_derecha();
+	glPopMatrix();
+
+	steve_cuerpo();
+
+	steve_cabeza();
 }
 
 void dibujar() {
@@ -1756,8 +2756,10 @@ void dibujar() {
 	sol(tiempoAnochese);
 
 	//steve_en_pose();
-	steve_caminando(4.5);
-	//steve_caminando_con_espada();
+	//steve_caminando(4.5);
+	steve_caminando_con_espada(4.5);
+	//enderman();
+	//cerdo();
 
 	ejes();
 
