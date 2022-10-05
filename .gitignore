@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+.vs/MinecraftInOpenGL/
+x64/Debug/
