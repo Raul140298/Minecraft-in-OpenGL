@@ -2680,8 +2680,533 @@ void steve_en_pose()
 	glPopMatrix();
 }
 
+void zombie_cara()
+{
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(16, 18, 18);
+	glBegin(GL_QUADS);
+	glVertex3d(-3, 28, -4);
+	glVertex3d(-2, 28, -4);
+	glVertex3d(-2, 27, -4);
+	glVertex3d(-3, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(16, 18, 18);
+	glBegin(GL_QUADS);
+	glVertex3d(-2, 28, -4);
+	glVertex3d(-1, 28, -4);
+	glVertex3d(-1, 27, -4);
+	glVertex3d(-2, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(16, 18, 18);
+	glBegin(GL_QUADS);
+	glVertex3d(3, 28, -4);
+	glVertex3d(2, 28, -4);
+	glVertex3d(2, 27, -4);
+	glVertex3d(3, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(0,0,0);
+	glBegin(GL_QUADS);
+	glVertex3d(2, 28, -4);
+	glVertex3d(1, 28, -4);
+	glVertex3d(1, 27, -4);
+	glVertex3d(2, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-1, 27, -4);
+	glVertex3d(1, 27, -4);
+	glVertex3d(1, 26, -4);
+	glVertex3d(-1, 26, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-2, 25, -4);
+	glVertex3d(2, 25, -4);
+	glVertex3d(2, 24, -4);
+	glVertex3d(-2, 24, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-2, 26, -4);
+	glVertex3d(-1, 26, -4);
+	glVertex3d(-1, 25, -4);
+	glVertex3d(-2, 25, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(2, 26, -4);
+	glVertex3d(1, 26, -4);
+	glVertex3d(1, 25, -4);
+	glVertex3d(2, 25, -4);
+	glEnd();
+	glPopMatrix();
+}
+
+void zombie_cabeza()
+{
+	zombie_cara();
+
+	glPushMatrix();
+	glTranslated(0, 28, 0);
+	glColor3ub(80, 109, 62);
+	glutSolidCube(8);
+	glPopMatrix();
+
+	//Cabello atras
+	glPushMatrix();
+	glTranslated(0, 0, 0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 32, 4);
+	glVertex3d(4, 32, 4);
+	glVertex3d(4, 25, 4);
+	glVertex3d(-4, 25, 4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, 0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-2, 25.01, 4);
+	glVertex3d(2, 25.01, 4);
+	glVertex3d(2, 24, 4);
+	glVertex3d(-2, 24, 4);
+	glEnd();
+	glPopMatrix();
+
+	//Cabello
+	glPushMatrix();
+	glTranslated(0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(4, 32, -4);
+	glVertex3d(4, 32, 4);
+	glVertex3d(4, 28, 4);
+	glVertex3d(4, 28, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(4, 28, -4);
+	glVertex3d(4, 28, -3);
+	glVertex3d(4, 27, -3);
+	glVertex3d(4, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(4, 28, -1);
+	glVertex3d(4, 28, 4);
+	glVertex3d(4, 26, 4);
+	glVertex3d(4, 26, -1);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(4, 26, 1);
+	glVertex3d(4, 26, 4);
+	glVertex3d(4, 25, 4);
+	glVertex3d(4, 25, 1);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 32, -4);
+	glVertex3d(-4, 32, 4);
+	glVertex3d(-4, 28, 4);
+	glVertex3d(-4, 28, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 28, -4);
+	glVertex3d(-4, 28, -3);
+	glVertex3d(-4, 27, -3);
+	glVertex3d(-4, 27, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 28, -1);
+	glVertex3d(-4, 28, 4);
+	glVertex3d(-4, 26, 4);
+	glVertex3d(-4, 26, -1);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-0.01, 0, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 26, 1);
+	glVertex3d(-4, 26, 4);
+	glVertex3d(-4, 25, 4);
+	glVertex3d(-4, 25, 1);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0.01, 0);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 32, -4);
+	glVertex3d(-4, 32, 4);
+	glVertex3d(4, 32, 4);
+	glVertex3d(4, 32, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 32, -4);
+	glVertex3d(4, 32, -4);
+	glVertex3d(4, 30, -4);
+	glVertex3d(-4, 30, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(-4, 30.01, -4);
+	glVertex3d(-3, 30.01, -4);
+	glVertex3d(-3, 29, -4);
+	glVertex3d(-4, 29, -4);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(53, 87, 43);
+	glBegin(GL_QUADS);
+	glVertex3d(4, 30.01, -4);
+	glVertex3d(3, 30.01, -4);
+	glVertex3d(3, 29, -4);
+	glVertex3d(4, 29, -4);
+	glEnd();
+	glPopMatrix();
+}
+
+void zombie_cuerpo()
+{
+	//Cuerpo
+	glPushMatrix();
+	glTranslated(-2, 22, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 22, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 18, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 18, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 16, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 16, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(80, 109, 62);
+	glBegin(GL_QUADS);
+	glVertex3d(-2, 24, -2);
+	glVertex3d(2, 24, -2);
+	glVertex3d(2, 23, -2);
+	glVertex3d(-2, 23, -2);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, -0.01);
+	glColor3ub(80, 109, 62);
+	glBegin(GL_QUADS);
+	glVertex3d(-1, 24, -2);
+	glVertex3d(1, 24, -2);
+	glVertex3d(1, 22, -2);
+	glVertex3d(-1, 22, -2);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-1, 13, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 13, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-1, 13, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 13, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(1, 13, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 13, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 13, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 13, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+}
+
+void zombie_brazo_izquierdo()
+{
+	glPushMatrix();
+	glTranslated(-6, 22, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-6, 18, 0);
+	glColor3ub(80, 109, 62);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-6, 14, 0);
+	glColor3ub(80, 109, 62);
+	glutSolidCube(4);
+	glPopMatrix();
+}
+
+void zombie_brazo_derecho()
+{
+	glPushMatrix();
+	glTranslated(6, 22, 0);
+	glColor3ub(22, 191, 186);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(6, 18, 0);
+	glColor3ub(80, 109, 62);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(6, 14, 0);
+	glColor3ub(80, 109, 62);
+	glutSolidCube(4);
+	glPopMatrix();
+}
+
+void zombie_pierna_izquierda()
+{
+	glPushMatrix();
+	glTranslated(-1, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-1, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2, 10, 0);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-2, 8, 0);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-2, 4, 0);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-1, 1, 1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 1, 1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-1, 1, -1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 1, -1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+}
+
+void zombie_pierna_derecha()
+{
+	glPushMatrix();
+	glTranslated(1, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 10, 0);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 8, 0);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(4);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(2, 4, 0);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(1, 1, 1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 1, 1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 1, -1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 1, -1);
+	glColor3ub(107, 107, 107);
+	glutSolidCube(2);
+	glPopMatrix();
+}
+
 //ANIMACIONES---------------------------------------------------------------------
-void steve()
+void steve(float velocity)
 {
 	glPushMatrix();
 	glRotated(180, 0, 1, 0);
@@ -2803,7 +3328,7 @@ void steve_picando(float velocity)
 	glPopMatrix();
 }
 
-void enderman()
+void enderman(float velocity)
 {
 	glPushMatrix();
 	glRotated(180, 0, 1, 0);
@@ -2859,7 +3384,7 @@ void enderman_caminando(float velocity)
 	glPopMatrix();
 }
 
-void cerdo()
+void cerdo(float velocity)
 {
 	cerdo_patas();
 	cerdo_cuerpo();
@@ -2905,6 +3430,72 @@ void cerdo_caminando(float velocity)
 	cerdo_ojo();
 }
 
+void zombie(float velocity)
+{
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	zombie_cabeza();
+
+	zombie_cuerpo();
+
+	zombie_brazo_izquierdo();
+
+	zombie_brazo_derecho();
+
+	zombie_pierna_izquierda();
+
+	zombie_pierna_derecha();
+	glPopMatrix();
+}
+
+void zombie_caminando(float velocity)
+{
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(80 - 5 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	zombie_brazo_izquierdo();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(80 + 5 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	zombie_brazo_derecho();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 12, 0);
+	glRotated(45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -12, 0);
+	zombie_pierna_izquierda();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 12, 0);
+	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -12, 0);
+	zombie_pierna_derecha();
+	glPopMatrix();
+
+	zombie_cuerpo();
+
+	zombie_cabeza();
+	glPopMatrix();
+}
+
+void salto(void (* animacion)(float), float velocity, float altura)
+{
+	glPushMatrix();
+	glTranslated(0, altura * abs(std::sin(tiempo * velocity)), 0);
+	animacion(velocity);
+	glPopMatrix();
+}
+
 void dibujar() {
 	inicializarLuces(tiempoAnochese);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -2923,16 +3514,21 @@ void dibujar() {
 	estrellas(tiempoAnochese);
 	nubes(tiempoAnochese);
 
-	//steve();
+	//steve(0);
 	//steve_caminando(4.5);
-	steve_caminando_con_espada(4.5);
+	//steve_caminando_con_espada(4.5);
 	//steve_picando(9);
 
-	//enderman();
+	//enderman(0);
 	//enderman_caminando(4.5);
 
-	//cerdo();
+	//cerdo(0);
 	//cerdo_caminando(4.5);
+
+	//zombie(0);
+	zombie_caminando(4.5);
+
+	//salto(steve_caminando_con_espada, 4.5, 16);
 
 	ejes();
 
