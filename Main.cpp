@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstdlib>      // std::rand, std::srand
 #include <algorithm>    // std::random_shuffle
+#include <windows.h>
+#include <mmsystem.h>
 using namespace std;
 
 float camaraX = -20;//ROJO
@@ -436,23 +438,44 @@ void nubes(float animationTime)
 
 	float posZ[38] = { -700, -800, -900, -50, -150, -250, -350, 600, 700, 800, -200, -300,100, 200, 900, -850, -950, 350, -450,  400, 500,  50, 150, 250, -400 , 650, 550, -550, -650, -750, 450, 300, 850, 950, -100, 750, -500, -600 };
 
+	float nubeColorTime = animationTime * 1.5;
+
 	for (int i = 0; i < 38; i++)
 	{
 		glPushMatrix();
-		glColor3ub(207, 214, 228);
-		glTranslated(posX[i], 500, posZ[i] + tiempo / animationTime * 1000);
-		//glTranslated(posX[i], 900, posZ[i] + (tiempo <= animationTime ? tiempo : animationTime) /animationTime * 1000);
-		glutSolidCube(6);
+		glColor3ub
+		(60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60),
+			60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60),
+			60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60));
+		glTranslated(posZ[i], 500, posX[i] + tiempo / animationTime * 1000);
+		glScaled(1 * i, 1 * i/2, 1.5 *i);
+		glutSolidCube(3);
 		glPopMatrix();
 	}
 
 	for (int i = 0; i < 38; i++)
 	{
 		glPushMatrix();
-		glColor3ub(207, 214, 228);
-		glTranslated(posZ[i], 500, -1000 + posX[i] + tiempo / animationTime * 1000);
-		//glTranslated(posX[i], 900, posZ[i] + (tiempo <= animationTime ? tiempo : animationTime) /animationTime * 1000);
-		glutSolidCube(6);
+		glColor3ub
+		(60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60),
+			60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60),
+			60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60));
+		glTranslated(posX[i], 500, -1000 + posZ[i] + tiempo / animationTime * 1000);
+		glScaled(1 * i, 1 * i/2, 1.5 * i);
+		glutSolidCube(3);
+		glPopMatrix();
+	}
+
+	for (int i = 0; i < 38; i++)
+	{
+		glPushMatrix();
+		glColor3ub
+		(60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60),
+			60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60),
+			60 + (nubeColorTime - (tiempo <= nubeColorTime ? tiempo : nubeColorTime)) / nubeColorTime * (255 - 60));
+		glTranslated(posZ[i], 500, -2000 + posX[i] + tiempo / animationTime * 1000);
+		glScaled(1 * i, 1 * i/2, 1.5 * i);
+		glutSolidCube(3);
 		glPopMatrix();
 	}
 }
@@ -499,22 +522,22 @@ void cerdo_pata() {
 
 void cerdo_patas() {
 	glPushMatrix();
-	glTranslated(3, 0, 5);
+	glTranslated(2.5, 0, 5);
 	cerdo_pata();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-3, 0, 5);
+	glTranslated(-2.5, 0, 5);
 	cerdo_pata();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(3, 0, -7);
+	glTranslated(2.5, 0, -7);
 	cerdo_pata();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-3, 0, -7);
+	glTranslated(-2.5, 0, -7);
 	cerdo_pata();
 	glPopMatrix();
 }
@@ -2488,26 +2511,26 @@ void steve_brazo_derecho()
 
 void steve_pierna_izquierda()
 {
-	//glPushMatrix();
-	//glTranslated(-1, 13, 1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
-	//glPushMatrix();
-	//glTranslated(-3, 13, 1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
-	//glPushMatrix();
-	//glTranslated(-1, 13, -1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
-	//glPushMatrix();
-	//glTranslated(-3, 13, -1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
+	glPushMatrix();
+	glTranslated(-1, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-1, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(-3, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
 
 	glPushMatrix();
 	glTranslated(-2, 10, 0);
@@ -2549,26 +2572,26 @@ void steve_pierna_izquierda()
 
 void steve_pierna_derecha()
 {
-	//glPushMatrix();
-	//glTranslated(1, 13, 1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
-	//glPushMatrix();
-	//glTranslated(3, 13, 1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
-	//glPushMatrix();
-	//glTranslated(1, 13, -1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
-	//glPushMatrix();
-	//glTranslated(3, 13, -1);
-	//glColor3ub(13, 113, 173);
-	//glutSolidCube(2);
-	//glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 12, 1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 12, -1);
+	glColor3ub(13, 113, 173);
+	glutSolidCube(2);
+	glPopMatrix();
 
 	glPushMatrix();
 	glTranslated(2, 10, 0);
@@ -2697,16 +2720,16 @@ void steve_caminando(float velocity)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(0, 10, 0);
+	glTranslated(0, 12, 0);
 	glRotated(45 * std::sin(tiempo * velocity), 1, 0, 0);
-	glTranslated(0, -10, 0);
+	glTranslated(0, -12, 0);
 	steve_pierna_izquierda();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(0, 10, 0);
+	glTranslated(0, 12, 0);
 	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
-	glTranslated(0, -10, 0);
+	glTranslated(0, -12, 0);
 	steve_pierna_derecha();
 	glPopMatrix();
 
@@ -2736,16 +2759,16 @@ void steve_caminando_con_espada(float velocity)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(0, 10, 0);
+	glTranslated(0, 12, 0);
 	glRotated(45 * std::sin(tiempo * velocity), 1, 0, 0);
-	glTranslated(0, -10, 0);
+	glTranslated(0, -12, 0);
 	steve_pierna_izquierda();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(0, 10, 0);
+	glTranslated(0, 12, 0);
 	glRotated(-45 * std::sin(tiempo * velocity), 1, 0, 0);
-	glTranslated(0, -10, 0);
+	glTranslated(0, -12, 0);
 	steve_pierna_derecha();
 	glPopMatrix();
 
@@ -2847,7 +2870,35 @@ void cerdo()
 
 void cerdo_caminando(float velocity)
 {
-	cerdo_patas();
+	glPushMatrix();
+	glTranslated(2.5, 6, 5);
+	glRotated(-30 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -6, 0);
+	cerdo_pata();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2.5, 6, 5);
+	glRotated(30 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -6, 0);
+	cerdo_pata();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2.5, 6, -7);
+	glRotated(-30 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -6, 0);
+	cerdo_pata();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-2.5, 6, -7);
+	glRotated(30 * std::sin(tiempo * velocity), 1, 0, 0);
+	glTranslated(0, -6, 0);
+	cerdo_pata();
+	glPopMatrix();
+
+
 	cerdo_cuerpo();
 	cerdo_cara();
 	cerdo_nariz();
@@ -2870,18 +2921,18 @@ void dibujar() {
 	sol(tiempoAnochese);
 	luna(tiempoAnochese);
 	estrellas(tiempoAnochese);
-	//nubes(tiempoAnochese);
+	nubes(tiempoAnochese);
 
 	//steve();
 	//steve_caminando(4.5);
-	//steve_caminando_con_espada(4.5);
+	steve_caminando_con_espada(4.5);
 	//steve_picando(9);
 
 	//enderman();
 	//enderman_caminando(4.5);
 
-	cerdo();
-	cerdo_caminando(4.5);
+	//cerdo();
+	//cerdo_caminando(4.5);
 
 	ejes();
 
@@ -2919,6 +2970,8 @@ void update(int value)
 }
 
 int main(int argc, char* argv[]) {
+	//PlaySound(TEXT("Cerdo.mp3"), NULL, SND_SYNC);
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(1009, 711);
