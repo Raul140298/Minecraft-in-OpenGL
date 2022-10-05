@@ -3526,9 +3526,9 @@ void dibujar() {
 	//cerdo_caminando(4.5);
 
 	//zombie(0);
-	zombie_caminando(4.5);
+	//zombie_caminando(4.5);
 
-	//salto(steve_caminando_con_espada, 4.5, 16);
+	salto(steve_caminando_con_espada, 4.5, 16);
 
 	ejes();
 
@@ -3567,7 +3567,6 @@ void update(int value)
 
 int main(int argc, char* argv[]) {
 	//PlaySound(TEXT("Cerdo.mp3"), NULL, SND_SYNC);
-
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(1009, 711);
