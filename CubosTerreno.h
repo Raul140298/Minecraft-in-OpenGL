@@ -12,7 +12,7 @@ void cubo_piedra() {
 	glTranslated(0, 0.5, 0);
 	colorArbol1();
 	glScaled(4, 1, 4);
-	glutSolidCube(0.2501);
+	glutSolidCube(0.251);
 	glPopMatrix();
 
 }

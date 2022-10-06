@@ -17,7 +17,7 @@
 using namespace std;
 
 float camaraX = -20;//ROJO
-float camaraY = 700;//VERDE
+float camaraY = 100;//VERDE
 float camaraZ = 40;//AZUL
 
 float angulo = 0;
@@ -4107,6 +4107,21 @@ void montaña(float animation)
 	glPopMatrix();
 }
 
+void movimiento(float tInicial, float tFinal, void (*animacion)(float), float velocity, float x1, float z1, float x2, float z2, float y)
+{
+	if (tiempo >= tInicial && tiempo <= tFinal)
+	{
+		glPushMatrix();
+		glTranslated(
+			x1 + (x2 - x1) * (tiempo - tInicial) / (tFinal - tInicial),
+			y,
+			z1 + (z2 - z1) * (tiempo - tInicial) / (tFinal - tInicial));
+		glRotated(180 + atan2(z1 - z2, x1 - x2) * 180 / 3.14159265359, 0, 1, 0);
+		animacion(velocity);
+		glPopMatrix();
+	}
+}
+
 void dibujar() {
 	inicializarLuces(tiempoAnochese);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -4126,6 +4141,7 @@ void dibujar() {
 	nubes(tiempoAnochese);
 	montaña(tiempoAnochese);
 
+	//ANIMACIONES----------------------------------------------------------------------------------------------------
 
 	//steve(0);
 	//steve_con_hacha(0);
@@ -4141,13 +4157,39 @@ void dibujar() {
 	//cerdo_caminando(4.5);
 
 	//zombie(0);
-	zombie_caminando(4.5);
+	//zombie_caminando(4.5);
 
 	//salto(steve_caminando_con_espada, 4.5, 16);
-	salto(steve_caminando_con_hacha, 4.5, 16);
+	//salto(steve_caminando_con_hacha, 4.5, 16);
 	//salto(steve_caminando_con_pico, 4.5, 16);
 
-	//ejes();
+	//TIME LINE----------------------------------------------------------------------------------------------------------
+	//CAMARA
+	if (tiempo >= 0 && tiempo < 10)
+	{
+		camaraX = -20;//ROJO
+		camaraY = 100;//VERDE
+		camaraZ = 40;//AZUL
+	}
+	if (tiempo >= 10 && tiempo < 20)
+	{
+		camaraX = 50;//ROJO
+		camaraY = 100;//VERDE
+		camaraZ = 50;//AZUL
+	}
+
+	//STEVE
+	//movimiento(0, 10, steve_caminando, 4.5, 0, 0, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
+
+	//CERDO
+	//movimiento(0, 8, cerdo_caminando, 4.5, -32, -32, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
+
+	//ZOMBIES
+
+
+	//ENDERMAN
+
+	ejes();
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -4161,10 +4203,10 @@ void timer(int t) {
 void teclado(int tecla, int x, int y) {
 	switch (tecla) {
 	case 101:
-		camaraY += 0.5;
+		camaraY += 1;
 		break;
 	case 103:
-		camaraY -= 0.5;
+		camaraY -= 1;
 		break;
 	case 100:
 		angulo -= 2;
