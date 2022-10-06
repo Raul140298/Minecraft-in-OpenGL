@@ -60,13 +60,12 @@ void inicializarLuces(float animationTime) {
 
 //Color Árbol
 void colorArbol1() {
-	glColor3ub(0, 170, 0);
+	glColor3ub(163, 204, 56);
 }
 
 //Color Madera 
 void colorMadera1() {
-	glColor3ub(135, 101, 38);
-
+	glColor3ub(173, 117, 79);
 }
 
 void colorMadera2() {
@@ -125,7 +124,7 @@ void cubo_piedra() {
 	glTranslated(0, 0.5, 0);
 	colorArbol1();
 	glScaled(4, 1, 4);
-	glutSolidCube(0.2501);
+	glutSolidCube(0.251);
 	glPopMatrix();
 
 }
@@ -37807,10 +37806,123 @@ void palo_herramienta() {
 	miniCuboPalo(6, 6, 0);
 	miniCuboPalo(7, 7, 0);
 	miniCuboPalo(8, 8, 0);
+
 	miniCuboPalo(9, 9, 0);
 	miniCuboPalo(10, 10, 0);
+
 	miniCuboPalo(11, 11, 0);
 }
+
+void palo_herramienta_pico() {
+	miniCuboPalo(0, 0, 0);
+	miniCuboPalo(1, 1, 0);
+	miniCuboPalo(2, 2, 0);
+	miniCuboPalo(3, 3, 0);
+	miniCuboPalo(4, 4, 0);
+	miniCuboPalo(5, 5, 0);
+	miniCuboPalo(6, 6, 0);
+	miniCuboPalo(7, 7, 0);
+	miniCuboPalo(8, 8, 0);
+
+	glPushMatrix();
+	glTranslated(9, 9, 0);
+	//colorMadera1();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//glutSolidCube(1);
+	//glPopMatrix();
+
+	colorMadera3();
+	glPushMatrix();
+	glTranslated(1, 0, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	colorMadera2();
+	glPushMatrix();
+	glTranslated(0, 1, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	//colorMadera1();
+	//glPushMatrix();
+	//glTranslated(1, 1, 0);
+	//glutSolidCube(1);
+	//glPopMatrix();
+
+	glPopMatrix();
+
+	miniCuboPalo(11, 11, 0);
+}
+
+void palo_herramienta_hacha() {
+	miniCuboPalo(0, 0, 0);
+	miniCuboPalo(1, 1, 0);
+	miniCuboPalo(2, 2, 0);
+	miniCuboPalo(3, 3, 0);
+	miniCuboPalo(4, 4, 0);
+	miniCuboPalo(5, 5, 0);
+	miniCuboPalo(6, 6, 0);
+	miniCuboPalo(7, 7, 0);
+	miniCuboPalo(8, 8, 0);
+
+	glPushMatrix();
+	glTranslated(9, 9, 0);
+	//colorMadera1();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//glutSolidCube(1);
+	//glPopMatrix();
+
+	colorMadera3();
+	glPushMatrix();
+	glTranslated(1, 0, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	colorMadera2();
+	glPushMatrix();
+	glTranslated(0, 1, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	//colorMadera1();
+	//glPushMatrix();
+	//glTranslated(1, 1, 0);
+	//glutSolidCube(1);
+	//glPopMatrix();
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(11, 11, 0);
+	//colorMadera1();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//glutSolidCube(1);
+	//glPopMatrix();
+
+	colorMadera3();
+	glPushMatrix();
+	glTranslated(1, 0, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	colorMadera2();
+	glPushMatrix();
+	glTranslated(0, 1, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	colorMadera1();
+	glPushMatrix();
+	glTranslated(1, 1, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	glPopMatrix();
+}
+
 void medio_pico() {
 	colorDiamante5();
 	glPushMatrix();
@@ -37884,31 +37996,34 @@ void medio_pico() {
 	glTranslated(-5.5, 0, 0);
 	glutSolidCube(1);
 	glPopMatrix();
-
 }
+
 void pico() {
+	glPushMatrix();
+	glTranslated(0, -0.5, 0);
 	medio_pico();
+	glPopMatrix();
+
 	glPushMatrix();
 	glTranslated(-5.5, -6, 0);
 	glRotated(-90, 0, 0, 1);
+
 	glPushMatrix();
 	glRotated(180, 1, 0, 0);
 	medio_pico();
 	glPopMatrix();
+
 	glPopMatrix();
-
 }
+
 void pico_completa() {
-
-
 	glPushMatrix();
 	glTranslated(10.5, 4.5, 0);
 	glRotated(-90, 0, 0, 1);
 	pico();
 	glPopMatrix();
-	palo_herramienta();
+	palo_herramienta_pico();
 }
-
 
 void hacha() {
 	// Contorno Hacha
@@ -38085,6 +38200,7 @@ void hacha() {
 	glutSolidCube(1);
 	glPopMatrix();
 }
+
 void hacha_completa() {
 
 	glPushMatrix();
@@ -38092,7 +38208,7 @@ void hacha_completa() {
 	glRotated(-90, 0, 0, 1);
 	hacha();
 	glPopMatrix();
-	palo_herramienta();
+	palo_herramienta_hacha();
 }
 
 void pared(float animationTime) {
@@ -38227,10 +38343,7 @@ void piso(float animationTime) {
 	glPushMatrix();
 	glTranslated(0, -0.1, 0);
 	glBegin(GL_POLYGON);
-	glColor3ub
-	(123 + (animationTime - (tiempo <= animationTime ? tiempo : animationTime)) / animationTime * (163 - 123),
-		152 + (animationTime - (tiempo <= animationTime ? tiempo : animationTime)) / animationTime * (204 - 152),
-		43 + (animationTime - (tiempo <= animationTime ? tiempo : animationTime)) / animationTime * (56 - 43));
+	colorArbol1();
 	glVertex3d(-1000, 0, -1000);
 	glVertex3d(1000, 0, -1000);
 	glVertex3d(1000, 0, 1000);
@@ -41502,7 +41615,7 @@ void steve_picando(float velocity)
 	glTranslated(0, 22, 0);
 	glRotated(45 * abs(std::sin(tiempo * velocity)), 1, 0, 0);
 	glTranslated(0, -22, 0);
-	steve_brazo_derecho_con_espada();
+	steve_brazo_derecho_con_pico();
 	glPopMatrix();
 
 	steve_brazo_izquierdo();
@@ -41685,6 +41798,15 @@ void salto(void (*animacion)(float), float velocity, float altura)
 	glPopMatrix();
 }
 
+void montaña(float animation)
+{
+	glPushMatrix();
+	glTranslated(-500, (-16 * 21.5) - 2.5, -300);
+	glScaled(16, 16, 16);
+	ambiente_terreno();
+	glPopMatrix();
+}
+
 void dibujar() {
 	inicializarLuces(tiempoAnochese);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -41702,6 +41824,8 @@ void dibujar() {
 	luna(tiempoAnochese);
 	estrellas(tiempoAnochese);
 	nubes(tiempoAnochese);
+	montaña(tiempoAnochese);
+
 
 	//steve(0);
 	//steve_con_hacha(0);
@@ -41717,18 +41841,13 @@ void dibujar() {
 	//cerdo_caminando(4.5);
 
 	//zombie(0);
-	//zombie_caminando(4.5);
+	zombie_caminando(4.5);
 
 	//salto(steve_caminando_con_espada, 4.5, 16);
-	salto(steve_caminando_con_hacha, 4.5, 16);
+	//salto(steve_caminando_con_hacha, 4.5, 16);
 	//salto(steve_caminando_con_pico, 4.5, 16);
 
-	glPushMatrix();
-	glTranslated(-500, -16 * 21.5, -300);
-	glScaled(16, 16, 16);
-	ambiente_terreno();
-	glPopMatrix();
-	ejes();
+	//ejes();
 
 	glPopMatrix();
 	glutSwapBuffers();
