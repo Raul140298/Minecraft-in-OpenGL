@@ -134,10 +134,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cerdo.h" />
     <ClInclude Include="ColoresPersonalizados.h" />
     <ClInclude Include="CubosTerreno.h" />
+    <ClInclude Include="Enderman.h" />
+    <ClInclude Include="Herramientas.h" />
     <ClInclude Include="MatrizElevacion.h" />
+    <ClInclude Include="Steve.h" />
     <ClInclude Include="Terreno.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,6 +3,21 @@
 
 /***COLORES***/
 
+// Color Enderman
+
+
+void color_enderman_principal() {
+	glColor3ub(6, 0, 6);
+}
+
+void color_enderman_sombra_primario() {
+	glColor3ub(60, 43, 77);
+}
+
+void color_enderman_sombra_secundario() {
+	glColor3ub(39, 26, 58);
+}
+
 //Color Árbol
 void colorArbol1() {
 	glColor3ub(163, 204, 56);
