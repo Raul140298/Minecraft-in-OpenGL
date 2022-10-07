@@ -466,8 +466,8 @@ void casa() {
 
 void ubica_Casa() {
 	glPushMatrix();
-		glTranslated(-400, 0, -400);
-		glRotated(230, 0, 1, 0);
+		glTranslated(-100, 0, -500);
+		glRotated(180, 0, 1, 0);
 		casa();
 	glPopMatrix();
 

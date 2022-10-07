@@ -41,15 +41,17 @@
 #include "Casa.h"
 using namespace std;
 
-float camaraX = -20;//ROJO
-float camaraY = 100;//VERDE
-float camaraZ = 40;//AZUL
+float camaraX = -80;//ROJO
+float camaraY = 200;//VERDE
+float camaraZ = -200;//AZUL
 
 float angulo = 0;
 
 float tiempo = 0;
 
-float tiempoAnochese = 20;
+float tiempoAnochese = 80;
+
+float targetX = 0, targetY = 0, targetZ = 0;
 
 //float tamaño_cubo_arbol = 16;
 float tamaño_cubo_piso = 16;
@@ -61,7 +63,7 @@ void iniciarVentana(int w, int h) {
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(70, (float)w / (float)h, 1, 2000);
+	gluPerspective(70, (float)w / (float)h, 1, 4000);
 }
 
 void inicializarLuces(float animationTime) {
@@ -952,7 +954,7 @@ void montaña(float animation)
 	glPopMatrix();
 }
 
-void movimiento(float tInicial, float tFinal, void (*animacion)(float), float velocity, float x1, float z1, float x2, float z2, float y)
+void movimiento(float tInicial, float tFinal, void (*animacion)(float), float velocity, float angle, float x1, float z1, float x2, float z2, float y)
 {
 	if (tiempo >= tInicial && tiempo <= tFinal)
 	{
@@ -961,7 +963,7 @@ void movimiento(float tInicial, float tFinal, void (*animacion)(float), float ve
 			x1 + (x2 - x1) * (tiempo - tInicial) / (tFinal - tInicial),
 			y,
 			z1 + (z2 - z1) * (tiempo - tInicial) / (tFinal - tInicial));
-		glRotated(180 + atan2(z1 - z2, x1 - x2) * 180 / 3.14159265359, 0, 1, 0);
+		glRotated(angle + atan2(z1 - z2, x1 - x2) * 180 / 3.14159265359, 0, 1, 0);
 		animacion(velocity);
 		glPopMatrix();
 	}
@@ -974,7 +976,7 @@ void dibujar() {
 	glEnable(GL_BLEND);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(camaraX, camaraY, camaraZ, 0, 24, 0, 0, 1, 0);
+	gluLookAt(camaraX, camaraY, camaraZ, targetX, targetY, targetZ, 0, 1, 0);
 	glPushMatrix();
 	glRotated(angulo, 0, 1, 0);
 
@@ -985,6 +987,9 @@ void dibujar() {
 	estrellas(tiempoAnochese);
 	nubes(tiempoAnochese);
 	montaña(tiempoAnochese);
+
+	plantar_Arbol();
+	ubica_Casa();
 
 	//ANIMACIONES----------------------------------------------------------------------------------------------------
 
@@ -1009,36 +1014,74 @@ void dibujar() {
 	//salto(steve_caminando_con_pico, 4.5, 16);
 
 	//TIME LINE----------------------------------------------------------------------------------------------------------
-	//CAMARA
-	/*
 	if (tiempo >= 0 && tiempo < 10)
 	{
-		camaraX = -20;//ROJO
-		camaraY = 100;//VERDE
-		camaraZ = 40;//AZUL
+		camaraX = -(100 + tiempo*4);//ROJO
+		camaraY = 80;//VERDE
+		camaraZ = -340;//AZUL
+
+		targetX = -196;
+		targetY = 64;
+		targetZ = -480;
+
+		movimiento(0, 3, steve_caminando, 4.5, 90, -196, -544, -196, -416, 0);
+		movimiento(3, 3.5, steve, 0, 0, -196, -416, -196, -416, 0);
+		movimiento(3.5, 4, steve, 0, 180, -196, -416, -196, -416, 0);
+		
+		if (tiempo >= 4 && tiempo < 6)
+		{
+			glPushMatrix();
+			glTranslated(-196, 0, -416);
+			glRotated(180, 0, 1, 0);
+			salto(steve, 4.5, 16);
+			glPopMatrix();
+		}
+
+		movimiento(6, 6.5, steve, 0, 180, -196, -416, -196, -416, 0);
+		movimiento(6.5, 7, steve, 0, 0, -196, -416, -196, -416, 0);
+		
+
+		movimiento(7, 10, steve_caminando, 4.5, 90, -196, -416, -196, -288, 0);
+
+		movimiento(0, 5, cerdo, 0, 90, -196, -572, -196, -572, 0);
+		movimiento(5, 10, cerdo_caminando, 4.5, 90, -196, -572, -196, -288, 0);
 	}
-	if (tiempo >= 10 && tiempo < 20)
+	if (tiempo >= 0 && tiempo < 10)
 	{
-		camaraX = 50;//ROJO
-		camaraY = 100;//VERDE
-		camaraZ = 50;//AZUL
+		camaraX = -(100 + tiempo * 4);//ROJO
+		camaraY = 80;//VERDE
+		camaraZ = -340;//AZUL
+
+		targetX = -196;
+		targetY = 64;
+		targetZ = -480;
+
+		movimiento(0, 3, steve_caminando, 4.5, 90, -196, -544, -196, -416, 0);
+		movimiento(3, 3.5, steve, 0, 0, -196, -416, -196, -416, 0);
+		movimiento(3.5, 4, steve, 0, 180, -196, -416, -196, -416, 0);
+
+		if (tiempo >= 4 && tiempo < 6)
+		{
+			glPushMatrix();
+			glTranslated(-196, 0, -416);
+			glRotated(180, 0, 1, 0);
+			salto(steve, 4.5, 16);
+			glPopMatrix();
+		}
+
+		movimiento(6, 6.5, steve, 0, 180, -196, -416, -196, -416, 0);
+		movimiento(6.5, 7, steve, 0, 0, -196, -416, -196, -416, 0);
+
+
+		movimiento(7, 10, steve_caminando, 4.5, 90, -196, -416, -196, -288, 0);
+
+		movimiento(0, 5, cerdo, 0, 90, -196, -572, -196, -572, 0);
+		movimiento(5, 10, cerdo_caminando, 4.5, 90, -196, -572, -196, -288, 0);
 	}
-	*/
-	//STEVE
-	//movimiento(0, 10, steve_caminando, 4.5, 0, 0, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
-
-	//CERDO
-	//movimiento(0, 8, cerdo_caminando, 4.5, -32, -32, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
-
-	//ZOMBIES
 
 
-	//ENDERMAN
-	plantar_Arbol();
 
-	ubica_Casa();
-	ejes();
-
+	//ejes();
 	glPopMatrix();
 	glutSwapBuffers();
 }
