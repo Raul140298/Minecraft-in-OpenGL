@@ -41,17 +41,17 @@
 #include "Casa.h"
 using namespace std;
 
-float camaraX = -80;//ROJO
-float camaraY = 200;//VERDE
-float camaraZ = -200;//AZUL
+float camaraX = -100;//ROJO
+float camaraY = 80;//VERDE
+float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 0;
+float tiempo = 90;
 
-float tiempoAnochese = 80;
+float tiempoAnochese = 60;
 
-float targetX = 0, targetY = 0, targetZ = 0;
+float targetX = -196, targetY = 64, targetZ = -480;
 
 //float tamaño_cubo_arbol = 16;
 float tamaño_cubo_piso = 16;
@@ -597,6 +597,25 @@ void steve_con_pico(float velocity)
 	glPopMatrix();
 }
 
+void steve_con_espada(float velocity)
+{
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	steve_cabeza();
+
+	steve_cuerpo();
+
+	steve_brazo_izquierdo();
+
+	steve_brazo_derecho_con_espada();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
+	glPopMatrix();
+}
+
 void steve_caminando(float velocity)
 {
 	glPushMatrix();
@@ -1014,6 +1033,8 @@ void dibujar() {
 	//salto(steve_caminando_con_pico, 4.5, 16);
 
 	//TIME LINE----------------------------------------------------------------------------------------------------------
+	
+	//Steve sale de la casa y su cerdo lo sigue
 	if (tiempo >= 0 && tiempo < 10)
 	{
 		camaraX = -(100 + tiempo*4);//ROJO
@@ -1046,42 +1067,55 @@ void dibujar() {
 		movimiento(0, 5, cerdo, 0, 90, -196, -572, -196, -572, 0);
 		movimiento(5, 10, cerdo_caminando, 4.5, 90, -196, -572, -196, -288, 0);
 	}
-	if (tiempo >= 0 && tiempo < 10)
+
+	//Steve debe hacer hora con su cerdo. Picar o cualquier cosa hasta que se haga de noche.
+	
+	//Se muestra como los zombies fueron instanciados una vez se hizo de noche
+	if (tiempo >= 60 && tiempo < 70)
 	{
-		camaraX = -(100 + tiempo * 4);//ROJO
-		camaraY = 80;//VERDE
+		camaraX = -(100 + (tiempo-60) * 4);//ROJO
+		camaraY = 160;//VERDE
 		camaraZ = -340;//AZUL
 
+		targetX = 0;
+		targetY = 40;
+		targetZ = 0;
+
+		movimiento(60, 80, zombie_caminando, 4.5, 135, 128, 192, 128, 192, 0);
+		movimiento(60, 80, zombie_caminando, 4.5, 180, -80, 40, -80, 40, 0);
+		movimiento(60, 80, zombie_caminando, 4.5, 180, -208, 96, -208, 96, 16);
+		movimiento(60, 80, zombie_caminando, 4.5, 180, -240, 528, -240, 528, 96);
+		movimiento(60, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
+	}
+
+	//Los zombies deben perseguir a steve y este debe pelear con alguno
+
+	//Steve decide esconderse en su casa, pero un Enderman lo encuentra
+	if (tiempo >= 90 && tiempo < 105)
+	{
+		camaraX = -260;//ROJO
+		camaraY = (48 - (tiempo - 90) * 1/2);//ROJO//VERDE
+		camaraZ = -512;//AZUL
+
 		targetX = -196;
-		targetY = 64;
-		targetZ = -480;
+		targetY = 48;
+		targetZ = -544;
 
-		movimiento(0, 3, steve_caminando, 4.5, 90, -196, -544, -196, -416, 0);
-		movimiento(3, 3.5, steve, 0, 0, -196, -416, -196, -416, 0);
-		movimiento(3.5, 4, steve, 0, 180, -196, -416, -196, -416, 0);
+		movimiento(90, 93, steve_con_espada, 4.5, 0, -150, -520, -150, -520, 0);
+		movimiento(93, 94, steve_caminando_con_espada, 4.5, 90, -150, -520, -150, -552, 0);
+		movimiento(94, 94.5, steve_con_espada, 4.5, 180, -150, -552, -150, -552, 0);
+		movimiento(94.5, 95.5, steve_caminando_con_espada, 4.5, 90, -150, -552, -150, -520, 0);
+		movimiento(95.5, 105, steve_con_espada, 4.5, 0, -150, -520, -150, -520, 0);
 
-		if (tiempo >= 4 && tiempo < 6)
-		{
-			glPushMatrix();
-			glTranslated(-196, 0, -416);
-			glRotated(180, 0, 1, 0);
-			salto(steve, 4.5, 16);
-			glPopMatrix();
-		}
+		movimiento(93.5, 94.5, enderman, 0, -90, 100, -440, 100, -440, 0);
+		movimiento(96.5, 97.5, enderman, 0, -90, -96, -540, -96, -540, 0);
+		movimiento(100, 101, enderman, 0, 0, -150, -536, -150, -536, 0);
 
-		movimiento(6, 6.5, steve, 0, 180, -196, -416, -196, -416, 0);
-		movimiento(6.5, 7, steve, 0, 0, -196, -416, -196, -416, 0);
-
-
-		movimiento(7, 10, steve_caminando, 4.5, 90, -196, -416, -196, -288, 0);
-
-		movimiento(0, 5, cerdo, 0, 90, -196, -572, -196, -572, 0);
-		movimiento(5, 10, cerdo_caminando, 4.5, 90, -196, -572, -196, -288, 0);
+		movimiento(103, 105, enderman, 0, -60, -248 + std::sin(tiempo * 100)/2, -518 + std::sin(tiempo * 100)/2, -248 + std::sin(tiempo * 100)/2, -518 + std::sin(tiempo * 100)/2, 5.5);
 	}
 
 
-
-	//ejes();
+	ejes();
 	glPopMatrix();
 	glutSwapBuffers();
 }
