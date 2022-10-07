@@ -36,6 +36,9 @@
 
 /* Arboles */
 #include "Arboles.h"
+
+/* Casa */
+#include "Casa.h"
 using namespace std;
 
 float camaraX = -20;//ROJO
@@ -1032,6 +1035,8 @@ void dibujar() {
 
 	//ENDERMAN
 	plantar_Arbol();
+
+	ubica_Casa();
 	ejes();
 
 	glPopMatrix();
