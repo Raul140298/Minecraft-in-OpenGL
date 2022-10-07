@@ -134,6 +134,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arboles.h" />
     <ClInclude Include="Cerdo.h" />
     <ClInclude Include="ColoresPersonalizados.h" />
     <ClInclude Include="CubosTerreno.h" />

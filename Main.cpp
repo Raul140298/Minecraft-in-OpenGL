@@ -34,6 +34,8 @@
 /* Zombie */
 #include "Zombie.h"
 
+/* Arboles */
+#include "Arboles.h"
 using namespace std;
 
 float camaraX = -20;//ROJO
@@ -46,7 +48,7 @@ float tiempo = 0;
 
 float tiempoAnochese = 20;
 
-float tamaño_cubo_arbol = 16;
+//float tamaño_cubo_arbol = 16;
 float tamaño_cubo_piso = 16;
 float tamaño_maxima_montaña = 20;
 float porcentaje_terrano = 0.8;
@@ -1005,6 +1007,7 @@ void dibujar() {
 
 	//TIME LINE----------------------------------------------------------------------------------------------------------
 	//CAMARA
+	/*
 	if (tiempo >= 0 && tiempo < 10)
 	{
 		camaraX = -20;//ROJO
@@ -1017,9 +1020,9 @@ void dibujar() {
 		camaraY = 100;//VERDE
 		camaraZ = 50;//AZUL
 	}
-
+	*/
 	//STEVE
-	movimiento(0, 10, steve_caminando, 4.5, 0, 0, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
+	//movimiento(0, 10, steve_caminando, 4.5, 0, 0, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
 
 	//CERDO
 	//movimiento(0, 8, cerdo_caminando, 4.5, -32, -32, -160, -160, 0);// Tinical, Tfinal, animacion, velocidadAnimacion, x1, z1, x2, z2, y
@@ -1028,7 +1031,7 @@ void dibujar() {
 
 
 	//ENDERMAN
-
+	plantar_Arbol();
 	ejes();
 
 	glPopMatrix();
