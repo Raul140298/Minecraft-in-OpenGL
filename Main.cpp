@@ -37,6 +37,9 @@
 /* Arboles */
 #include "Arboles.h"
 
+/* Rocas */
+#include "Rocas.h"
+
 /* Casa */
 #include "Casa.h"
 
@@ -977,6 +980,17 @@ void montaña(float animation)
 	glPopMatrix();
 }
 
+void rocas_terreno(float animation)
+{
+	glPushMatrix();
+
+	glTranslated(-600, -32 -3, -480);
+	glRotated(90, 0, 1, 0);
+	glScaled(16, 16, 16);
+	generar_rocas();
+	glPopMatrix();
+}
+
 void movimiento(float tInicial, float tFinal, void (*animacion)(float), float velocity, float angle, float x1, float z1, float x2, float z2, float y)
 {
 	if (tiempo >= tInicial && tiempo <= tFinal)
@@ -1057,6 +1071,7 @@ void dibujar() {
 	montaña(tiempoAnochese);
 
 	plantar_Arbol();
+	rocas_terreno(tiempoAnochese);
 	ubica_Casa();
 	ubicaCama();
 	ubicaSillon();

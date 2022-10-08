@@ -143,6 +143,7 @@
     <ClInclude Include="Enderman.h" />
     <ClInclude Include="Herramientas.h" />
     <ClInclude Include="MatrizElevacion.h" />
+    <ClInclude Include="Rocas.h" />
     <ClInclude Include="Steve.h" />
     <ClInclude Include="Terreno.h" />
     <ClInclude Include="Zombie.h" />

@@ -45,6 +45,9 @@ void colorPiedra1() {
 	glColor3ub(7, 36, 31);
 }
 
+void colorPiedra2() {
+	glColor3ub(116, 116, 116);
+}
 
 //Color Diamante
 void colorDiamante1() {
