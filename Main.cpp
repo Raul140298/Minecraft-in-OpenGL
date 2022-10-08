@@ -47,7 +47,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 90;
+float tiempo = 102;
 
 float tiempoAnochese = 60;
 
@@ -1093,25 +1093,26 @@ void dibujar() {
 	//Steve decide esconderse en su casa, pero un Enderman lo encuentra
 	if (tiempo >= 90 && tiempo < 105)
 	{
-		camaraX = -260;//ROJO
-		camaraY = (48 - (tiempo - 90) * 1/2);//ROJO//VERDE
-		camaraZ = -512;//AZUL
+		camaraX = -275;//ROJO
+		camaraY = (48 - (tiempo - 90) * 1/4);//ROJO//VERDE
+		camaraZ = -570;//AZUL
 
 		targetX = -196;
 		targetY = 48;
 		targetZ = -544;
 
-		movimiento(90, 93, steve_con_espada, 4.5, 0, -150, -520, -150, -520, 0);
-		movimiento(93, 94, steve_caminando_con_espada, 4.5, 90, -150, -520, -150, -552, 0);
-		movimiento(94, 94.5, steve_con_espada, 4.5, 180, -150, -552, -150, -552, 0);
-		movimiento(94.5, 95.5, steve_caminando_con_espada, 4.5, 90, -150, -552, -150, -520, 0);
-		movimiento(95.5, 105, steve_con_espada, 4.5, 0, -150, -520, -150, -520, 0);
+		movimiento(90, 93, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
+		movimiento(93, 94, steve_caminando_con_espada, 4.5, 90, -150, -538, -150, -570, 0);
+		movimiento(94, 94.5, steve_con_espada, 4.5, 180, -150, -570, -150, -570, 0);
+		movimiento(94.5, 95.5, steve_caminando_con_espada, 4.5, 90, -150, -570, -150, -538, 0);
+		movimiento(95.5, 105, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
 
-		movimiento(93.5, 94.5, enderman, 0, -90, 100, -440, 100, -440, 0);
-		movimiento(96.5, 97.5, enderman, 0, -90, -96, -540, -96, -540, 0);
-		movimiento(100, 101, enderman, 0, 0, -150, -536, -150, -536, 0);
+		movimiento(93.5, 94.5, enderman_caminando, 4.5, 235, -80, -240, -132, -272, 0);
+		movimiento(96.5, 97.5, enderman, 0, -90, -96, -560, -96, -560, 1);
+		movimiento(100, 101, enderman, 0, 0, -150, -570, -150, -570, 0);
 
-		movimiento(103, 105, enderman, 0, -60, -248 + std::sin(tiempo * 100)/2, -518 + std::sin(tiempo * 100)/2, -248 + std::sin(tiempo * 100)/2, -518 + std::sin(tiempo * 100)/2, 5.5);
+		movimiento(103, 105, enderman, 0, -99, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, 10);
+	
 	}
 
 
