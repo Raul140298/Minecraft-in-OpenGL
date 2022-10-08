@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arboles.h" />
+    <ClInclude Include="CamaSillon.h" />
     <ClInclude Include="Casa.h" />
     <ClInclude Include="Cerdo.h" />
     <ClInclude Include="ColoresPersonalizados.h" />

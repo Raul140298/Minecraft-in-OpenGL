@@ -39,6 +39,10 @@
 
 /* Casa */
 #include "Casa.h"
+
+/*Cama y Sillon*/
+#include "CamaSillon.h"
+
 using namespace std;
 
 float camaraX = -100;//ROJO
@@ -1009,6 +1013,8 @@ void dibujar() {
 
 	plantar_Arbol();
 	ubica_Casa();
+	ubicaCama();
+	ubicaSillon();
 
 	//ANIMACIONES----------------------------------------------------------------------------------------------------
 
