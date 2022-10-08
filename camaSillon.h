@@ -179,7 +179,7 @@ void sillon(){
 }
 void ubicaCama(){
 	glPushMatrix();
-		glTranslated(-120, 0, -545);
+		glTranslated(-240, 0, -545);
 		glScaled(1.2, 1.2, 1.2);
 		glRotated(180, 0, 1, 0);
 		cama();

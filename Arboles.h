@@ -118,6 +118,21 @@ void plantar_Arbol() {
 			}
 		glPopMatrix();
 	}
+
+	glPushMatrix();
+	glTranslated(-500,1*16,-600);
+	arbol2();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-580, 1 * 16, -500);
+	arbol1();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-30, 1 * 16, -600);
+	arbol1();
+	glPopMatrix();
 }
 
 #endif

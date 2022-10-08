@@ -500,6 +500,14 @@ void paredes() {
 	glPopMatrix();
 }
 
+void pisoCasa()
+{
+	//PISO
+	glPushMatrix();
+	columaTablonArriba(10);
+	glPopMatrix();
+}
+
 void casa() {
 	glPushMatrix();
 		glTranslated(-16, 80, -16);
@@ -514,7 +522,7 @@ void ubica_Casa() {
 		glRotated(180, 0, 1, 0);
 		casa();
 	glPopMatrix();
-
 }
+
 
 #endif
