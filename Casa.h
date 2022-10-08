@@ -31,33 +31,33 @@ void tablon_textura() {
 	glPushMatrix();
 		glColor3ub(102, 69, 26);
 		glTranslated(0, 0.5, 0);
-		glScaled(16, 1, 1);
+		glScaled(16, 1, 16);
 		glutSolidCube(1);
 	glPopMatrix();
 	
 	glPushMatrix();
 		glColor3ub(163, 133, 76);
 		glTranslated(0, 2.5, 0);
-		glScaled(16, 3, 1);
+		glScaled(16, 3, 16);
 		glutSolidCube(1);
 	glPopMatrix();
 }
 
 void tablon_lado() {
 	glPushMatrix();
-		glTranslated(8, 0, 0);
+		glTranslated(8, 0, 8);
 		tablon_textura();
 	glPopMatrix();
 	glPushMatrix();
-		glTranslated(8, 4, 0);
+		glTranslated(8, 4, 8);
 		tablon_textura();
 	glPopMatrix();
 	glPushMatrix();
-		glTranslated(8, 8, 0);
+		glTranslated(8, 8, 8);
 		tablon_textura();
 	glPopMatrix();
 	glPushMatrix();
-		glTranslated(8, 12, 0);
+		glTranslated(8, 12, 8);
 		tablon_textura();
 	glPopMatrix();
 }
@@ -270,18 +270,22 @@ void techo_columna(int x,int y) {
 }
 
 void techo() {
-	techo_columna(7,14);
+	techo_columna(9,14);
 	glPushMatrix();
 		glTranslated(16,8,16);
-		techo_columna(5,12);
+		techo_columna(7,12);
 	glPopMatrix();
 	glPushMatrix();
 		glTranslated(32, 16, 32);
-		techo_columna(3, 10);
+		techo_columna(5, 10);
 	glPopMatrix();
 	glPushMatrix();
 		glTranslated(48, 24, 48);
-		techo_columna(1, 8);
+		techo_columna(3, 8);
+	glPopMatrix();
+	glPushMatrix();
+		glTranslated(64, 32, 64);
+		techo_columna(1, 6);
 	glPopMatrix();
 }
 
@@ -365,7 +369,27 @@ void paredes() {
 		columaTablonArriba(2);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(0,0,64);
+		glTranslated(0,0, 64);
+		glRotated(90, 0, 1, 0);
+		columaTablonAbajo(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(0,0, 64);
+		glRotated(90, 0, 1, 0);
+		columaTablonArriba(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(0,0, 80);
+		glRotated(90, 0, 1, 0);
+		columaTablonAbajo(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(0,0, 80);
+		glRotated(90, 0, 1, 0);
+		columaTablonArriba(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(0,0,96);
 		glRotated(90, 0, 1, 0);
 		columaTablonAbajo(5);
 	glPopMatrix();
@@ -380,78 +404,98 @@ void paredes() {
 
 	
 	glPushMatrix();
-		glTranslated(192, 0, 80);
+		glTranslated(192, 0, 112);
 		glRotated(180, 0, 1, 0);
 		columaArbol();
 	glPopMatrix();
 
 	//Parte lateral ventana
 	glPushMatrix();	
-		glTranslated(192,0,32);
+		glTranslated(176,0,32);
 		glRotated(90, 0, 1, 0);
 		columaTablonAbajo(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(192,0,48);
+		glTranslated(176,0,48);
 		glRotated(90, 0, 1, 0);
 		columaTablonAbajo(2);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(192,0,48);
+		glTranslated(176,0,48);
 		glRotated(90, 0, 1, 0);
 		columaTablonArriba(2);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(192,0,64);
+		glTranslated(176,0, 64);
+		glRotated(90, 0, 1, 0);
+		columaTablonAbajo(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(176,0, 64);
+		glRotated(90, 0, 1, 0);
+		columaTablonArriba(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(176,0,80);
+		glRotated(90, 0, 1, 0);
+		columaTablonAbajo(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(176,0, 80);
+		glRotated(90, 0, 1, 0);
+		columaTablonArriba(2);
+	glPopMatrix();
+	glPushMatrix();	
+		glTranslated(176,0,96);
 		glRotated(90, 0, 1, 0);
 		columaTablonAbajo(5);
 	glPopMatrix();
 
 	glPushMatrix();
-		glTranslated(0, 0, 80);
+		glTranslated(0, 0, 112);
 		glRotated(90, 0, 1, 0);
 		columaArbol();
 	glPopMatrix();
 
 	//Parte trasera cerrada
 	glPushMatrix();	
-		glTranslated(16, 0, 80);
+		glTranslated(16, 0, 96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(32,0,80);
+		glTranslated(32,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(48,0,80);
+		glTranslated(48,0,96);
 		columaTablonAbajo(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(64,0,80);
+		glTranslated(64,0,96);
 		columaTablonAbajo(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(80,0,80);
+		glTranslated(80,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(96,0,80);
+		glTranslated(96,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(112,0,80);
+		glTranslated(112,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(128,0,80);
+		glTranslated(128,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(144,0,80);
+		glTranslated(144,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 	glPushMatrix();	
-		glTranslated(160,0,80);
+		glTranslated(160,0,96);
 		columaTablonArriba(5);
 	glPopMatrix();
 }
