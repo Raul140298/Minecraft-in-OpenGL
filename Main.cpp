@@ -54,9 +54,9 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 60;
+float tiempo = 75;
 
-float tiempoAnochese = 60;
+float tiempoAnochese = 45;
 
 float targetX = -196, targetY = 64, targetZ = -480;
 
@@ -980,6 +980,28 @@ void montaña(float animation)
 	glPopMatrix();
 }
 
+void steve_gira_cabeza_derecha(float animation)
+{
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	glPushMatrix();
+	glRotated(-90 * animation, 0, 1, 0);
+	steve_cabeza();
+	glPopMatrix();
+
+	steve_cuerpo();
+
+	steve_brazo_izquierdo();
+
+	steve_brazo_derecho_con_pico();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
+	glPopMatrix();
+}
+
 void rocas_terreno(float animation)
 {
 	glPushMatrix();
@@ -1134,12 +1156,99 @@ void dibujar() {
 		movimiento(5, 10, cerdo_caminando, 4.5, 90, -196, -572, -196, -288, 0);
 	}
 
+	if (tiempo >= 10 && tiempo < 30)
+	{
+		camaraX = -(100 + (tiempo - 50) * 4);//ROJO
+		camaraY = 160;//VERDE
+		camaraZ = -340;//AZUL
+
+		targetX = 0;
+		targetY = 40;
+		targetZ = 0;
+	}
+
+	if (tiempo >= 30 && tiempo < 50)
+	{
+		camaraX = -(200 + (tiempo-30) * 1);//ROJO
+		camaraY = 70;//VERDE
+		camaraZ = -250;
+
+		targetX = 0;
+		targetY = 64;
+		targetZ = -320;
+
+		movimiento(30, 31, steve_caminando, 4.5, 0, -132, -268, -100, -300, 0);
+		movimiento(31, 31.5, steve, 4.5, 90, -100, -300, -100, -300, 0);
+
+		if (tiempo >= 31.5 && tiempo < 34.5)
+		{
+			float y = 0;
+
+			if (tiempo >= 32.1)
+			{
+				y = 16 * abs(std::sin((tiempo - 32.1) * 8));
+			}
+			if (tiempo >= 32.4)
+			{
+				y = 16;
+			}
+			glPushMatrix();
+			glTranslated(0, y, 0);
+			movimiento(31.5, 34.5, steve_caminando, 4.5, -90, -100, -300, -20, -300, 0);
+			glPopMatrix();
+		}
+		
+		movimiento(34.5, 35, steve, 9, 90, -20, -300, -20, -300, 16);
+		movimiento(35, 37, steve_picando, 9, 90, -20, -300, -20, -300, 16);
+
+		movimiento(37, 37.5, steve_con_pico, 4.5, 180, -20, -300, -20, -300, 16);
+		movimiento(37.5, 38.5, steve_caminando_con_pico, 4.5, 90, -20, -300, -20, -332, 16);
+		movimiento(38.5, 39, steve_con_pico, 4.5, 180, -20, -332, -20, -332, 16);
+		movimiento(39, 40, steve_caminando_con_pico, 4.5, -90, -20, -332, 8, -332, 16);
+		movimiento(40, 42, steve_picando, 9, 90, 8, -332, 8, -332, 16);
+		movimiento(42, 42.5, steve_con_pico, 9, -90, 8, -332, 8, -332, 16);
+		if (tiempo >= 42.5 && tiempo < 44.5)
+		{
+			glPushMatrix();
+			glTranslated(8, 16, -332);
+			glRotated(-90, 0, 1, 0);
+			salto(steve_picando, tiempo - 42.5, 8, 16);
+			glPopMatrix();
+		}
+		movimiento(44.5, 45, steve_con_pico, 9, 90, 8, -332, 8, -332, 16);
+		movimiento(45, 48, steve_picando, 9, 90, 8, -332, 8, -332, 16);
+		movimiento(48, 48.5, steve_con_pico, 9, 90, 8, -332, 8, -332, 16);
+
+		movimiento(48.5, 50, steve_gira_cabeza_derecha, tiempo<=49 ? ((tiempo - 48.5) / 0.5) : 1, 90, 8, -332, 8, -332, 16);
+
+
+		movimiento(30, 36.5, cerdo_caminando, 4.5, -245, -100, -180, -140, -370, 0);
+		movimiento(36.5, 37, cerdo, 4.5, -167.5, -140, -370, -140, -370, 0);
+
+		movimiento(37, 38.5, cerdo_caminando, 4.5, -40, -140, -370, -100, -390, 0);
+		movimiento(38.5, 39, cerdo, 4.5, -245, -100, -390, -100, -390, 0);
+
+		movimiento(39, 42.5, cerdo_caminando, 4.5, 90, -100, -390, -100, -340, 0);
+
+		movimiento(42.5, 43, cerdo, 4.5, 90, -100, -340, -100, -340, 0);
+		if (tiempo >= 43 && tiempo < 45)
+		{
+			glPushMatrix();
+			glTranslated(-100, 0, -340);
+			glRotated(70, 0, 1, 0);
+			salto(cerdo, tiempo - 43, 8, 16);
+			glPopMatrix();
+		}
+		movimiento(45, 48, cerdo_caminando, 4.5, 90, -100, -340, -100, -240, 0);
+		movimiento(48, 50, cerdo, 4.5, 0, -100, -240, -100, -240, 0);
+	}
+
 	//Steve debe hacer hora con su cerdo. Picar o cualquier cosa hasta que se haga de noche.
 	
 	//Se muestra como los zombies fueron instanciados una vez se hizo de noche
-	if (tiempo >= 60 && tiempo < 70)
+	if (tiempo >= 50 && tiempo < 60)
 	{
-		camaraX = -(100 + (tiempo-60) * 4);//ROJO
+		camaraX = -(100 + (tiempo-50) * 4);//ROJO
 		camaraY = 160;//VERDE
 		camaraZ = -340;//AZUL
 
@@ -1147,33 +1256,45 @@ void dibujar() {
 		targetY = 40;
 		targetZ = 0;
 
-		movimiento(60, 80, zombie_caminando, 4.5, 135, 128, 192, 128, 192, 0);
-		movimiento(60, 80, zombie_caminando, 4.5, 180, -80, 40, -80, 40, 0);
-		movimiento(60, 80, zombie_caminando, 4.5, 180, -208, 96, -208, 96, 16);
-		movimiento(60, 80, zombie_caminando, 4.5, 180, -240, 528, -240, 528, 96);
-		movimiento(60, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
+		movimiento(50, 80, zombie_caminando, 4.5, 135, 128, 192, 128, 192, 0);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -80, 40, -80, 40, 0);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -208, 96, -208, 96, 16);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -240, 528, -240, 528, 96);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
 	}
 
 	//Los zombies deben perseguir a steve y este debe pelear con alguno
+	if (tiempo >= 60 && tiempo < 75)
+	{
+		camaraX = -(100 + (tiempo - 50) * 4);//ROJO
+		camaraY = 160;//VERDE
+		camaraZ = -340;//AZUL
+
+		targetX = 0;
+		targetY = 40;
+		targetZ = 0;
+
+
+	}
 
 	//Steve decide esconderse en su casa, pero un Enderman lo encuentra
-	if (tiempo >= 90 && tiempo < 106)
+	if (tiempo >= 75 && tiempo < 95)
 	{
 		camaraX = -275;//ROJO
-		camaraY = (48 - (tiempo - 90) * 1/4);//ROJO//VERDE
+		camaraY = (48 - (tiempo - 80) * 1/4);//ROJO//VERDE
 		camaraZ = -570;//AZUL
 
 		targetX = -196;
 		targetY = 48;
 		targetZ = -544;
 
-		movimiento(90, 93, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
-		movimiento(93, 94, steve_caminando_con_espada, 4.5, 90, -150, -538, -150, -570, 0);
-		movimiento(94, 94.5, steve_con_espada, 4.5, 180, -150, -570, -150, -570, 0);
-		movimiento(94.5, 95.5, steve_caminando_con_espada, 4.5, 90, -150, -570, -150, -538, 0);
-		movimiento(95.5, 106, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
+		movimiento(80, 83, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
+		movimiento(83, 84, steve_caminando_con_espada, 4.5, 90, -150, -538, -150, -570, 0);
+		movimiento(84, 84.5, steve_con_espada, 4.5, 180, -150, -570, -150, -570, 0);
+		movimiento(84.5, 85.5, steve_caminando_con_espada, 4.5, 90, -150, -570, -150, -538, 0);
+		movimiento(85.5, 95, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
 
-		if (tiempo >= 90 && tiempo < 94)
+		if (tiempo >= 80 && tiempo < 84)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -1182,7 +1303,7 @@ void dibujar() {
 			glPopMatrix();
 		}
 
-		if (tiempo >= 94 && tiempo < 96)
+		if (tiempo >= 84 && tiempo < 86)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -1191,7 +1312,7 @@ void dibujar() {
 			glPopMatrix();
 		}
 
-		if (tiempo >= 96 && tiempo < 98)
+		if (tiempo >= 86 && tiempo < 88)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -1200,7 +1321,7 @@ void dibujar() {
 			glPopMatrix();
 		}
 
-		if (tiempo >= 98 && tiempo < 100)
+		if (tiempo >= 88 && tiempo < 90)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -1209,7 +1330,7 @@ void dibujar() {
 			glPopMatrix();
 		}
 
-		if (tiempo >= 100 && tiempo < 102)
+		if (tiempo >= 90 && tiempo < 92)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -1218,7 +1339,7 @@ void dibujar() {
 			glPopMatrix();
 		}
 
-		if (tiempo >= 102 && tiempo < 106)
+		if (tiempo >= 92 && tiempo < 95)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -1227,10 +1348,10 @@ void dibujar() {
 			glPopMatrix();
 		}
 
-		movimiento(93.5, 94.5, enderman_caminando, 4.5, 235, -80, -240, -132, -272, 0);
-		movimiento(96.5, 97.5, enderman, 0, -90, -96, -560, -96, -560, 1);
-		movimiento(100, 101, enderman, 0, 0, -150, -570, -150, -570, 0);
-		movimiento(103, 106, enderman, 0, -99, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, 10);
+		movimiento(83.5, 84.5, enderman_caminando, 4.5, 235, -80, -240, -132, -272, 0);
+		movimiento(86.5, 87.5, enderman, 0, -90, -96, -560, -96, -560, 1);
+		movimiento(90, 91, enderman, 0, 0, -150, -570, -150, -570, 0);
+		movimiento(93, 95, enderman, 0, -99, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, 10);
 	}
 
 

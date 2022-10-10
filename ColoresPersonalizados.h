@@ -42,7 +42,7 @@ void colorMadera3() {
 //Color Piedra
 
 void colorPiedra1() {
-	glColor3ub(7, 36, 31);
+	glColor3ub(170, 170, 170);
 }
 
 void colorPiedra2() {

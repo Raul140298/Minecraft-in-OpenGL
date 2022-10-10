@@ -23,14 +23,6 @@ void cubo_roca() {
 	colorPiedra1();
 	glutSolidCube(1);
 	glPopMatrix();
-
-	glPushMatrix();
-	glTranslated(0, 0.5, 0);
-	colorPiedra2();
-	glScaled(4, 1, 4);
-	glutSolidCube(0.251);
-	glPopMatrix();
-
 }
 
 #endif
