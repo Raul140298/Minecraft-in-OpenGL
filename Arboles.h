@@ -108,7 +108,7 @@ void plantar_Arbol() {
 		glPushMatrix();
 			int posI = rand() % 65;
 			int posJ = rand() % 65;
-			glTranslated(posI * 16 - 500 - 8, MatrizTerreno[posI][posJ] * 16, (posJ) *16 - 300 - 8);
+			glTranslated(posI * 16 - 507.9, MatrizTerreno[posI][posJ] * 16, (posJ) *16 - 300 + 20 + 32);
 			
 			if (i % 2 == 0) {
 				arbol1();
@@ -120,17 +120,17 @@ void plantar_Arbol() {
 	}
 
 	glPushMatrix();
-	glTranslated(-500,1*16,-600);
+	glTranslated(-500,0,-600);
 	arbol2();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-580, 1 * 16, -500);
+	glTranslated(-580,0, -500);
 	arbol1();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-30, 1 * 16, -600);
+	glTranslated(-30,0, -600);
 	arbol1();
 	glPopMatrix();
 }

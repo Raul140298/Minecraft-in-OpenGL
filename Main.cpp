@@ -974,7 +974,7 @@ void salto(void (*animacion)(float),float time, float velocity, float altura)
 void montaña(float animation)
 {
 	glPushMatrix();
-	glTranslated(-500, (-16 * 21.5) - 2.5, -300);
+	glTranslated(-500, (-16 * 21.5) - 2.5, -240);
 	glScaled(16, 16, 16);
 	ambiente_terreno();
 	glPopMatrix();
@@ -984,7 +984,7 @@ void rocas_terreno(float animation)
 {
 	glPushMatrix();
 
-	glTranslated(-600, -32 -3, -480);
+	glTranslated(-612, -42.15, -192);
 	glRotated(90, 0, 1, 0);
 	glScaled(16, 16, 16);
 	generar_rocas();
