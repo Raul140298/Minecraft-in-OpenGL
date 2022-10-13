@@ -54,7 +54,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 75;
+float tiempo = 60;
 
 float tiempoAnochese = 45;
 
@@ -804,6 +804,30 @@ void steve_picando(float velocity)
 	glPopMatrix();
 }
 
+void steve_atacando(float velocity) {
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(45 * abs(std::sin(tiempo * velocity)), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	steve_brazo_derecho_con_espada();
+	glPopMatrix();
+
+	steve_brazo_izquierdo();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
+
+	steve_cuerpo();
+
+	steve_cabeza();
+
+	glPopMatrix();
+}
+
 void enderman(float velocity)
 {
 	glPushMatrix();
@@ -1266,15 +1290,181 @@ void dibujar() {
 	//Los zombies deben perseguir a steve y este debe pelear con alguno
 	if (tiempo >= 60 && tiempo < 75)
 	{
-		camaraX = -(100 + (tiempo - 50) * 4);//ROJO
-		camaraY = 160;//VERDE
-		camaraZ = -340;//AZUL
+		camaraX = -(200 + (tiempo - 30) * 1);//ROJO
+		camaraY = 70;//VERDE
+		camaraZ = -250;
 
 		targetX = 0;
-		targetY = 40;
-		targetZ = 0;
+		targetY = 64;
+		targetZ = -320;
+
+		float t_inicial_Steve = 60;
+
+		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve_gira_cabeza_derecha, tiempo <= t_inicial_Steve + 0.5 ? ((tiempo - t_inicial_Steve) / 0.5) : 0.2, 90, 8, -332, 8, -332, 16);
+		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_pico, 9, -90, 8, 8, -332, -332, 16);
+		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 2, steve_caminando_con_pico, 4.5, -90, 8, -332, -20, -332, 16);
+		movimiento(t_inicial_Steve + 2, t_inicial_Steve + 2.5, steve_con_pico, 4.5, 180, -20, -332, -20, -332, 16);
+		movimiento(t_inicial_Steve + 2.5, t_inicial_Steve + 3.5, steve_caminando_con_pico, 4.5, 90, -20, -332, -20, -300, 16);
+		movimiento(t_inicial_Steve + 3.5, t_inicial_Steve + 4, steve_con_pico, 4.5, 180, -20, -300, -20, -300, 16);
+		movimiento(t_inicial_Steve + 4, t_inicial_Steve + 4.5, steve, 9, 180, -20, -300, -20, -300, 16);
+		
+		// STEVE -> Usa Espada
+		movimiento(t_inicial_Steve + 4.5, t_inicial_Steve + 5, steve_caminando_con_espada, 9, 270, -20, -300, -60, -300, 16);
+
+		// STEVE -> Baja peldaño
+		if (tiempo >= t_inicial_Steve + 5 && tiempo < t_inicial_Steve + 6)
+		{
+			float y = 16;
+
+			if (tiempo >= t_inicial_Steve + 5.6)
+			{
+				y = 16 - 16 * abs(std::sin((tiempo - t_inicial_Steve -5.6) * 8));
+			}
+			if (tiempo >= t_inicial_Steve + 5.9)
+			{
+				y = 0;
+			}
+			glPushMatrix();
+			glTranslated(0, y, 0);
+			movimiento(t_inicial_Steve + 5, t_inicial_Steve + 6, steve_caminando_con_espada, 4.5, -90, -60, -300, -100, -300, 0);
+			glPopMatrix();
+		}
+
+		/* ZOMBIE -> Acercandose a Steve */
+		movimiento(t_inicial_Steve + 0, t_inicial_Steve + 6.5, zombie_caminando, 4.5, 90, -100, -800, -100, -325, 0);
+		
+		/* STEVE -> Voltea para atacar */
+		movimiento(t_inicial_Steve + 6, t_inicial_Steve + 6.5, steve_con_espada, 9, 180, -100, -300, -100, -300, 0);
+
+		/* STEVE -> Ataca a Zombie */
+		movimiento(t_inicial_Steve + 6.5, t_inicial_Steve + 8.5, steve_atacando, 4.5, 180, -100, -300, -100, -300, 0);
+
+		
+		/* ZOMBIE -> Recibe ataque (Sangre) */
+
+		if (tiempo >= t_inicial_Steve + 6.5 && tiempo < t_inicial_Steve + 8.5)
+		{
+			float y = 0;
+			
+			/* ZOMBIE -> Es atacado*/
+			if (tiempo < t_inicial_Steve + 6.5 + 0.4) {
+				y = 16 * abs(std::sin((tiempo - t_inicial_Steve - 6.5 - 0.4) * 8));
+			}
+			if (tiempo >= t_inicial_Steve + 6.5 + 0.4 + 0.3){
+				y = 0;
+			}
+			glPushMatrix();
+				glTranslated(0, y, -10);
+				movimiento(t_inicial_Steve + 6.5, t_inicial_Steve + 6.9, zombie_caminando, 9, -90, -100, -325, -100, -335, 0);
+			glPopMatrix();
+			
+			/* ZOMBIE -> Vuelve a acercarse a Steve*/
+			movimiento(t_inicial_Steve + 6.9, t_inicial_Steve + 7.2, zombie_caminando, 4.5, 90, -100, -335, -100, -325, 0);
+			
+			/* ZOMBIE -> Es atacado*/
+			if (tiempo < t_inicial_Steve + 7.2 + 0.4) {
+				y = 16 * abs(std::sin((tiempo - t_inicial_Steve - 7.2 - 0.4) * 8));
+			}
+			if (tiempo >= t_inicial_Steve + 7.2 + 0.4 + 0.3) {
+				y = 0;
+			}
+			glPushMatrix();
+				glTranslated(0, y, -10);
+				movimiento(t_inicial_Steve + 7.2, t_inicial_Steve + 7.6, zombie_caminando, 9, -90, -100, -325, -100, -335, 0);
+			glPopMatrix();
+			
+			/* ZOMBIE -> Vuelve a acercarse a Steve*/
+			movimiento(t_inicial_Steve + 7.6, t_inicial_Steve + 8, zombie_caminando, 4.5, 90, -100, -335, -100, -325, 0);
+			
+			/* ZOMBIE -> Es atacado*/
+			if (tiempo < t_inicial_Steve + 8 + 0.4) {
+				y = 16 * abs(std::sin((tiempo - t_inicial_Steve - 8 - 0.4) * 8));
+			}
+			if (tiempo >= t_inicial_Steve + 8 + 0.4 + 0.3) {
+				y = 0;
+			}
+			glPushMatrix();
+				glTranslated(0, y, -10);
+				movimiento(t_inicial_Steve + 8, t_inicial_Steve + 8.4, zombie_caminando, 9, -90, -100, -325, -100, -335, 0);
+			glPopMatrix();
+		}
+
+		/* ZOMBIE -> MUERE*/
+		
+		if (tiempo >= t_inicial_Steve + 8.5 && tiempo < t_inicial_Steve + 9){
+			glPushMatrix();
+			
+			glTranslated(-100 - 8, 8, -320);
+			glRotated(-90, 1, 0, 0);
+				zombie(4.5);
+			glPopMatrix();
+			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 9, steve_con_espada, 9, 180, -100, -300, -100, -300, 0);
+
+		}
+
+		/* ZOMBIES -> Acercandose a Steve (3 Zombies) */
+		if (tiempo >= t_inicial_Steve + 9 && tiempo < t_inicial_Steve + 15) {
+
+			/* ZOMBIE -> MUERE*/
+
+			glPushMatrix();
+
+			glTranslated(-100 - 8, 8, -320);
+			glRotated(-90, 1, 0, 0);
+			zombie(4.5);
+			glPopMatrix();
+
+			camaraX = -(400 + (tiempo - 30) * 1);//ROJO
+			camaraY = 70;//VERDE
+			camaraZ = -250;
+
+			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 9.5, steve_con_espada, 9, 180, -100, -300, -100, -300, 0);
+
+			/* ZOMBIES(3) -> Acercandose a Steve */
+				// Primer Zombie.
+			movimiento(t_inicial_Steve + 9, t_inicial_Steve + 11.5, zombie_caminando, 4.5, 90, -100, -400, -100, -350, 0);
+			movimiento(t_inicial_Steve + 11.5, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -100, -350, -180, -350, 0);
+			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -180, -350, -180, -380, 0);
+				// Segundo Zombie.
+			movimiento(t_inicial_Steve + -2, t_inicial_Steve + 12, zombie_caminando, 4.5, 90, -100, +300, -100, -325, 0);
+			movimiento(t_inicial_Steve + 12, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -100, -325, -250, -325, 0);
+			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -250, -325, -250, -355, 0);
+			//movimiento(t_inicial_Steve + 12, t_inicial_Steve + 13, zombie_caminando, 4.5, -90, -100, -325, -160, -325, 0);
+			
+				// Tercer Zombie
+			movimiento(t_inicial_Steve - 2, t_inicial_Steve + 13.5, zombie_caminando, 4.5, 90, -200, 400, -160, -300, 0);
+			movimiento(t_inicial_Steve + 13.5, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -160, -300, -250, -300, 0);
+			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -250, -300, -250, -330, 0);
 
 
+			// Cuarto Zombie
+			movimiento(t_inicial_Steve + 6, t_inicial_Steve + 14, zombie_caminando, 4.5, -90, -600, -400, -220, -400, 0);
+			movimiento(t_inicial_Steve + 14, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -220, -400, -220, -440, 0);
+
+
+
+			/* STEVE -> Se dirige a su casa */
+			movimiento(t_inicial_Steve + 9.5, t_inicial_Steve + 12.5, steve_caminando, 4.5, 190, -100, -300, -196, -416, 0);
+
+			movimiento(t_inicial_Steve + 12.5, t_inicial_Steve + 15, steve_caminando, 4.5, 90, -196, -416, -196, -544, 0);
+			//movimiento(t_inicial_Steve + 10, t_inicial_Steve + 13, steve_caminando, 4.5, 90, -196, -416, -196, -544, 0);
+	
+		}
+
+
+		
+
+		/*
+		if (tiempo >= 73 && tiempo < 75)
+		{
+			glPushMatrix();
+			glTranslated(-100, 0, -340);
+			glRotated(70, 0, 1, 0);
+			salto(cerdo, tiempo - 43, 8, 16);
+			glPopMatrix();
+		}
+		*/
+	
 	}
 
 	//Steve decide esconderse en su casa, pero un Enderman lo encuentra
