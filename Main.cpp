@@ -46,6 +46,8 @@
 /*Cama y Sillon*/
 #include "CamaSillon.h"
 
+/*Cofre*/
+#include "Cofre.h"
 using namespace std;
 
 float camaraX = -100;//ROJO
@@ -1121,6 +1123,7 @@ void dibujar() {
 	ubica_Casa();
 	ubicaCama();
 	ubicaSillon();
+	ubicaCofre();
 
 	//ANIMACIONES----------------------------------------------------------------------------------------------------
 
