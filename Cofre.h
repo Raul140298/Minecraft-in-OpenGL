@@ -2,15 +2,18 @@
 #define COFRE
 
 void paredBase() {
+	glPushMatrix();
+	glTranslated(0, 1, 1);
 	glColor3ub(164, 98, 40);
-	for (int i = 0; i <= 15; i++) {
-		for (int j = 0; j <= 15; j++) {
+	for (int i = 0; i <= 14; i++) {
+		for (int j = 0; j <= 14; j++) {
 			glPushMatrix();
 			glTranslated(0, i, j);
 			glutSolidCube(1);
 			glPopMatrix();
 		}
 	}
+	glPopMatrix();
 }
 void base() {
 	glColor3ub(72, 54, 49);
@@ -75,6 +78,7 @@ void base() {
 		glutSolidCube(1);
 		glPopMatrix();
 	}
+
 	paredBase();
 
 	glPushMatrix();
@@ -94,17 +98,22 @@ void base() {
 	paredBase();
 	glPopMatrix();
 }
+
 void paredTapa() {
+	glPushMatrix();
+	glTranslated(0, 1, 1);
 	glColor3ub(164, 98, 40);
-	for (int i = 0; i <= 3; i++) {
-		for (int j = 0; j <= 15; j++) {
+	for (int i = 0; i <= 2; i++) {
+		for (int j = 0; j <= 14; j++) {
 			glPushMatrix();
 			glTranslated(0, i, j);
 			glutSolidCube(1);
 			glPopMatrix();
 		}
 	}
+	glPopMatrix();
 }
+
 void chapa() {
 	glColor3ub(110, 110, 109);
 	glPushMatrix();
@@ -217,20 +226,72 @@ void tapa() {
 }
 void cofre() {
 	base();
+
 	glPushMatrix();
 	glTranslated(0, 17, 0);
-	glRotated(40, 0, 0, 1);
+	glRotated(0, 0, 0, 1);
 	tapa();
 	glPopMatrix();
-
 }
 
 void ubicaCofre() {
 	glPushMatrix();
 		glTranslated(-135, 0, -590);
-		glScaled(1.4, 1.4, 1.4);
+		glScaled(0.9, 0.9, 0.9);
 		glRotated(-90, 0, 1, 0);
 		cofre();
+	glPopMatrix();
+}
+
+void cofreAnimacion(float tiempoActual, float tiempoInicial, float tiempoFinal)
+{
+	base();
+
+	if (tiempoActual < tiempoInicial)
+	{
+		glPushMatrix();
+		glTranslated(0, 17, 0);
+		tapa();
+		glPopMatrix();
+	}
+
+	if (tiempoActual >= tiempoInicial && tiempoActual<tiempoFinal)
+	{
+		float aux = 2 * (tiempoActual - tiempoInicial) / (tiempoFinal - tiempoInicial);
+		glPushMatrix();
+		glTranslated(0, 17, 0);
+		glRotated((aux < 1 ? aux : 1) * 40, 0, 0, 1);
+		tapa();
+		glPopMatrix();
+	}
+
+	float auxtFinal = (3 * tiempoFinal - tiempoInicial) / 2;
+
+	if (tiempoActual >= tiempoFinal && tiempoActual< auxtFinal)
+	{
+		glPushMatrix();
+		glTranslated(0, 17, 0);
+		glRotated(40 - (tiempoActual - tiempoFinal) / (auxtFinal - tiempoFinal) * 40, 0, 0, 1);
+		tapa();
+		glPopMatrix();
+	}
+
+	if (tiempoActual >= auxtFinal)
+	{
+		glPushMatrix();
+		glTranslated(0, 17, 0);
+		tapa();
+		glPopMatrix();
+	}
+}
+
+void cofreAbriendose(float tiempoActual, float tiempoInicial, float tiempoFinal)
+{
+	glPushMatrix();
+	glTranslated(-135, 0, -590);
+	glScaled(0.9, 0.9, 0.9);
+	glRotated(-90, 0, 1, 0);
+	cofreAnimacion(tiempoActual, tiempoInicial, tiempoFinal);
 	glPopMatrix();
 }
 
