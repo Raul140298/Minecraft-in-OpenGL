@@ -46,6 +46,9 @@
 /*Cama y Sillon*/
 #include "CamaSillon.h"
 
+/*Cofre*/
+#include "Cofre.h"
+
 using namespace std;
 
 float camaraX = -100;//ROJO
@@ -828,6 +831,33 @@ void steve_atacando(float velocity) {
 	glPopMatrix();
 }
 
+void steve_baja_palanca(float velocity) {
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	if (tiempo <= 77.25)
+	{
+		glRotated(90 - 90 * ((tiempo - 77) / velocity) * 2, 1, 0, 0);
+	}
+	glTranslated(0, -22, 0);
+	steve_brazo_derecho();
+	glPopMatrix();
+
+	steve_brazo_izquierdo();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
+
+	steve_cuerpo();
+
+	steve_cabeza();
+
+	glPopMatrix();
+}
+
 void enderman(float velocity)
 {
 	glPushMatrix();
@@ -955,13 +985,13 @@ void enderman_cabeza_inferior(float velocity) {
 	/* Varía de  29 - 30 (30 [boca cerrada] -> 29[boca abierta])*/
 	glTranslated(0, 29.5 + 0.5 * std::sin(tiempo * velocity) + medio_cubo, 0);
 	/* Base cabeza*/
-	
+
 	glBegin(GL_QUADS);
-		glColor3b(0, 0, 0);
-		glVertex3d(4, 0 - medio_cubo, 4);
-		glVertex3d(-4, 0 - medio_cubo, 4);
-		glVertex3d(-4, 0 - medio_cubo, -4);
-		glVertex3d(4, 0 - medio_cubo, -4);
+	glColor3b(0, 0, 0);
+	glVertex3d(4, 0 - medio_cubo, 4);
+	glVertex3d(-4, 0 - medio_cubo, 4);
+	glVertex3d(-4, 0 - medio_cubo, -4);
+	glVertex3d(4, 0 - medio_cubo, -4);
 	glEnd();
 
 	/* Parte Delantera */
@@ -1072,7 +1102,7 @@ void enderman_cabeza_inferior(float velocity) {
 	glColor3ub(120, 19, 120);
 	glVertex3d(-4, 5 - medio_cubo, 4);
 	glVertex3d(-4, 6 - medio_cubo, 4);
-	
+
 	glColor3ub(77, 0, 77);
 	glVertex3d(4, 6 - medio_cubo, 4);
 	glVertex3d(4, 5 - medio_cubo, 4);
@@ -1240,12 +1270,12 @@ void enderman_cabeza_inferior(float velocity) {
 	glPopMatrix();
 }
 
-void enderman_cabeza_boca_abierta(float velocity ) {
+void enderman_cabeza_boca_abierta(float velocity) {
 
 	enderman_cabeza_superior(velocity);
 	enderman_cabeza_inferior(velocity);
 }
-void enderman_boca_abierta(float velocity ) {
+void enderman_boca_abierta(float velocity) {
 	glPushMatrix();
 	glRotated(180, 0, 1, 0);
 
@@ -1258,6 +1288,7 @@ void enderman_boca_abierta(float velocity ) {
 	enderman_brazo_derecho();
 	glPopMatrix();
 }
+
 void cerdo(float velocity)
 {
 	cerdo_patas();
@@ -1497,29 +1528,36 @@ void dibujar() {
 	ubicaCama();
 	ubicaSillon();
 
-	//ANIMACIONES----------------------------------------------------------------------------------------------------
+	//Palanca
+	glPushMatrix();
+	glTranslated(-173, 30 , -517.5);
+	//glRotated(90, 0, 0, 1);
+	glScaled(6, 8, 3);
+	cubo_roca();
+	glPopMatrix();
 
-	//steve(0);
-	//steve_con_hacha(0);
-	//steve_con_pico(0);
-	//steve_caminando(4.5);
-	//steve_caminando_con_espada(4.5);
-	//steve_picando(9);
-
-	//enderman(0);
-	//enderman_caminando(4.5);
-	//cerdo(0);
-	//cerdo_caminando(4.5);
-
-	//zombie(0);
-	//zombie_caminando(4.5);
-
-	//salto(steve_caminando_con_espada, 4.5, 16);
-	//salto(steve_caminando_con_hacha, 4.5, 16);
-	//salto(steve_caminando_con_pico, 4.5, 16);
+	//Palanca
+	glPushMatrix();
+	glTranslated(-173, 30, -517.5);
+	if (tiempo >= 0 && tiempo < 77.5)
+	{
+		glRotated(-45, 1, 0, 0);
+	}
+	else
+	{
+		glRotated(45, 1, 0, 0);
+	}
+	glScaled(0.125, 1, 0.125);
+	colorMadera2();
+	glutSolidCube(16);
+	glPopMatrix();
 
 	//TIME LINE----------------------------------------------------------------------------------------------------------
-	
+	if (tiempo >= 0 && tiempo < 75)
+	{
+		ubicaCofre();
+	}
+
 	//Steve sale de la casa y su cerdo lo sigue
 	if (tiempo >= 0 && tiempo < 10)
 	{
@@ -1530,6 +1568,7 @@ void dibujar() {
 		targetX = -196;
 		targetY = 64;
 		targetZ = -480;
+
 		movimiento(0, 3, steve_caminando, 4.5, 90, -196, -544, -196, -416, 0);
 		movimiento(3, 3.5, steve, 0, 0, -196, -416, -196, -416, 0);
 		movimiento(3.5, 4, steve, 0, 180, -196, -416, -196, -416, 0);
@@ -1661,7 +1700,7 @@ void dibujar() {
 	}
 
 	//Los zombies deben perseguir a steve y este debe pelear con alguno
-	if (tiempo >= 60 && tiempo < 75)
+	if (tiempo >= 60 && tiempo < 95)
 	{
 		camaraX = -(200 + (tiempo - 30) * 1);//ROJO
 		camaraY = 70;//VERDE
@@ -1673,7 +1712,7 @@ void dibujar() {
 
 		float t_inicial_Steve = 60;
 
-		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve_gira_cabeza_derecha, tiempo <= t_inicial_Steve + 0.5 ? ((tiempo - t_inicial_Steve) / 0.5) : 0.2, 90, 8, -332, 8, -332, 16);
+		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve_con_pico, tiempo <= t_inicial_Steve + 0.5 ? ((tiempo - t_inicial_Steve) / 0.5) : 0.2, 90, 8, -332, 8, -332, 16);
 		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_pico, 9, -90, 8, 8, -332, -332, 16);
 		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 2, steve_caminando_con_pico, 4.5, -90, 8, -332, -20, -332, 16);
 		movimiento(t_inicial_Steve + 2, t_inicial_Steve + 2.5, steve_con_pico, 4.5, 180, -20, -332, -20, -332, 16);
@@ -1764,7 +1803,7 @@ void dibujar() {
 
 		/* ZOMBIE -> MUERE*/
 		
-		if (tiempo >= t_inicial_Steve + 8.5 && tiempo < t_inicial_Steve + 9){
+		if (tiempo >= t_inicial_Steve + 8.5 && tiempo < 95){
 			glPushMatrix();
 			
 			glTranslated(-100 - 8, 8, -320);
@@ -1776,7 +1815,7 @@ void dibujar() {
 		}
 
 		/* ZOMBIES -> Acercandose a Steve (3 Zombies) */
-		if (tiempo >= t_inicial_Steve + 9 && tiempo < t_inicial_Steve + 15) {
+		if (tiempo >= t_inicial_Steve + 9 && tiempo < t_inicial_Steve + 20) {
 
 			/* ZOMBIE -> MUERE*/
 
@@ -1820,24 +1859,7 @@ void dibujar() {
 			movimiento(t_inicial_Steve + 9.5, t_inicial_Steve + 12.5, steve_caminando, 4.5, 190, -100, -300, -196, -416, 0);
 
 			movimiento(t_inicial_Steve + 12.5, t_inicial_Steve + 15, steve_caminando, 4.5, 90, -196, -416, -196, -544, 0);
-			//movimiento(t_inicial_Steve + 10, t_inicial_Steve + 13, steve_caminando, 4.5, 90, -196, -416, -196, -544, 0);
-	
 		}
-
-
-		
-
-		/*
-		if (tiempo >= 73 && tiempo < 75)
-		{
-			glPushMatrix();
-			glTranslated(-100, 0, -340);
-			glRotated(70, 0, 1, 0);
-			salto(cerdo, tiempo - 43, 8, 16);
-			glPopMatrix();
-		}
-		*/
-	
 	}
 
 	//Steve decide esconderse en su casa, pero un Enderman lo encuentra
@@ -1851,6 +1873,38 @@ void dibujar() {
 		targetY = 48;
 		targetZ = -544;
 
+		cofreAbriendose(tiempo, 84, 84.5);
+
+
+
+		//FALTA DE 75 a 80
+		movimiento(75, 75.5, steve_con_espada, 4.5, 180, -196, -544, -196, -544, 0);
+
+		movimiento(75.5, 77, steve_atacando, 9, 0, -196, -544, -196, -544, 0);
+
+
+		movimiento(77, 77.5, steve_baja_palanca, 0.5, 45, -196, -544, -196, -544, 0);
+		if (tiempo >= 77.5 && tiempo < 78)
+		{
+			glPushMatrix();
+			glTranslated(-196, -24.05 + 48.05 * (tiempo - 77.5) * 2, -508);
+			glScaled(32,48,16);
+			cubo_roca();
+			glPopMatrix();
+			
+		}
+		if (tiempo >= 78)
+		{
+			glPushMatrix();
+			glTranslated(-196, 24, -508);
+			glScaled(32, 48, 16);
+			cubo_roca();
+			glPopMatrix();
+		}
+		movimiento(77.5, 78, steve, 4.5, 45, -196, -544, -196, -544, 0);
+		movimiento(78, 78.5, steve, 4.5, 45, -196, -544, -196, -544, 0);
+		movimiento(78.5, 79.5, steve_caminando, 4.5, -90, -196, -544, -150, -538, 0);
+		movimiento(79.5, 80, steve, 4.5, 90, -150, -538, -150, -538, 0);
 		movimiento(80, 83, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
 		movimiento(83, 84, steve_caminando_con_espada, 4.5, 90, -150, -538, -150, -570, 0);
 		movimiento(84, 84.5, steve_con_espada, 4.5, 180, -150, -570, -150, -570, 0);
@@ -1914,7 +1968,6 @@ void dibujar() {
 		movimiento(83.5, 84.5, enderman_caminando, 4.5, 235, -80, -240, -132, -272, 0);
 		movimiento(86.5, 87.5, enderman, 0, -90, -96, -560, -96, -560, 1);
 		movimiento(90, 91, enderman, 0, 0, -150, -570, -150, -570, 0);
-	
 		movimiento(93, 95, enderman_boca_abierta, 6, -99, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, 10);
 	}
 
