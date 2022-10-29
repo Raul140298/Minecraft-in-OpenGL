@@ -128,14 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\source\repos\Proyectos Grafico Computacion\TA\AmbienteExterior\AmbienteExterior\Texturas\RgbImage.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Texturas\RgbImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\source\repos\Proyectos Grafico Computacion\TA\AmbienteExterior\AmbienteExterior\Texturas\RgbImage.h" />
     <ClInclude Include="Arboles.h" />
     <ClInclude Include="CamaSillon.h" />
     <ClInclude Include="Casa.h" />
@@ -148,6 +147,7 @@
     <ClInclude Include="Rocas.h" />
     <ClInclude Include="Steve.h" />
     <ClInclude Include="Terreno.h" />
+    <ClInclude Include="Texturas\RgbImage.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

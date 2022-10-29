@@ -18,7 +18,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\repos\Proyectos Grafico Computacion\TA\AmbienteExterior\AmbienteExterior\Texturas\RgbImage.cpp">
+    <ClCompile Include="Texturas\RgbImage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClInclude Include="Rocas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\repos\Proyectos Grafico Computacion\TA\AmbienteExterior\AmbienteExterior\Texturas\RgbImage.h">
+    <ClInclude Include="Texturas\RgbImage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
