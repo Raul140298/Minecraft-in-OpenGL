@@ -4,7 +4,6 @@
 #include <iostream>
 
 
-
 void ambiente_terreno() {
 	glPushMatrix();
 	glTranslated(0, 16, 0);

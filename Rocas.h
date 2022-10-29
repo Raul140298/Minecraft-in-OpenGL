@@ -59,6 +59,7 @@ void generar_rocas() {
 			glTranslated(i, MatrizRocas[i][j], j);
 			cubo_roca();
 			glPopMatrix();
+
 		}
 	}
 }

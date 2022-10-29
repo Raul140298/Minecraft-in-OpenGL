@@ -6,6 +6,33 @@
 #include <algorithm>    // std::random_shuffle
 #include <windows.h>
 #include <mmsystem.h>
+#include "Texturas/RgbImage.h"
+
+GLuint texturas[5];
+
+void loadTexturesFromFile(const char* filename, int index) {
+	RgbImage theTexMap(filename);
+	glGenTextures(1, &texturas[index]);
+
+	/* Activamos todas las librerías para trabajar con texturas */
+	glBindTexture(GL_TEXTURE_2D, texturas[index]);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, theTexMap.GetNumCols(),
+		theTexMap.GetNumRows(), 0, GL_RGB, GL_UNSIGNED_BYTE, theTexMap.ImageData());
+
+
+}
+
+void cargarImagenes() {
+	loadTexturesFromFile("Texturas/BloqueTierra.bmp", 1);
+	loadTexturesFromFile("Texturas/BloquePiedra.bmp", 2);
+	loadTexturesFromFile("Texturas/BloqueMadera.bmp", 3);
+
+}
 
 /* Hoja de Colores Personalizados*/
 #include "ColoresPersonalizados.h"
@@ -57,7 +84,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 90;
+float tiempo = 70;
 
 float tiempoAnochese = 45;
 
@@ -1512,6 +1539,7 @@ void dibujar() {
 	gluLookAt(camaraX, camaraY, camaraZ, targetX, targetY, targetZ, 0, 1, 0);
 	glPushMatrix();
 	glRotated(angulo, 0, 1, 0);
+	cargarImagenes();
 
 	piso(tiempoAnochese);
 	piso_casa();

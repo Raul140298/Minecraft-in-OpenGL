@@ -3,22 +3,114 @@
 
 float tamaño_cubo_arbol = 16;
 
+void cubo_madera() {
+	glPushMatrix();
+	glTranslated(0, 0, 0);
+	colorMadera2();
+	glutSolidCube(1);
+	glPopMatrix();
+
+	/* Textura Parte delantera */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[3]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(-0.50, -0.5, 0.51);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
+	glTexCoord2f(1, 0); glVertex3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+	/* Textura Parte trasera */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[3]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(-0.50, -0.5, -1 + 0.49);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
+	glTexCoord2f(1, 0); glVertex3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+
+	/* Textura Parte lateral izq. */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[3]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(0.51, -0.5, -1 + 0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
+	glTexCoord2f(1, 0); glVertex3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+
+	/* Textura Parte lateral derecha. */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[3]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(-0.51, -0.5, -1 + 0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
+	glTexCoord2f(1, 0); glVertex3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+}
 void arbol1() {
 
 	colorArbol1();
 	glPushMatrix();
 	glTranslated(0, 3 * tamaño_cubo_arbol, 0);
 	glutSolidCube(tamaño_cubo_arbol * 3);
-
 	glPopMatrix();
 
-	colorMadera2();
+	//colorMadera2();
+
+	/*
 	glPushMatrix();
 	glTranslated(0, 2 * (tamaño_cubo_arbol), 0);
 	glScaled(1, 4, 1);
 	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();*/
+	glPushMatrix();
+	glScaled(16,16,16);
+		glPushMatrix();
+		glTranslated(0, 0.5, 0);
+		cubo_madera();
+		glPopMatrix();
 
+		glPushMatrix();
+		glTranslated(0, 1.5, 0);
+		cubo_madera();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(0, 2.5, 0);
+		cubo_madera();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(0, 3.5, 0);
+		cubo_madera();
+		glPopMatrix();
 	glPopMatrix();
+
 }
 
 void arbol2() {
