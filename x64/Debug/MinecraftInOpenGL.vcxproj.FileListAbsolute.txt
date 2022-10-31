@@ -3,3 +3,4 @@ C:\Users\Herbert\Desktop\Proyecto Gracfico Computacion\Minecraft-in-OpenGL\x64\D
 C:\Users\marce\Documents\PUCP-LAPTOP-66N8LK9T\ELECTIVOS\GRÁFICOS EN COMPUTACIÓN\Minecraft-in-OpenGL\x64\Debug\MinecraftInOpenGL.exe
 C:\Users\marce\Documents\Minecraft-in-OpenGL\x64\Debug\MinecraftInOpenGL.exe
 C:\Users\axeli\Documents\PUCP\2022-2\Graficos en Computacion\TA\Minecraft-in-OpenGL\x64\Debug\MinecraftInOpenGL.exe
+C:\Users\marce\Downloads\Minecraft-in-OpenGL\x64\Debug\MinecraftInOpenGL.exe

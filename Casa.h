@@ -210,6 +210,33 @@ void arbol_cubo() {
 	glPopMatrix();
 }
 
+void arbol_cubo_completo() {
+	arbol_lado();
+	glPushMatrix();
+		glTranslated(0, 0, 0);
+		glRotated(-90, 0, 1, 0);
+		arbol_lado();
+	glPopMatrix();
+	glPushMatrix();
+		glTranslated(0, 0, 16);
+		arbol_lado();
+	glPopMatrix();
+	glPushMatrix();
+		glTranslated(16, 0, 0);
+		glRotated(-90, 0, 1, 0);
+		arbol_lado();
+	glPopMatrix();
+}
+
+void arma_arbol(int tam) {
+	for (int i = 1,j=48;i <= tam;i++,j-=16) {
+		glPushMatrix();
+			glTranslated(0,j,0);
+			arbol_cubo_completo();
+		glPopMatrix();
+	}
+}
+
 void columaArbol() {
 		arbol_cubo();
 	glPushMatrix();

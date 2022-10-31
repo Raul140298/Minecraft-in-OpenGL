@@ -84,7 +84,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 70;
+float tiempo = 0;
 
 float tiempoAnochese = 45;
 
@@ -834,6 +834,39 @@ void steve_picando(float velocity)
 	glPopMatrix();
 }
 
+void steve_talando(float velocity)
+{
+	glPushMatrix();
+	glRotated(180, 0, 1, 0);
+
+	glPushMatrix();
+	glTranslated(0, 22, 0);
+	glRotated(45 * abs(std::sin(tiempo * velocity)), 1, 0, 0);
+	glTranslated(0, -22, 0);
+	steve_brazo_derecho_con_hacha();
+	glPopMatrix();
+
+	steve_brazo_izquierdo();
+
+	steve_pierna_izquierda();
+
+	steve_pierna_derecha();
+
+	steve_cuerpo();
+
+	steve_cabeza();
+
+	glPopMatrix();
+}
+
+void bloque_drop(float velocity)
+{
+	glPushMatrix();
+		glScaled(0.5,0.5,0.5);
+		arbol_cubo_completo();
+	glPopMatrix();
+}
+
 void steve_atacando(float velocity) {
 	glPushMatrix();
 	glRotated(180, 0, 1, 0);
@@ -1485,6 +1518,21 @@ void movimiento(float tInicial, float tFinal, void (*animacion)(float), float ve
 	}
 }
 
+void movimiento2(float tInicial, float tFinal, void (*animacion)(float), float velocity, float angle, float x1, float y1, float z1, float x2, float y2, float z2)
+{
+	if (tiempo >= tInicial && tiempo <= tFinal)
+	{
+		glPushMatrix();
+		glTranslated(
+			x1 + (x2 - x1) * (tiempo - tInicial) / (tFinal - tInicial),
+			y1 + (y2 - y1) * (tiempo - tInicial) / (tFinal - tInicial),
+			z1 + (z2 - z1) * (tiempo - tInicial) / (tFinal - tInicial));
+		glRotated(angle + atan2(z1 - z2, x1 - x2) * 180 / 3.14159265359, 0, 1, 0);
+		animacion(velocity);
+		glPopMatrix();
+	}
+}
+
 void piso_casa()
 {
 	glPushMatrix();
@@ -1622,13 +1670,135 @@ void dibujar() {
 
 	if (tiempo >= 10 && tiempo < 30)
 	{
-		camaraX = -(100 + (tiempo - 50) * 4);//ROJO
-		camaraY = 160;//VERDE
-		camaraZ = -340;//AZUL
+		camaraX = -(150-tiempo*2);//ROJO
+		camaraY = 60;//VERDE
+		camaraZ = -100;//AZUL
 
-		targetX = 0;
-		targetY = 40;
-		targetZ = 0;
+		targetX = -96;
+		targetY = 64;
+		targetZ = 390;
+
+
+		if(tiempo >=10 &&tiempo<=14)
+			arbol_talar(4);
+		if (tiempo >= 14 && tiempo <= 15)
+			arbol_talar(3);
+		if (tiempo >= 15 && tiempo <= 16)
+			arbol_talar(2);
+		if (tiempo >= 16 && tiempo <= 17)
+			arbol_talar(1);
+		if (tiempo >= 17 && tiempo <= 19)
+			arbol_talar(0);
+
+		if (tiempo >= 14 && tiempo <= 17.9) {
+			movimiento2(14, 14.5, bloque_drop, 4.5, 90, -100, 16, 180, -101, 0, 180);
+			if(tiempo>=14.6){
+				glPushMatrix();
+					glTranslated(-101, 0, 180);
+					glScaled(0.5, 0.5, 0.5);
+					arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(15, 15.5, bloque_drop, 4.5, 90, -100, 32, 180, -102, 0, 180);
+			if (tiempo >= 15.6) {
+				glPushMatrix();
+				glTranslated(-102, 0, 180);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(16, 16.5, bloque_drop, 4.5, 90, -100, 48, 180, -103, 0, 180);
+			if (tiempo >= 16.6) {
+				glPushMatrix();
+				glTranslated(-103, 0, 180);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(17, 17.5, bloque_drop, 4.5, 90, -100, 64, 180, -104, 0, 180);
+			if (tiempo >= 17.6) {
+				glPushMatrix();
+				glTranslated(-104, 0, 180);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+		}
+
+		if (tiempo >= 10 && tiempo <= 21)
+			arbol_talar2(4);
+		if (tiempo >= 21 && tiempo <= 22)
+			arbol_talar2(3);
+		if (tiempo >= 22 && tiempo <= 23)
+			arbol_talar2(2);
+		if (tiempo >= 23 && tiempo <= 24)
+			arbol_talar2(1);
+		if (tiempo >= 24 && tiempo <= 26)
+			arbol_talar2(0);
+
+		if (tiempo >= 21 && tiempo <= 24.8) {
+			movimiento2(21, 21.5, bloque_drop, 4.5, 90, 0, 16, 130, -10, 0, 130);
+			if (tiempo >= 21.6) {
+				glPushMatrix();
+				glTranslated(-10, 0, 130);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(21.6, 22, bloque_drop, 4.5, 90, -10, 0, 140, -30, 32, 130);
+			movimiento2(22, 22.5, bloque_drop, 4.5, 90, 0, 32, 130, -10, 0, 130);
+			if (tiempo >= 22.6) {
+				glPushMatrix();
+				glTranslated(-10, 0, 130);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(22.6, 23, bloque_drop, 4.5, 90, -10, 0, 140, -30, 32, 130);
+			movimiento2(23, 23.5, bloque_drop, 4.5, 90, 0, 48, 130, -10, 0, 130);
+			if (tiempo >= 23.6) {
+				glPushMatrix();
+				glTranslated(-10, 0, 130);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(23.6, 24, bloque_drop, 4.5, 90, -10, 0, 140, -30, 32, 130);
+			movimiento2(24, 24.5, bloque_drop, 4.5, 90, 0, 64, 130, -10, 0, 130);
+			if (tiempo >= 24.6) {
+				glPushMatrix();
+				glTranslated(-10, 0, 130);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
+				glPopMatrix();
+			}
+			movimiento2(24.6, 25, bloque_drop, 4.5, 90, -10, 0, 140, -30, 32, 130);
+		}
+
+		movimiento(10, 13, steve_caminando, 4.5, 90, -70, -40, -70, 117, 16);
+		movimiento(13, 13.6, steve_caminando_con_hacha, 4.5, -90, -70, 117, -83, 117, 16);
+		movimiento(13.6, 17, steve_talando, 9, -90, -83, 117, -83, 117, 16);
+		movimiento(17, 18, steve_caminando_con_hacha, 4.5, -90, -83, 117, -100, 117, 16);
+		movimiento(18, 18.7, steve_caminando_con_hacha, 4.5, 90, -100, 117, -100, 72, 16);
+		movimiento(18.7, 20, steve_caminando_con_hacha, 4.5, 270, -100, 72, -45, 72, 16);
+		movimiento(20, 25, steve_talando, 9, 90, -45, 72, -45, 72, 16);
+		movimiento(25, 28, steve_caminando, 4.5, 90, -45, 72, -45, -30, 16);
+		movimiento(28, 29.5, steve_caminando, 4.5, -90, -45, -30, 20, -30, 16);
+
+
+
+		movimiento(11, 15, cerdo_caminando, 4, 90, -60, -50, -60, 0, 16);
+		movimiento(15, 20, cerdo_caminando, 4.5, -90, -60, 0, -105, 0, 16);
+		movimiento(20, 24, cerdo_caminando, 4.5, 90, -105, 0, -105, -30, 16);
+		if (tiempo >= 24 && tiempo < 27)
+		{
+			glPushMatrix();
+			glTranslated(-105,16, -30);
+			glRotated(0, 0, 1, 0);
+			salto(cerdo, tiempo - 24, 8, 16);
+			glPopMatrix();
+		}
+		movimiento(27, 29.9, cerdo_caminando, 4.5, 270, -105, -30, 0, -30, 16);
 	}
 
 	if (tiempo >= 30 && tiempo < 50)

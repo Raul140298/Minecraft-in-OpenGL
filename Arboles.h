@@ -1,5 +1,6 @@
 #ifndef ARBOLES
 #define ARBOLES
+#include "Casa.h"
 
 float tamaño_cubo_arbol = 16;
 
@@ -185,9 +186,8 @@ void arbol2() {
 	colorMadera2();
 
 	glPushMatrix();
-	glTranslated(tamaño_cubo_arbol / 2, 2 * (tamaño_cubo_arbol), tamaño_cubo_arbol / 2);
-	glScaled(1, 4, 1);
-	glutSolidCube(tamaño_cubo_arbol);
+	glTranslated(0, 0, -8);
+	arma_arbol(4);
 
 	glPopMatrix();
 }
@@ -198,34 +198,129 @@ void plantar_Arbol() {
 
 	for (int i = 0; i <= 30; i++) {
 		glPushMatrix();
-			int posI = rand() % 65;
-			int posJ = rand() % 65;
-			glTranslated(posI * 16 - 507.9, MatrizTerreno[posI][posJ] * 16, (posJ) *16 - 300 + 20 + 32);
-			
-			if (i % 2 == 0) {
-				arbol1();
-			}
-			else {
-				arbol2();
-			}
+		int posI = rand() % 65;
+		int posJ = rand() % 65;
+		glTranslated(posI * 16 - 507.9, MatrizTerreno[posI][posJ] * 16, (posJ) * 16 - 300 + 20 + 32);
+
+		if (i % 2 == 0) {
+			arbol1();
+		}
+		else {
+			arbol2();
+		}
 		glPopMatrix();
 	}
 
 	glPushMatrix();
-	glTranslated(-500,0,-600);
+	glTranslated(-500, 0, -600);
 	arbol2();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-580,0, -500);
+	glTranslated(-580, 0, -500);
 	arbol1();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-30,0, -600);
+	glTranslated(-30, 0, -600);
 	arbol1();
 	glPopMatrix();
 }
+	
+void arbol3(int x) {
+	colorArbol1();
+	glPushMatrix();
+	glTranslated(tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol);
+	glutSolidCube(tamaño_cubo_arbol);
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, 0);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
+	glutSolidCube(tamaño_cubo_arbol);
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 5 * tamaño_cubo_arbol, 0);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 5 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(-tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, 0);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(-tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
+	glutSolidCube(tamaño_cubo_arbol);
+	glPopMatrix();
+
+	//Parte inferior
+
+	for (int i = -2; i <= 2; i++) {
+
+		for (int j = -2; j <= 2; j++) {
+			glPushMatrix();
+			glTranslated(i * tamaño_cubo_arbol, 4 * tamaño_cubo_arbol, j * tamaño_cubo_arbol);
+			glutSolidCube(tamaño_cubo_arbol);
+			glPopMatrix();
+		}
+	}
+
+	glPushMatrix();
+	glTranslated(tamaño_cubo_arbol / 2, 6 * tamaño_cubo_arbol, tamaño_cubo_arbol / 2);
+	glutSolidCube(tamaño_cubo_arbol);
+
+	glPopMatrix();
+
+
+	colorMadera2();
+
+	glPushMatrix();
+	glTranslated(0, 0, -8);
+	arma_arbol(x);
+
+	glPopMatrix();
+}
+
+
+void arbol_talar(int x) {
+	glPushMatrix();
+		glTranslated(-100, 0, 180);
+		arbol3(x);
+	glPopMatrix();
+}
+
+
+void arbol_talar2(int x) {
+	glPushMatrix();
+		glTranslated(0, 0, 140);
+		arbol3(x);
+	glPopMatrix();
+}
+
 
 #endif
 
