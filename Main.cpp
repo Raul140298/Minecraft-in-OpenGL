@@ -1587,7 +1587,6 @@ void dibujar() {
 	gluLookAt(camaraX, camaraY, camaraZ, targetX, targetY, targetZ, 0, 1, 0);
 	glPushMatrix();
 	glRotated(angulo, 0, 1, 0);
-	cargarImagenes();
 
 	piso(tiempoAnochese);
 	piso_casa();
@@ -2211,6 +2210,7 @@ int main(int argc, char* argv[]) {
 	glutInitWindowSize(1009, 711);
 	glutInitWindowPosition(50, 50);
 	glutCreateWindow("Grupo 3 - Gráficos en Computación");
+	cargarImagenes();
 	glutReshapeFunc(iniciarVentana);
 	glutDisplayFunc(dibujar);
 	glutSpecialFunc(teclado);
