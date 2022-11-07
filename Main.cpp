@@ -8,7 +8,7 @@
 #include <mmsystem.h>
 #include "Texturas/RgbImage.h"
 
-GLuint texturas[5];
+GLuint texturas[6];
 
 void loadTexturesFromFile(const char* filename, int index) {
 	RgbImage theTexMap(filename);
@@ -31,6 +31,8 @@ void cargarImagenes() {
 	loadTexturesFromFile("Texturas/BloqueTierra.bmp", 1);
 	loadTexturesFromFile("Texturas/BloquePiedra.bmp", 2);
 	loadTexturesFromFile("Texturas/BloqueMadera.bmp", 3);
+	loadTexturesFromFile("Texturas/BloqueHojas.bmp", 4);
+	loadTexturesFromFile("Texturas/CespedSuperior.bmp", 5);
 
 }
 
@@ -262,7 +264,7 @@ void piso(float animationTime) {
 	glPushMatrix();
 	glTranslated(0, -0.1, 0);
 	glBegin(GL_POLYGON);
-	colorArbol1();
+	colorPiso();
 	glVertex3d(-1000, 0, -1000);
 	glVertex3d(1000, 0, -1000);
 	glVertex3d(1000, 0, 1000);
@@ -1896,6 +1898,7 @@ void dibujar() {
 		movimiento(50, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
 	}
 
+
 	//Los zombies deben perseguir a steve y este debe pelear con alguno
 	if (tiempo >= 60 && tiempo < 95)
 	{
@@ -1909,8 +1912,8 @@ void dibujar() {
 
 		float t_inicial_Steve = 60;
 
-		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve_con_pico, tiempo <= t_inicial_Steve + 0.5 ? ((tiempo - t_inicial_Steve) / 0.5) : 0.2, 90, 8, -332, 8, -332, 16);
-		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_pico, 9, -90, 8, 8, -332, -332, 16);
+		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve, 0, 90, 8, -332, 8, -332, 16);
+		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_pico, 9, -90, 8, -332, 8, -332, 16);
 		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 2, steve_caminando_con_pico, 4.5, -90, 8, -332, -20, -332, 16);
 		movimiento(t_inicial_Steve + 2, t_inicial_Steve + 2.5, steve_con_pico, 4.5, 180, -20, -332, -20, -332, 16);
 		movimiento(t_inicial_Steve + 2.5, t_inicial_Steve + 3.5, steve_caminando_con_pico, 4.5, 90, -20, -332, -20, -300, 16);

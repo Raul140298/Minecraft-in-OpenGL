@@ -8,12 +8,27 @@ void cubo_piedra() {
 	glutSolidCube(1);
 	glPopMatrix();
 	
+	/* Textura Parte superior*/
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[5]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(-0.5, 0.505, -0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 0, 1);
+	glTexCoord2f(1, 1); glVertex3d(1, 0, 1);
+	glTexCoord2f(1, 0); glVertex3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
 	/* Textura Parte delantera */
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[1]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-		glTranslated(-0.50, -0.5 ,0.51);
+		glTranslated(-0.50, -0.5 ,0.505);
 		glBegin(GL_POLYGON);
 			glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 			glTexCoord2f(1, 1); glVertex3d(1 ,1, 0);
@@ -28,7 +43,7 @@ void cubo_piedra() {
 	glBindTexture(GL_TEXTURE_2D, texturas[1]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-		glTranslated(-0.50, -0.5 , - 1 + 0.49);
+		glTranslated(-0.50, -0.5 , - 1 + 0.495);
 		glBegin(GL_POLYGON);
 			glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 			glTexCoord2f(1, 1); glVertex3d(1 ,1, 0);
@@ -44,7 +59,7 @@ void cubo_piedra() {
 	glBindTexture(GL_TEXTURE_2D, texturas[1]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-		glTranslated(-0.51, -0.5 , -1 + 0.5);
+	glTranslated(0.505, -0.5, -1 + 0.5);
 		glBegin(GL_POLYGON);
 			glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 			glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
@@ -55,12 +70,12 @@ void cubo_piedra() {
 	glDisable(GL_TEXTURE_2D);
 
 	/* Textura Parte lateral der. */
-	/*glEnable(GL_TEXTURE_2D);
+	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[1]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-		glTranslated(-0.50, -0.5 , -1 + 0.49);
-		glBegin(GL_POLYGON);
+	glTranslated(-1 + 0.495, -0.5, -1 + 0.5);
+	glBegin(GL_POLYGON);
 			glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 			glTexCoord2f(1, 1); glVertex3d(0 ,1, 1);
 			glTexCoord2f(1, 0); glVertex3d(0, 0, 1);
@@ -68,15 +83,16 @@ void cubo_piedra() {
 		glEnd();
 	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
-	*/
 
+	/*
 	glPushMatrix();
 	glTranslated(0, 0.5, 0);
-	colorArbol1();
+	colorPiso();
+	//glColor3ub(87, 133, 60);
 	glScaled(4, 1, 4);
 	glutSolidCube(0.251);
 	glPopMatrix();
-
+	*/
 }
 
 void cubo_roca() {
@@ -85,6 +101,21 @@ void cubo_roca() {
 	colorPiedra1();
 	glutSolidCube(1);
 	glPopMatrix();
+
+	/* Textura Parte superior*/
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[2]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(-0.5, 0.505, -0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 0, 1);
+	glTexCoord2f(1, 1); glVertex3d(1, 0, 1);
+	glTexCoord2f(1, 0); glVertex3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
 
 	/* Textura Parte delantera */
 	glEnable(GL_TEXTURE_2D);
@@ -132,6 +163,20 @@ void cubo_roca() {
 	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
 
+	/* Textura Parte lateral der. */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[2]);
+	glColor3ub(255, 255, 255);
+	glPushMatrix();
+	glTranslated(-1 + 0.49, -0.5, -1 + 0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
+	glTexCoord2f(1, 0); glVertex3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
 }
 
 #endif

@@ -75,5 +75,7 @@ void colorDiamante5() {
 	glColor3ub(13, 62, 52);
 }
 
-
+void colorPiso() {
+	glColor3ub(87, 133, 60);
+}
 #endif

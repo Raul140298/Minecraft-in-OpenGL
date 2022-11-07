@@ -16,7 +16,7 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(-0.50, -0.5, 0.51);
+	glTranslated(-0.50, -0.5, 0.505);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
@@ -31,7 +31,7 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(-0.50, -0.5, -1 + 0.49);
+	glTranslated(-0.50, -0.5, -1 + 0.495);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
@@ -47,7 +47,7 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(0.51, -0.5, -1 + 0.5);
+	glTranslated(0.505, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
@@ -63,7 +63,71 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(-0.51, -0.5, -1 + 0.5);
+	glTranslated(-0.505, -0.5, -1 + 0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
+	glTexCoord2f(1, 0); glVertex3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+}
+void cubo_hojas() {
+	glPushMatrix();
+	glTranslated(0, 0, 0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	/* Textura Parte delantera */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[4]);
+	glColor3ub(30, 141, 0);
+	glPushMatrix();
+	glTranslated(-0.50, -0.5, 0.51);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
+	glTexCoord2f(1, 0); glVertex3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+	/* Textura Parte trasera */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[4]);
+	glPushMatrix();
+	glTranslated(-0.50, -0.5, -1 + 0.49);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
+	glTexCoord2f(1, 0); glVertex3d(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+
+	/* Textura Parte lateral izq. */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[4]);
+	glPushMatrix();
+	glTranslated(0.51, -0.5, -1 + 0.5);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
+	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
+	glTexCoord2f(1, 0); glVertex3d(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+	/* Textura Parte lateral der. */
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texturas[4]);
+	glPushMatrix();
+	glTranslated(-1 + 0.49, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
@@ -75,10 +139,27 @@ void cubo_madera() {
 }
 void arbol1() {
 
-	colorArbol1();
 	glPushMatrix();
-	glTranslated(0, 3 * tamaño_cubo_arbol, 0);
-	glutSolidCube(tamaño_cubo_arbol * 3);
+	glScaled(16, 16, 16);
+	glTranslated(0, 3, 0);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			glPushMatrix();
+			glTranslated(-1, i, j - 1);
+			cubo_hojas();
+			glPopMatrix();
+
+			glPushMatrix();
+			glTranslated(0, i, j - 1);
+			cubo_hojas();
+			glPopMatrix();
+
+			glPushMatrix();
+			glTranslated(1, i, j - 1);
+			cubo_hojas();
+			glPopMatrix();
+		}
+	}
 	glPopMatrix();
 
 	//colorMadera2();
@@ -116,7 +197,7 @@ void arbol1() {
 
 void arbol2() {
 	colorArbol1();
-	glPushMatrix();
+	/*glPushMatrix();
 	glTranslated(tamaño_cubo_arbol, 4 * tamaño_cubo_arbol, tamaño_cubo_arbol);
 	glutSolidCube(tamaño_cubo_arbol);
 
@@ -163,22 +244,73 @@ void arbol2() {
 	glTranslated(-tamaño_cubo_arbol, 4 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
 	glutSolidCube(tamaño_cubo_arbol);
 	glPopMatrix();
+	*/
+	glPushMatrix();
+	glScaled(16, 16, 16);
+	
+		glPushMatrix();
+		glTranslated(1, 4 , 1);
+		cubo_hojas();
 
-	//Parte inferior
+		glPopMatrix();
 
-	for (int i = -2; i <= 2; i++) {
+		glPushMatrix();
+		glTranslated(1, 4, 0);
+		cubo_hojas();
+		glPopMatrix();
 
-		for (int j = -2; j <= 2; j++) {
-			glPushMatrix();
-			glTranslated(i * tamaño_cubo_arbol, 3 * tamaño_cubo_arbol, j * tamaño_cubo_arbol);
-			glutSolidCube(tamaño_cubo_arbol);
-			glPopMatrix();
+		glPushMatrix();
+		glTranslated(1, 4, -1);
+		cubo_hojas();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(0, 4, 1);
+		cubo_hojas();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(0, 4, 0);
+		cubo_hojas();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(0, 4, -1);
+		cubo_hojas();
+		glPopMatrix();
+
+
+		glPushMatrix();
+		glTranslated(-1, 4, 1);
+		cubo_hojas();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(-1, 4, 0);
+		cubo_hojas();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(-1, 4, -1);
+		cubo_hojas();
+		glPopMatrix();
+	
+		//Parte inferior
+
+		for (int i = -2; i <= 2; i++) {
+
+			for (int j = -2; j <= 2; j++) {
+				glPushMatrix();
+				glTranslated(i * 1, 3 * 1, j * 1);
+				cubo_hojas();
+				glPopMatrix();
+			}
 		}
-	}
 
 	glPushMatrix();
-	glTranslated(tamaño_cubo_arbol / 2, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol / 2);
-	glutSolidCube(tamaño_cubo_arbol);
+	glTranslated(1 / 2, 5 * 1, 1 / 2);
+	cubo_hojas();
+	glPopMatrix();
 
 	glPopMatrix();
 
