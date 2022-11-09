@@ -5,18 +5,18 @@
 float tamaño_cubo_arbol = 16;
 
 void cubo_madera() {
-	glPushMatrix();
-	glTranslated(0, 0, 0);
-	colorMadera2();
-	glutSolidCube(1);
-	glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//colorMadera2();
+	//glutSolidCube(1);
+	//glPopMatrix();
 
 	/* Textura Parte delantera */
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(-0.50, -0.5, 0.505);
+	glTranslated(-0.5, -0.5, 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
@@ -31,7 +31,7 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(-0.50, -0.5, -1 + 0.495);
+	glTranslated(-0.5, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
@@ -47,7 +47,7 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(0.505, -0.5, -1 + 0.5);
+	glTranslated(0.5, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
@@ -63,7 +63,7 @@ void cubo_madera() {
 	glBindTexture(GL_TEXTURE_2D, texturas[3]);
 	glColor3ub(255, 255, 255);
 	glPushMatrix();
-	glTranslated(-0.505, -0.5, -1 + 0.5);
+	glTranslated(-0.5, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
@@ -74,17 +74,17 @@ void cubo_madera() {
 	glDisable(GL_TEXTURE_2D);
 }
 void cubo_hojas() {
-	glPushMatrix();
-	glTranslated(0, 0, 0);
-	glutSolidCube(1);
-	glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//glutSolidCube(1);
+	//glPopMatrix();
 
 	/* Textura Parte delantera */
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[4]);
 	glColor3ub(30, 141, 0);
 	glPushMatrix();
-	glTranslated(-0.50, -0.5, 0.51);
+	glTranslated(-0.50, -0.5, 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
@@ -98,7 +98,7 @@ void cubo_hojas() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[4]);
 	glPushMatrix();
-	glTranslated(-0.50, -0.5, -1 + 0.49);
+	glTranslated(-0.50, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(1, 1, 0);
@@ -113,7 +113,7 @@ void cubo_hojas() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[4]);
 	glPushMatrix();
-	glTranslated(0.51, -0.5, -1 + 0.5);
+	glTranslated(0.5, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);
@@ -127,7 +127,7 @@ void cubo_hojas() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texturas[4]);
 	glPushMatrix();
-	glTranslated(-1 + 0.49, -0.5, -1 + 0.5);
+	glTranslated(-1 + 0.5, -0.5, -1 + 0.5);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1); glVertex3d(0, 1, 0);
 	glTexCoord2f(1, 1); glVertex3d(0, 1, 1);

@@ -236,7 +236,7 @@ void cofre() {
 
 void ubicaCofre() {
 	glPushMatrix();
-		glTranslated(-135, 0, -590);
+		glTranslated(-135, -6, -590);
 		glScaled(0.9, 0.9, 0.9);
 		glRotated(-90, 0, 1, 0);
 		cofre();
@@ -288,7 +288,7 @@ void cofreAnimacion(float tiempoActual, float tiempoInicial, float tiempoFinal)
 void cofreAbriendose(float tiempoActual, float tiempoInicial, float tiempoFinal)
 {
 	glPushMatrix();
-	glTranslated(-135, 0, -590);
+	glTranslated(-135, -6, -590);
 	glScaled(0.9, 0.9, 0.9);
 	glRotated(-90, 0, 1, 0);
 	cofreAnimacion(tiempoActual, tiempoInicial, tiempoFinal);

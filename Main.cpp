@@ -23,8 +23,6 @@ void loadTexturesFromFile(const char* filename, int index) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, theTexMap.GetNumCols(),
 		theTexMap.GetNumRows(), 0, GL_RGB, GL_UNSIGNED_BYTE, theTexMap.ImageData());
-
-
 }
 
 void cargarImagenes() {
@@ -86,9 +84,9 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 0;
+float tiempo = 59;
 
-float tiempoAnochese = 45;
+float tiempoAnochese = 60;
 
 float targetX = -196, targetY = 64, targetZ = -480;
 
@@ -1898,11 +1896,19 @@ void dibujar() {
 		movimiento(50, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
 	}
 
+	if (tiempo >= 50 && tiempo < 61)
+	{
+		glPushMatrix();
+		glTranslated(-100, 0, -240);
+		glRotated(130, 0, 1, 0);
+		salto(cerdo, tiempo - 50, 12, 16);
+		glPopMatrix();
+	}
 
 	//Los zombies deben perseguir a steve y este debe pelear con alguno
 	if (tiempo >= 60 && tiempo < 95)
 	{
-		camaraX = -(200 + (tiempo - 30) * 1);//ROJO
+		camaraX = -(200 + (tiempo - 30) * 1.2);//ROJO
 		camaraY = 70;//VERDE
 		camaraZ = -250;
 
@@ -1912,13 +1918,23 @@ void dibujar() {
 
 		float t_inicial_Steve = 60;
 
-		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve, 0, 90, 8, -332, 8, -332, 16);
-		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_pico, 9, -90, 8, -332, 8, -332, 16);
-		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 2, steve_caminando_con_pico, 4.5, -90, 8, -332, -20, -332, 16);
-		movimiento(t_inicial_Steve + 2, t_inicial_Steve + 2.5, steve_con_pico, 4.5, 180, -20, -332, -20, -332, 16);
-		movimiento(t_inicial_Steve + 2.5, t_inicial_Steve + 3.5, steve_caminando_con_pico, 4.5, 90, -20, -332, -20, -300, 16);
-		movimiento(t_inicial_Steve + 3.5, t_inicial_Steve + 4, steve_con_pico, 4.5, 180, -20, -300, -20, -300, 16);
-		movimiento(t_inicial_Steve + 4, t_inicial_Steve + 4.5, steve, 9, 180, -20, -300, -20, -300, 16);
+		if (tiempo >= 61 && tiempo < 62)
+		{
+			glPushMatrix();
+			glTranslated(-100, 0, -240);
+			glRotated(0, 0, 1, 0);
+			salto(cerdo, tiempo - 61, 12, 16);
+			glPopMatrix();
+		}
+
+		movimiento(62, 66, cerdo_caminando, 10, 130, -100, -240, -196, -544, 0);
+		
+
+		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve_con_pico, 0, 0, 8, -332, 8, -332, 16);
+		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_espada, 0, 0, 8, -332, 8, -332, 16);
+		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 1.5, steve_con_espada, 0, -90, 8, -332, 8, -332, 16);
+
+		movimiento(t_inicial_Steve + 1.5, t_inicial_Steve + 4.5, steve_caminando_con_espada, 4.5, -30, 8, -332, -60, -300, 16);
 		
 		// STEVE -> Usa Espada
 		movimiento(t_inicial_Steve + 4.5, t_inicial_Steve + 5, steve_caminando_con_espada, 9, 270, -20, -300, -60, -300, 16);
@@ -2056,10 +2072,19 @@ void dibujar() {
 
 
 			/* STEVE -> Se dirige a su casa */
-			movimiento(t_inicial_Steve + 9.5, t_inicial_Steve + 12.5, steve_caminando, 4.5, 190, -100, -300, -196, -416, 0);
+			movimiento(t_inicial_Steve + 9.5, t_inicial_Steve + 12.5, steve_caminando_con_espada, 4.5, 190, -100, -300, -196, -416, 0);
 
-			movimiento(t_inicial_Steve + 12.5, t_inicial_Steve + 15, steve_caminando, 4.5, 90, -196, -416, -196, -544, 0);
+			movimiento(t_inicial_Steve + 12.5, t_inicial_Steve + 15, steve_caminando_con_espada, 4.5, 90, -196, -416, -196, -544, 0);
 		}
+	}
+
+	if (tiempo >= 65 && tiempo < 81)
+	{
+		glPushMatrix();
+		glTranslated(-196, 8, -570);
+		glRotated(0, 0, 1, 0);
+		salto(cerdo, tiempo - 70, 8, 8);
+		glPopMatrix();
 	}
 
 	//Steve decide esconderse en su casa, pero un Enderman lo encuentra
@@ -2075,13 +2100,10 @@ void dibujar() {
 
 		cofreAbriendose(tiempo, 84, 84.5);
 
-
-
 		//FALTA DE 75 a 80
 		movimiento(75, 75.5, steve_con_espada, 4.5, 180, -196, -544, -196, -544, 0);
 
 		movimiento(75.5, 77, steve_atacando, 9, 0, -196, -544, -196, -544, 0);
-
 
 		movimiento(77, 77.5, steve_baja_palanca, 0.5, 45, -196, -544, -196, -544, 0);
 		if (tiempo >= 77.5 && tiempo < 78)
@@ -2111,7 +2133,7 @@ void dibujar() {
 		movimiento(84.5, 85.5, steve_caminando_con_espada, 4.5, 90, -150, -570, -150, -538, 0);
 		movimiento(85.5, 95, steve_con_espada, 4.5, 0, -150, -538, -150, -538, 0);
 
-		if (tiempo >= 80 && tiempo < 84)
+		if (tiempo >= 81 && tiempo < 84)
 		{
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
@@ -2172,7 +2194,7 @@ void dibujar() {
 	}
 
 
-	ejes();
+	//ejes();
 	glPopMatrix();
 	glutSwapBuffers();
 }

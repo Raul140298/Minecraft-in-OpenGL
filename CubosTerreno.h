@@ -2,11 +2,11 @@
 #define CUBOSTERRENO
 
 void cubo_piedra() {
-	glPushMatrix();
-	glTranslated(0, 0, 0);
-	colorMadera1();
-	glutSolidCube(1);
-	glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//colorMadera1();
+	//glutSolidCube(1);
+	//glPopMatrix();
 	
 	/* Textura Parte superior*/
 	glEnable(GL_TEXTURE_2D);
@@ -84,23 +84,23 @@ void cubo_piedra() {
 	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
 
-	/*
-	glPushMatrix();
-	glTranslated(0, 0.5, 0);
-	colorPiso();
-	//glColor3ub(87, 133, 60);
-	glScaled(4, 1, 4);
-	glutSolidCube(0.251);
-	glPopMatrix();
-	*/
+	//
+	//glPushMatrix();
+	//glTranslated(0, 0.5, 0);
+	//colorPiso();
+	////glColor3ub(87, 133, 60);
+	//glScaled(4, 1, 4);
+	//glutSolidCube(0.251);
+	//glPopMatrix();
+	//
 }
 
 void cubo_roca() {
-	glPushMatrix();
-	glTranslated(0, 0, 0);
-	colorPiedra1();
-	glutSolidCube(1);
-	glPopMatrix();
+	//glPushMatrix();
+	//glTranslated(0, 0, 0);
+	//colorPiedra1();
+	//glutSolidCube(1);
+	//glPopMatrix();
 
 	/* Textura Parte superior*/
 	glEnable(GL_TEXTURE_2D);
