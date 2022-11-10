@@ -84,7 +84,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 50;
+float tiempo = 0;
 
 float tiempoAnochese = 60;
 
@@ -94,20 +94,7 @@ float targetX = -196, targetY = 64, targetZ = -480;
 float tamaño_cubo_piso = 16;
 float tamaño_maxima_montaña = 20;
 float porcentaje_terrano = 0.8;
-//float posXZombie = 35;
-//float posZZombie = 55;
-float alturaZombie = 0;
-//int direccionZombie = 0;
-int tiempoTraslado = 2;
-int tiempoInicialPeriodo = 50;
-int tiempoFinalPeriodo = 50;
-int tamañoAvance = 16;
-float avance = 16;
 
-/* Vía arreglo*/
-int direccionZombie[7] = { 0, 2, 0, 1, 2, 3, 2 };
-float posZZombie[7] = { 250, 400, 201, 701, 301, 801,  501};
-float posXZombie[7] = { 155, 181, -101, -301, -251, 1, -300};
 
 void iniciarVentana(int w, int h) {
 	glViewport(0, 0, w, h);
@@ -272,7 +259,6 @@ void pared(float animationTime) {
 }
 
 void piso(float animationTime) {
-	/****
 	glPushMatrix();
 	glTranslated(0, -0.1, 0);
 	glBegin(GL_POLYGON);
@@ -283,7 +269,6 @@ void piso(float animationTime) {
 	glVertex3d(-1000, 0, 1000);
 	glEnd();
 	glPopMatrix();
-	*****/
 
 	/*glPushMatrix();
 	glTranslated(0, 0.01, 0);
@@ -877,8 +862,8 @@ void steve_talando(float velocity)
 void bloque_drop(float velocity)
 {
 	glPushMatrix();
-		glScaled(0.5,0.5,0.5);
-		arbol_cubo_completo();
+	glScaled(0.5, 0.5, 0.5);
+	arbol_cubo_completo();
 	glPopMatrix();
 }
 
@@ -1468,7 +1453,7 @@ void zombie_caminando(float velocity)
 	glPopMatrix();
 }
 
-void salto(void (*animacion)(float),float time, float velocity, float altura)
+void salto(void (*animacion)(float), float time, float velocity, float altura)
 {
 	glPushMatrix();
 	glTranslated(0, altura * abs(std::sin(time * velocity)), 0);
@@ -1591,120 +1576,7 @@ void piso_casa()
 
 	glPopMatrix();
 }
-void desplazar_personaje_bloque(float angle, float x1, float z1, float x2, float z2, float velocity, void (*animacion)(float)) {
 
-	glPushMatrix();
-	glTranslated(
-		x1 + (x2 - x1) * (velocity),
-		0,
-		z1 + (z2 - z1) * (velocity)
-	);
-	glRotated(angle + atan2(z1 - z2, x1 - x2) * 180 / 3.14159265359, 0, 1, 0);
-	animacion(velocity);
-	avance += 2;
-	glPopMatrix();
-}
-void desplazar_personaje_v2(float x1, float z1,float velocity, void (*animacion)(float)) {
-
-
-}
-
-void movimiento_autonomo_v2(void (*animacion)(float), float velocity, int index) {
-	if (tamañoAvance <= avance) {
-		srand(time(NULL));
-		avance = 0;
-		direccionZombie[index] = rand() % 4;
-	}
-	switch (direccionZombie[index])
-	{
-	case 0: // mover Defrente (Avanzar 1 cuadrante 16)
-		posZZombie[index] +=   2;
-		break;
-	case 1: // mover Costado
-		posXZombie[index] +=   2;
-		break;
-
-	case 2: // mover al otro Costado
-		posZZombie[index] -=  2;
-		break;
-
-	case 3: // mover Atras
-		//desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie, posZZombie - 2, velocity, animacion);
-		posXZombie[index] -= 2;
-		break;
-	}
-	avance += 1;
-
-	/*
-	cout << "pos X: " << posXZombie << endl;
-	cout << "pos Z: " << posZZombie << endl;
-	cout << "direccion: " << direccionZombie << endl;
-	*/
-	glPushMatrix();
-	glTranslated(posXZombie[index], MatrizTerreno[(int)((posXZombie[index] + 502) / 16)][(int)((posZZombie[index] + 250) / 16)] * 16, posZZombie[index]);
-	glRotated(direccionZombie[index] * 90, 0, 1, 0);
-		zombie_caminando(4.5);
-	glPopMatrix();
-}
-
-/*
-void movimiento_autonomo(void (*animacion)(float), float velocity, float x1, float z1)
-{
-
-	if (tamañoAvance <= avance) {
-		srand(time(NULL));
-		cout << "Instanciar ^**************************** " << endl;
-
-		avance = 0;
-		direccionZombie = rand() % 4;
-	}
-
-	switch (direccionZombie)
-	{
-	case 0: // mover Defrente (Avanzar 1 cuadrante 16)
-		desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie + 2, posZZombie, velocity, animacion);
-		posXZombie += velocity * 2;
-		cout << "avance: " << avance << endl;
-
-		cout << "pos X: " << posXZombie << endl;
-		cout << "pos Z: " << posZZombie << endl;
-		cout << "direccion: " << direccionZombie << endl;
-		break;
-	case 1: // mover Costado
-		desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie, posZZombie + 2, velocity, animacion);
-		posZZombie += velocity * 2;
-		cout << "avance: " << avance << endl;
-
-		cout << "pos X: " << posXZombie << endl;
-		cout << "pos Z: " << posZZombie << endl;
-		cout << "direccion: " << direccionZombie << endl;
-		break;
-
-	case 2: // mover al otro Costado
-		desplazar_personaje_bloque( 90, posXZombie, posZZombie, posXZombie - 2, posZZombie, velocity, animacion);
-		posXZombie -= velocity * 2;
-		cout << "avance: " << avance << endl;
-
-		cout << "pos X: " << posXZombie << endl;
-		cout << "pos Z: " << posZZombie << endl;
-		cout << "direccion: " << direccionZombie << endl;
-		break;
-
-	case 3: // mover Atras
-		desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie, posZZombie - 2, velocity, animacion);
-		posZZombie -= 2 * velocity;
-		cout << "avance: " << avance << endl;
-
-		cout << "pos X: " << posXZombie << endl;
-		cout << "pos Z: " << posZZombie << endl;
-		cout << "direccion: " << direccionZombie << endl;
-		break;
-		
-	}
-	
-
-}
-*/
 void dibujar() {
 	inicializarLuces(tiempoAnochese);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1716,8 +1588,8 @@ void dibujar() {
 	glPushMatrix();
 	glRotated(angulo, 0, 1, 0);
 
-	piso(tiempoAnochese);
-	piso_casa();
+	//piso(tiempoAnochese);
+	
 	pared(tiempoAnochese);
 	sol(tiempoAnochese);
 	luna(tiempoAnochese);
@@ -1727,13 +1599,17 @@ void dibujar() {
 
 	plantar_Arbol();
 	rocas_terreno(tiempoAnochese);
+	glPushMatrix();
+	glTranslated(0, -2.1, 0);
 	ubica_Casa();
+	piso_casa();
+	glPopMatrix();
 	ubicaCama();
 	ubicaSillon();
 
 	//Palanca
 	glPushMatrix();
-	glTranslated(-173, 30 , -517.5);
+	glTranslated(-173, 30, -517.5);
 	//glRotated(90, 0, 0, 1);
 	glScaled(6, 8, 3);
 	cubo_roca();
@@ -1764,7 +1640,7 @@ void dibujar() {
 	//Steve sale de la casa y su cerdo lo sigue
 	if (tiempo >= 0 && tiempo < 10)
 	{
-		camaraX = -(100 + tiempo*4);//ROJO
+		camaraX = -(100 + tiempo * 4);//ROJO
 		camaraY = 80;//VERDE
 		camaraZ = -340;//AZUL
 
@@ -1775,19 +1651,19 @@ void dibujar() {
 		movimiento(0, 3, steve_caminando, 4.5, 90, -196, -544, -196, -416, 0);
 		movimiento(3, 3.5, steve, 0, 0, -196, -416, -196, -416, 0);
 		movimiento(3.5, 4, steve, 0, 180, -196, -416, -196, -416, 0);
-		
+
 		if (tiempo >= 4 && tiempo < 6)
 		{
 			glPushMatrix();
 			glTranslated(-196, 0, -416);
 			glRotated(180, 0, 1, 0);
-			salto(steve,tiempo-4 , 8, 16);
+			salto(steve, tiempo - 4, 8, 16);
 			glPopMatrix();
 		}
 
 		movimiento(6, 6.5, steve, 0, 180, -196, -416, -196, -416, 0);
 		movimiento(6.5, 7, steve, 0, 0, -196, -416, -196, -416, 0);
-		
+
 
 		movimiento(7, 10, steve_caminando, 4.5, 90, -196, -416, -196, -288, 0);
 
@@ -1797,7 +1673,7 @@ void dibujar() {
 
 	if (tiempo >= 10 && tiempo < 30)
 	{
-		camaraX = -(150-tiempo*2);//ROJO
+		camaraX = -(150 - tiempo * 2);//ROJO
 		camaraY = 60;//VERDE
 		camaraZ = -100;//AZUL
 
@@ -1806,7 +1682,7 @@ void dibujar() {
 		targetZ = 390;
 
 
-		if(tiempo >=10 &&tiempo<=14)
+		if (tiempo >= 10 && tiempo <= 14)
 			arbol_talar(4);
 		if (tiempo >= 14 && tiempo <= 15)
 			arbol_talar(3);
@@ -1819,11 +1695,11 @@ void dibujar() {
 
 		if (tiempo >= 14 && tiempo <= 17.9) {
 			movimiento2(14, 14.5, bloque_drop, 4.5, 90, -100, 16, 180, -101, 0, 180);
-			if(tiempo>=14.6){
+			if (tiempo >= 14.6) {
 				glPushMatrix();
-					glTranslated(-101, 0, 180);
-					glScaled(0.5, 0.5, 0.5);
-					arbol_cubo_completo();
+				glTranslated(-101, 0, 180);
+				glScaled(0.5, 0.5, 0.5);
+				arbol_cubo_completo();
 				glPopMatrix();
 			}
 			movimiento2(15, 15.5, bloque_drop, 4.5, 90, -100, 32, 180, -102, 0, 180);
@@ -1920,7 +1796,7 @@ void dibujar() {
 		if (tiempo >= 24 && tiempo < 27)
 		{
 			glPushMatrix();
-			glTranslated(-105,16, -30);
+			glTranslated(-105, 16, -30);
 			glRotated(0, 0, 1, 0);
 			salto(cerdo, tiempo - 24, 8, 16);
 			glPopMatrix();
@@ -1930,7 +1806,7 @@ void dibujar() {
 
 	if (tiempo >= 30 && tiempo < 50)
 	{
-		camaraX = -(200 + (tiempo-30) * 1);//ROJO
+		camaraX = -(200 + (tiempo - 30) * 1);//ROJO
 		camaraY = 70;//VERDE
 		camaraZ = -250;
 
@@ -1958,7 +1834,7 @@ void dibujar() {
 			movimiento(31.5, 34.5, steve_caminando, 4.5, -90, -100, -300, -20, -300, 0);
 			glPopMatrix();
 		}
-		
+
 		movimiento(34.5, 35, steve, 9, 90, -20, -300, -20, -300, 16);
 		movimiento(35, 37, steve_picando, 9, 90, -20, -300, -20, -300, 16);
 
@@ -1980,7 +1856,7 @@ void dibujar() {
 		movimiento(45, 48, steve_picando, 9, 90, 8, -332, 8, -332, 16);
 		movimiento(48, 48.5, steve_con_pico, 9, 90, 8, -332, 8, -332, 16);
 
-		movimiento(48.5, 50, steve_gira_cabeza_derecha, tiempo<=49 ? ((tiempo - 48.5) / 0.5) : 1, 90, 8, -332, 8, -332, 16);
+		movimiento(48.5, 50, steve_gira_cabeza_derecha, tiempo <= 49 ? ((tiempo - 48.5) / 0.5) : 1, 90, 8, -332, 8, -332, 16);
 
 
 		movimiento(30, 36.5, cerdo_caminando, 4.5, -245, -100, -180, -140, -370, 0);
@@ -2004,37 +1880,6 @@ void dibujar() {
 		movimiento(48, 50, cerdo, 4.5, 0, -100, -240, -100, -240, 0);
 	}
 
-	//Steve debe hacer hora con su cerdo. Picar o cualquier cosa hasta que se haga de noche.
-	
-	//Se muestra como los zombies fueron instanciados una vez se hizo de noche
-	if (tiempo >= 50 && tiempo < 60)
-	{
-		camaraX = -(100 + (tiempo-50) * 4);//ROJO
-		camaraY = 160;//VERDE
-		camaraZ = -340;//AZUL
-
-		targetX = 0;
-		targetY = 40;
-		targetZ = 0;
-		movimiento_autonomo_v2(steve_caminando,4, 0);
-		movimiento_autonomo_v2(steve_caminando, 4, 1);
-		movimiento_autonomo_v2(steve_caminando, 4, 2);
-		movimiento_autonomo_v2(steve_caminando, 4, 3);
-		movimiento_autonomo_v2(steve_caminando, 4, 4);
-		movimiento_autonomo_v2(steve_caminando, 4, 5);
-		movimiento_autonomo_v2(steve_caminando, 4, 6);
-
-
-		/*
-		movimiento(50, 80, zombie_caminando, 4.5, 135, 128, 192, 128, 192, 0);
-		movimiento(50, 80, zombie_caminando, 4.5, 180, -80, 40, -80, 40, 0);
-		movimiento(50, 80, zombie_caminando, 4.5, 180, -208, 96, -208, 96, 16);
-		movimiento(50, 80, zombie_caminando, 4.5, 180, -240, 528, -240, 528, 96);
-		movimiento(50, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
-		*/
-	
-	}
-
 	if (tiempo >= 50 && tiempo < 61)
 	{
 		glPushMatrix();
@@ -2044,12 +1889,30 @@ void dibujar() {
 		glPopMatrix();
 	}
 
+	//Se muestra como los zombies fueron instanciados una vez se hizo de noche
+	if (tiempo >= 50 && tiempo < 60)
+	{
+		camaraX = (0 + (tiempo - 50) * 4);//ROJO
+		camaraY = 240;//VERDE
+		camaraZ = -300;//AZUL
+
+		targetX = 0;
+		targetY = 40;
+		targetZ = 0;
+
+		movimiento(50, 80, zombie_caminando, 4.5, 135, 128, 192, 128, 192, 0);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -80, 40, -80, 40, 0);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -208, 96, -208, 96, 16);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -240, 528, -240, 528, 96);
+		movimiento(50, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
+	}
+
 	//Los zombies deben perseguir a steve y este debe pelear con alguno
 	if (tiempo >= 60 && tiempo < 95)
 	{
-		camaraX = -(200 + (tiempo - 30) * 1.2);//ROJO
+		camaraX = -(250 + (tiempo - 60) * 1.2);//ROJO
 		camaraY = 70;//VERDE
-		camaraZ = -250;
+		camaraZ = -(270 + (tiempo - 60) * 1);//ROJO;
 
 		targetX = 0;
 		targetY = 64;
@@ -2067,67 +1930,72 @@ void dibujar() {
 		}
 
 		movimiento(62, 66, cerdo_caminando, 10, 130, -100, -240, -196, -544, 0);
-		
+
 
 		movimiento(t_inicial_Steve, t_inicial_Steve + 0.5, steve_con_pico, 0, 0, 8, -332, 8, -332, 16);
-		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_espada, 0, 0, 8, -332, 8, -332, 16);
-		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 1.5, steve_con_espada, 0, -90, 8, -332, 8, -332, 16);
-
-		movimiento(t_inicial_Steve + 1.5, t_inicial_Steve + 4.5, steve_caminando_con_espada, 4.5, -30, 8, -332, -60, -300, 16);
-		
-		// STEVE -> Usa Espada
-		movimiento(t_inicial_Steve + 4.5, t_inicial_Steve + 5, steve_caminando_con_espada, 9, 270, -20, -300, -60, -300, 16);
+		movimiento(t_inicial_Steve + 0.5, t_inicial_Steve + 1, steve_con_pico, 0, 0, 8, -332, 8, -332, 16);
+		movimiento(t_inicial_Steve + 1, t_inicial_Steve + 1.5, steve_con_pico, 0, -90, 8, -332, 8, -332, 16);
 
 		// STEVE -> Baja peldaño
-		if (tiempo >= t_inicial_Steve + 5 && tiempo < t_inicial_Steve + 6)
+		if (tiempo >= t_inicial_Steve + 1.5 && tiempo < t_inicial_Steve + 3)
 		{
 			float y = 16;
 
-			if (tiempo >= t_inicial_Steve + 5.6)
+			if (tiempo >= t_inicial_Steve + 2.8)
 			{
-				y = 16 - 16 * abs(std::sin((tiempo - t_inicial_Steve -5.6) * 8));
+				y = 16 - 16 * abs(std::sin((tiempo - t_inicial_Steve - 2.8) * 8));
 			}
-			if (tiempo >= t_inicial_Steve + 5.9)
+			if (tiempo >= t_inicial_Steve + 3)
 			{
 				y = 0;
 			}
+			movimiento(t_inicial_Steve + 1.5, t_inicial_Steve + 3, steve_caminando_con_pico, 4.5, -60, 8, -332, -100, -300, y);
+		}
+
+		movimiento(t_inicial_Steve + 3, t_inicial_Steve + 3.5, steve_con_pico, 0, -70, -100, -300, -100, -300, 0);
+		movimiento(t_inicial_Steve + 3.5, t_inicial_Steve + 4, steve_con_pico, 0, 180, -100, -300, -100, -300, 0);
+		if (tiempo >= (t_inicial_Steve + 4) && tiempo < (t_inicial_Steve + 5.5))
+		{
 			glPushMatrix();
-			glTranslated(0, y, 0);
-			movimiento(t_inicial_Steve + 5, t_inicial_Steve + 6, steve_caminando_con_espada, 4.5, -90, -60, -300, -100, -300, 0);
+			glTranslated(-100, 0, -300);
+			glRotated(200, 0, 1, 0);
+			salto(steve_con_pico, tiempo - (t_inicial_Steve + 4), 12, 16);
 			glPopMatrix();
 		}
 
-		/* ZOMBIE -> Acercandose a Steve */
-		movimiento(t_inicial_Steve + 0, t_inicial_Steve + 6.5, zombie_caminando, 4.5, 90, -100, -800, -100, -325, 0);
-		
 		/* STEVE -> Voltea para atacar */
-		movimiento(t_inicial_Steve + 6, t_inicial_Steve + 6.5, steve_con_espada, 9, 180, -100, -300, -100, -300, 0);
+		movimiento(t_inicial_Steve + 5.5, t_inicial_Steve + 6, steve_con_pico, 9, 180, -100, -300, -100, -300, 0);
+
+		/* STEVE -> Voltea para atacar */
+		movimiento(t_inicial_Steve + 6, t_inicial_Steve + 6.5, steve_con_espada, 9, 0, -100, -300, -100, -300, 0);
 
 		/* STEVE -> Ataca a Zombie */
-		movimiento(t_inicial_Steve + 6.5, t_inicial_Steve + 8.5, steve_atacando, 4.5, 180, -100, -300, -100, -300, 0);
+		movimiento(t_inicial_Steve + 6.5, t_inicial_Steve + 8.5, steve_atacando, 9, 0, -100, -300, -100, -300, 0);
 
-		
+
+		/* ZOMBIE -> Acercandose a Steve */
+		movimiento(t_inicial_Steve + 0, t_inicial_Steve + 6.5, zombie_caminando, 4.5, 90, -100, 200, -100, -275, 0);
+
 		/* ZOMBIE -> Recibe ataque (Sangre) */
-
 		if (tiempo >= t_inicial_Steve + 6.5 && tiempo < t_inicial_Steve + 8.5)
 		{
 			float y = 0;
-			
+
 			/* ZOMBIE -> Es atacado*/
 			if (tiempo < t_inicial_Steve + 6.5 + 0.4) {
 				y = 16 * abs(std::sin((tiempo - t_inicial_Steve - 6.5 - 0.4) * 8));
 			}
-			if (tiempo >= t_inicial_Steve + 6.5 + 0.4 + 0.3){
+			if (tiempo >= t_inicial_Steve + 6.5 + 0.4 + 0.3) {
 				y = 0;
 			}
 			glPushMatrix();
-				glTranslated(0, y, -10);
-				movimiento(t_inicial_Steve + 6.5, t_inicial_Steve + 6.9, zombie_caminando, 9, -90, -100, -325, -100, -335, 0);
+			glTranslated(0, y, -10);
+			movimiento(t_inicial_Steve + 6.5, t_inicial_Steve + 6.9, zombie_caminando, 9, 270, -100, -275, -100, -265, 0);
 			glPopMatrix();
-			
+
 			/* ZOMBIE -> Vuelve a acercarse a Steve*/
-			movimiento(t_inicial_Steve + 6.9, t_inicial_Steve + 7.2, zombie_caminando, 4.5, 90, -100, -335, -100, -325, 0);
-			
+			movimiento(t_inicial_Steve + 6.9, t_inicial_Steve + 7.2, zombie_caminando, 9, 90, -100, -265, -100, -275, 0);
+
 			/* ZOMBIE -> Es atacado*/
 			if (tiempo < t_inicial_Steve + 7.2 + 0.4) {
 				y = 16 * abs(std::sin((tiempo - t_inicial_Steve - 7.2 - 0.4) * 8));
@@ -2136,13 +2004,13 @@ void dibujar() {
 				y = 0;
 			}
 			glPushMatrix();
-				glTranslated(0, y, -10);
-				movimiento(t_inicial_Steve + 7.2, t_inicial_Steve + 7.6, zombie_caminando, 9, -90, -100, -325, -100, -335, 0);
+			glTranslated(0, y, -10);
+			movimiento(t_inicial_Steve + 7.2, t_inicial_Steve + 7.6, zombie_caminando, 9, 270, -100, -275, -100, -265, 0);
 			glPopMatrix();
-			
+
 			/* ZOMBIE -> Vuelve a acercarse a Steve*/
-			movimiento(t_inicial_Steve + 7.6, t_inicial_Steve + 8, zombie_caminando, 4.5, 90, -100, -335, -100, -325, 0);
-			
+			movimiento(t_inicial_Steve + 7.6, t_inicial_Steve + 8, zombie_caminando, 9, 90, -100, -265, -100, -275, 0);
+
 			/* ZOMBIE -> Es atacado*/
 			if (tiempo < t_inicial_Steve + 8 + 0.4) {
 				y = 16 * abs(std::sin((tiempo - t_inicial_Steve - 8 - 0.4) * 8));
@@ -2151,29 +2019,27 @@ void dibujar() {
 				y = 0;
 			}
 			glPushMatrix();
-				glTranslated(0, y, -10);
-				movimiento(t_inicial_Steve + 8, t_inicial_Steve + 8.4, zombie_caminando, 9, -90, -100, -325, -100, -335, 0);
+			glTranslated(0, y, -10);
+			movimiento(t_inicial_Steve + 8, t_inicial_Steve + 8.4, zombie_caminando, 9, 270, -100, -275, -100, -265, 0);
 			glPopMatrix();
 		}
 
 		/* ZOMBIE -> MUERE*/
-		
-		if (tiempo >= t_inicial_Steve + 8.5 && tiempo < 95){
+		if (tiempo >= t_inicial_Steve + 8.5 && tiempo < 95) {
 			glPushMatrix();
-			
+
 			glTranslated(-100 - 8, 8, -320);
 			glRotated(-90, 1, 0, 0);
-				zombie(4.5);
+			zombie(4.5);
 			glPopMatrix();
 			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 9, steve_con_espada, 9, 180, -100, -300, -100, -300, 0);
-
 		}
 
+		//----------------------------------------------------------------------------------------------------------------------
 		/* ZOMBIES -> Acercandose a Steve (3 Zombies) */
-		if (tiempo >= t_inicial_Steve + 9 && tiempo < t_inicial_Steve + 20) {
+		if (tiempo >= t_inicial_Steve + 9 && tiempo < t_inicial_Steve + 35) {
 
 			/* ZOMBIE -> MUERE*/
-
 			glPushMatrix();
 
 			glTranslated(-100 - 8, 8, -320);
@@ -2190,24 +2056,18 @@ void dibujar() {
 			/* ZOMBIES(3) -> Acercandose a Steve */
 				// Primer Zombie.
 			movimiento(t_inicial_Steve + 9, t_inicial_Steve + 11.5, zombie_caminando, 4.5, 90, -100, -400, -100, -350, 0);
-			movimiento(t_inicial_Steve + 11.5, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -100, -350, -180, -350, 0);
-			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -180, -350, -180, -380, 0);
-				// Segundo Zombie.
+			movimiento(t_inicial_Steve + 11.5, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -100, -350, -196, -350, 0);
+			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 16, zombie_caminando, 4.5, 90, -196, -350, -196, -544, 0);
+
+			// Segundo Zombie.
 			movimiento(t_inicial_Steve + -2, t_inicial_Steve + 12, zombie_caminando, 4.5, 90, -100, +300, -100, -325, 0);
 			movimiento(t_inicial_Steve + 12, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -100, -325, -250, -325, 0);
-			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -250, -325, -250, -355, 0);
-			//movimiento(t_inicial_Steve + 12, t_inicial_Steve + 13, zombie_caminando, 4.5, -90, -100, -325, -160, -325, 0);
-			
-				// Tercer Zombie
+			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 17, zombie_caminando, 4.5, 90, -250, -325, -250, -555, 0);
+
+			// Tercer Zombie
 			movimiento(t_inicial_Steve - 2, t_inicial_Steve + 13.5, zombie_caminando, 4.5, 90, -200, 400, -160, -300, 0);
 			movimiento(t_inicial_Steve + 13.5, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -160, -300, -250, -300, 0);
-			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -250, -300, -250, -330, 0);
-
-
-			// Cuarto Zombie
-			movimiento(t_inicial_Steve + 6, t_inicial_Steve + 14, zombie_caminando, 4.5, -90, -600, -400, -220, -400, 0);
-			movimiento(t_inicial_Steve + 14, t_inicial_Steve + 15, zombie_caminando, 4.5, 90, -220, -400, -220, -440, 0);
-
+			movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 17, zombie_caminando, 4.5, 90, -250, -300, -250, -530, 0);
 
 
 			/* STEVE -> Se dirige a su casa */
@@ -2230,7 +2090,7 @@ void dibujar() {
 	if (tiempo >= 75 && tiempo < 95)
 	{
 		camaraX = -275;//ROJO
-		camaraY = (48 - (tiempo - 80) * 1/4);//ROJO//VERDE
+		camaraY = (48 - (tiempo - 80) * 1 / 4);//ROJO//VERDE
 		camaraZ = -570;//AZUL
 
 		targetX = -196;
@@ -2249,10 +2109,10 @@ void dibujar() {
 		{
 			glPushMatrix();
 			glTranslated(-196, -24.05 + 48.05 * (tiempo - 77.5) * 2, -508);
-			glScaled(32,48,16);
+			glScaled(32, 48, 16);
 			cubo_roca();
 			glPopMatrix();
-			
+
 		}
 		if (tiempo >= 78)
 		{
@@ -2277,7 +2137,7 @@ void dibujar() {
 			glPushMatrix();
 			glTranslated(-196, 8, -570);
 			glRotated(90, 0, 1, 0);
-			salto(cerdo, tiempo-90, 8, 8);
+			salto(cerdo, tiempo - 90, 8, 8);
 			glPopMatrix();
 		}
 
@@ -2329,7 +2189,7 @@ void dibujar() {
 		movimiento(83.5, 84.5, enderman_caminando, 4.5, 235, -80, -240, -132, -272, 0);
 		movimiento(86.5, 87.5, enderman, 0, -90, -96, -560, -96, -560, 1);
 		movimiento(90, 91, enderman, 0, 0, -150, -570, -150, -570, 0);
-		movimiento(93, 95, enderman_boca_abierta, 6, -99, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, -262 + std::sin(tiempo * 100)/2, -566 + std::sin(tiempo * 100)/2, 10);
+		movimiento(93, 95, enderman_boca_abierta, 6, -99, -262 + std::sin(tiempo * 100) / 2, -566 + std::sin(tiempo * 100) / 2, -262 + std::sin(tiempo * 100) / 2, -566 + std::sin(tiempo * 100) / 2, 10);
 	}
 
 
