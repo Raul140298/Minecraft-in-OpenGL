@@ -362,71 +362,74 @@ void plantar_Arbol() {
 void arbol3(int x) {
 	colorArbol1();
 	glPushMatrix();
-	glTranslated(tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol);
-	glutSolidCube(tamaño_cubo_arbol);
+	glScaled(16, 16, 16);
 
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(1, 5 * 1, 1);
+		cubo_hojas();
 
-	glPushMatrix();
-	glTranslated(tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, 0);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslated(tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
-	glutSolidCube(tamaño_cubo_arbol);
+		glPushMatrix();
+		glTranslated(1, 5 * 1, 0);
+		cubo_hojas();
+		glPopMatrix();
 
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(1, 5 * 1, -1);
+		cubo_hojas();
 
-	glPushMatrix();
-	glTranslated(0, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslated(0, 5 * tamaño_cubo_arbol, 0);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(0, 5 * 1, 1);
+		cubo_hojas();
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslated(0, 5 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(0, 5 * 1, 0);
+		cubo_hojas();
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslated(0, 5 * 1, -1);
+		cubo_hojas();
+		glPopMatrix();
 
 
-	glPushMatrix();
-	glTranslated(-tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, tamaño_cubo_arbol);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(-1, 5 * 1, 1);
+		cubo_hojas();
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslated(-tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, 0);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(-1, 5 * 1, 0);
+		cubo_hojas();
+		glPopMatrix();
 
-	glPushMatrix();
-	glTranslated(-tamaño_cubo_arbol, 5 * tamaño_cubo_arbol, -tamaño_cubo_arbol);
-	glutSolidCube(tamaño_cubo_arbol);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslated(-1, 5 * 1, -1);
+		cubo_hojas();
+		glPopMatrix();
 
-	//Parte inferior
+		//Parte inferior
 
-	for (int i = -2; i <= 2; i++) {
+		for (int i = -2; i <= 2; i++) {
 
-		for (int j = -2; j <= 2; j++) {
-			glPushMatrix();
-			glTranslated(i * tamaño_cubo_arbol, 4 * tamaño_cubo_arbol, j * tamaño_cubo_arbol);
-			glutSolidCube(tamaño_cubo_arbol);
-			glPopMatrix();
+			for (int j = -2; j <= 2; j++) {
+				glPushMatrix();
+				glTranslated(i * 1, 4 * 1, j * 1);
+				cubo_hojas();
+				glPopMatrix();
+			}
 		}
-	}
 
-	glPushMatrix();
-	glTranslated(tamaño_cubo_arbol / 2, 6 * tamaño_cubo_arbol, tamaño_cubo_arbol / 2);
-	glutSolidCube(tamaño_cubo_arbol);
+		glPushMatrix();
+		glTranslated(1 / 2, 6 * 1, 1 / 2);
+		cubo_hojas();
 
+		glPopMatrix();
 	glPopMatrix();
-
 
 	colorMadera2();
 
@@ -435,6 +438,7 @@ void arbol3(int x) {
 	arma_arbol(x);
 
 	glPopMatrix();
+
 }
 
 

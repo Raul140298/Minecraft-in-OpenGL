@@ -16623,6 +16623,755 @@ void ambiente_terreno() {
 	glTranslated(83, 21, 5);
 	cubo_piedra();
 	glPopMatrix();
+
+	/* Completar */
+	/*glPushMatrix();
+	glTranslated(23, 27, 35);
+	cubo_roca();
+	glPopMatrix();	
+	*/
+
+	glPushMatrix();
+	glTranslated(26, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(27, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(26, 21, 7);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(27, 21, 7);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 8);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 8);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 9);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 9);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(27, 21, 10);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 10);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 11);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 11);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 12);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 12);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 13);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 13);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 14);
+	cubo_roca();
+	glPopMatrix();	
+	glPushMatrix();
+	glTranslated(28, 21, 14);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 15);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 15);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 16);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 16);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 17);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 17);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(27, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(27, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(28, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+
+
+
+
+	glPushMatrix();
+	glTranslated(29, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(26, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(29, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(26, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(29, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(26, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(26, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(29, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(29, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(26, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(26, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(29, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(29, 21, 17);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(26, 21, 17);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(26, 21, 16);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(25, 21, 17);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(25, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(25, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(25, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(25, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+	glTranslated(24, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(24, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(24, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(24, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(29, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(29, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(29, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(29, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(30, 21, 18);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(30, 21, 19);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(30, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(30, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(30, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(30, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(30, 21, 24);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(30, 21, 25);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(31, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(31, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(31, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(31, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(32, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(32, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(32, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(32, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(33, 21, 20);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(33, 21, 21);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(33, 21, 22);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(33, 21, 23);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(43, 21, 32);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(42, 21, 32);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(41, 21, 32);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(40, 21, 32);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(39, 21, 32);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(43, 21, 33);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(42, 21, 33);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(41, 21, 33);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(40, 21, 33);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(39, 21, 33);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(43, 21, 31);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(42, 21, 31);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(41, 21, 31);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(40, 21, 31);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(39, 21, 31);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(43, 21, 30);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(42, 21, 30);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(41, 21, 30);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(40, 21, 30);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(39, 21, 30);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(41, 21, 29);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(40, 21, 29);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(39, 21, 29);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(43, 21, 28);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(42, 21, 28);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(41, 21, 28);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(40, 21, 28);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(39, 21, 28);
+	cubo_roca();
+	glPopMatrix();
+
+
+
+	/**/
+	glPushMatrix();
+	glTranslated(0, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(0, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(0, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(1, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(1, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(2, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(2, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(2, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(3, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(3, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(4, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(4, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(4, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+
+
+	glPushMatrix();
+	glTranslated(5, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(5, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(5, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(6, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(6, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(6, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(7, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(7, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(8, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(8, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(9, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(9, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(10, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(10, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(11, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(11, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+
+
+
+
+	glPushMatrix();
+	glTranslated(14, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(14, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(14, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(14, 21, 7);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(15, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(15, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(15, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(15, 21, 7);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(16, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(16, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(16, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(16, 21, 7);
+	cubo_roca();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(17, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(17, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(17, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(17, 21, 7);
+	cubo_roca();
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslated(18, 21, 4);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(18, 21, 5);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(18, 21, 6);
+	cubo_roca();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslated(18, 21, 7);
+	cubo_roca();
+	glPopMatrix();
 }
+
 
 #endif

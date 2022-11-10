@@ -84,7 +84,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 59;
+float tiempo = 50;
 
 float tiempoAnochese = 60;
 
@@ -94,7 +94,20 @@ float targetX = -196, targetY = 64, targetZ = -480;
 float tamaño_cubo_piso = 16;
 float tamaño_maxima_montaña = 20;
 float porcentaje_terrano = 0.8;
+//float posXZombie = 35;
+//float posZZombie = 55;
+float alturaZombie = 0;
+//int direccionZombie = 0;
+int tiempoTraslado = 2;
+int tiempoInicialPeriodo = 50;
+int tiempoFinalPeriodo = 50;
+int tamañoAvance = 16;
+float avance = 16;
 
+/* Vía arreglo*/
+int direccionZombie[7] = { 0, 2, 0, 1, 2, 3, 2 };
+float posZZombie[7] = { 250, 400, 201, 701, 301, 801,  501};
+float posXZombie[7] = { 155, 181, -101, -301, -251, 1, -300};
 
 void iniciarVentana(int w, int h) {
 	glViewport(0, 0, w, h);
@@ -259,6 +272,7 @@ void pared(float animationTime) {
 }
 
 void piso(float animationTime) {
+	/****
 	glPushMatrix();
 	glTranslated(0, -0.1, 0);
 	glBegin(GL_POLYGON);
@@ -269,6 +283,7 @@ void piso(float animationTime) {
 	glVertex3d(-1000, 0, 1000);
 	glEnd();
 	glPopMatrix();
+	*****/
 
 	/*glPushMatrix();
 	glTranslated(0, 0.01, 0);
@@ -1576,7 +1591,120 @@ void piso_casa()
 
 	glPopMatrix();
 }
+void desplazar_personaje_bloque(float angle, float x1, float z1, float x2, float z2, float velocity, void (*animacion)(float)) {
 
+	glPushMatrix();
+	glTranslated(
+		x1 + (x2 - x1) * (velocity),
+		0,
+		z1 + (z2 - z1) * (velocity)
+	);
+	glRotated(angle + atan2(z1 - z2, x1 - x2) * 180 / 3.14159265359, 0, 1, 0);
+	animacion(velocity);
+	avance += 2;
+	glPopMatrix();
+}
+void desplazar_personaje_v2(float x1, float z1,float velocity, void (*animacion)(float)) {
+
+
+}
+
+void movimiento_autonomo_v2(void (*animacion)(float), float velocity, int index) {
+	if (tamañoAvance <= avance) {
+		srand(time(NULL));
+		avance = 0;
+		direccionZombie[index] = rand() % 4;
+	}
+	switch (direccionZombie[index])
+	{
+	case 0: // mover Defrente (Avanzar 1 cuadrante 16)
+		posZZombie[index] +=   2;
+		break;
+	case 1: // mover Costado
+		posXZombie[index] +=   2;
+		break;
+
+	case 2: // mover al otro Costado
+		posZZombie[index] -=  2;
+		break;
+
+	case 3: // mover Atras
+		//desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie, posZZombie - 2, velocity, animacion);
+		posXZombie[index] -= 2;
+		break;
+	}
+	avance += 1;
+
+	/*
+	cout << "pos X: " << posXZombie << endl;
+	cout << "pos Z: " << posZZombie << endl;
+	cout << "direccion: " << direccionZombie << endl;
+	*/
+	glPushMatrix();
+	glTranslated(posXZombie[index], MatrizTerreno[(int)((posXZombie[index] + 502) / 16)][(int)((posZZombie[index] + 250) / 16)] * 16, posZZombie[index]);
+	glRotated(direccionZombie[index] * 90, 0, 1, 0);
+		zombie_caminando(4.5);
+	glPopMatrix();
+}
+
+/*
+void movimiento_autonomo(void (*animacion)(float), float velocity, float x1, float z1)
+{
+
+	if (tamañoAvance <= avance) {
+		srand(time(NULL));
+		cout << "Instanciar ^**************************** " << endl;
+
+		avance = 0;
+		direccionZombie = rand() % 4;
+	}
+
+	switch (direccionZombie)
+	{
+	case 0: // mover Defrente (Avanzar 1 cuadrante 16)
+		desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie + 2, posZZombie, velocity, animacion);
+		posXZombie += velocity * 2;
+		cout << "avance: " << avance << endl;
+
+		cout << "pos X: " << posXZombie << endl;
+		cout << "pos Z: " << posZZombie << endl;
+		cout << "direccion: " << direccionZombie << endl;
+		break;
+	case 1: // mover Costado
+		desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie, posZZombie + 2, velocity, animacion);
+		posZZombie += velocity * 2;
+		cout << "avance: " << avance << endl;
+
+		cout << "pos X: " << posXZombie << endl;
+		cout << "pos Z: " << posZZombie << endl;
+		cout << "direccion: " << direccionZombie << endl;
+		break;
+
+	case 2: // mover al otro Costado
+		desplazar_personaje_bloque( 90, posXZombie, posZZombie, posXZombie - 2, posZZombie, velocity, animacion);
+		posXZombie -= velocity * 2;
+		cout << "avance: " << avance << endl;
+
+		cout << "pos X: " << posXZombie << endl;
+		cout << "pos Z: " << posZZombie << endl;
+		cout << "direccion: " << direccionZombie << endl;
+		break;
+
+	case 3: // mover Atras
+		desplazar_personaje_bloque(90, posXZombie, posZZombie, posXZombie, posZZombie - 2, velocity, animacion);
+		posZZombie -= 2 * velocity;
+		cout << "avance: " << avance << endl;
+
+		cout << "pos X: " << posXZombie << endl;
+		cout << "pos Z: " << posZZombie << endl;
+		cout << "direccion: " << direccionZombie << endl;
+		break;
+		
+	}
+	
+
+}
+*/
 void dibujar() {
 	inicializarLuces(tiempoAnochese);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1888,12 +2016,23 @@ void dibujar() {
 		targetX = 0;
 		targetY = 40;
 		targetZ = 0;
+		movimiento_autonomo_v2(steve_caminando,4, 0);
+		movimiento_autonomo_v2(steve_caminando, 4, 1);
+		movimiento_autonomo_v2(steve_caminando, 4, 2);
+		movimiento_autonomo_v2(steve_caminando, 4, 3);
+		movimiento_autonomo_v2(steve_caminando, 4, 4);
+		movimiento_autonomo_v2(steve_caminando, 4, 5);
+		movimiento_autonomo_v2(steve_caminando, 4, 6);
 
+
+		/*
 		movimiento(50, 80, zombie_caminando, 4.5, 135, 128, 192, 128, 192, 0);
 		movimiento(50, 80, zombie_caminando, 4.5, 180, -80, 40, -80, 40, 0);
 		movimiento(50, 80, zombie_caminando, 4.5, 180, -208, 96, -208, 96, 16);
 		movimiento(50, 80, zombie_caminando, 4.5, 180, -240, 528, -240, 528, 96);
 		movimiento(50, 80, zombie_caminando, 4.5, 180, -128, 704, -128, 704, 144);
+		*/
+	
 	}
 
 	if (tiempo >= 50 && tiempo < 61)
