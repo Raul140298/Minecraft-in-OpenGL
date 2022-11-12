@@ -86,7 +86,7 @@ float angulo = 0;
 
 float tiempo = 0;
 
-float tiempoAnochese = 60;
+float tiempoAnochese = 55;
 
 float targetX = -196, targetY = 64, targetZ = -480;
 
@@ -1900,31 +1900,30 @@ void dibujar() {
 		float t_inicial_zombie1 = 50;
 
 		//void movimiento(float tInicial, float tFinal, void (*animacion)(float), float velocity, float angle, float x1, float z1, float x2, float z2, float y)
-		movimiento(t_inicial_zombie1 , t_inicial_zombie1 + 10, zombie_caminando, 4.5, 90, -80, 40, -80, -40, 0);//zombie1 
+		movimiento(t_inicial_zombie1 , t_inicial_zombie1 + 10.2, zombie_caminando, 4.5, 90, -80, 40, -80, -40, 0);//zombie1 
 
 		movimiento(t_inicial_zombie1, t_inicial_zombie1 + 6, zombie_caminando, 4.5, 90, -208, 96, -208, 50, 16);//zombie2
-		movimiento(t_inicial_zombie1+6, t_inicial_zombie1 + 10, zombie_caminando, 6, -90, -208, 50, -180, 50, 16);//zombie2
+		movimiento(t_inicial_zombie1+6, t_inicial_zombie1 + 10.2, zombie_caminando, 6, -90, -208, 50, -180, 50, 16);//zombie2
 
 		movimiento(t_inicial_zombie1, t_inicial_zombie1 + 0.5, zombie_caminando, 4.5, 90, -240, 528, -240, 500, 96);	 //ZOMBIE 3
 		movimiento(t_inicial_zombie1+0.5, t_inicial_zombie1 + 2.5, zombie_caminando, 4.5, 90, -240, 500, -240, 430, 80); //ZOMBIE 3
 		movimiento(t_inicial_zombie1 + 2.5, t_inicial_zombie1 + 5, zombie_caminando, 4.5, 90, -240, 430, -240, 400, 64); //ZOMBIE 3
 		movimiento(t_inicial_zombie1 + 5, t_inicial_zombie1 + 7.5, zombie_caminando, 4.5, 90, -240, 390, -240, 330, 48); //ZOMBIE 3
-		movimiento(t_inicial_zombie1 + 7.5, t_inicial_zombie1 + 10, zombie_caminando, 4.5, 90, -240, 330, -240, 300, 32);//ZOMBIE 3
+		movimiento(t_inicial_zombie1 + 7.5, t_inicial_zombie1 + 10.2, zombie_caminando, 4.5, 90, -240, 330, -240, 300, 32);//ZOMBIE 3
 
 		
 		movimiento(t_inicial_zombie1, t_inicial_zombie1 + 0.5, zombie_caminando, 4.5, 90, -128, 704, -128, 690, 144); // zombie 4
 		movimiento(t_inicial_zombie1+0.5, t_inicial_zombie1 + 2, zombie_caminando, 4.5, 90, -128, 690, -128, 650, 128); // zombie 4
 		movimiento(t_inicial_zombie1+2, t_inicial_zombie1 + 6, zombie_caminando, 4.5, 90, -128, 650, -128, 600, 112); // zombie 4
-		movimiento(t_inicial_zombie1+6, t_inicial_zombie1 + 10, zombie_caminando, 4.5, 90, -128, 600, -128, 450, 96); // zombie 4
+		movimiento(t_inicial_zombie1+6, t_inicial_zombie1 + 10.2, zombie_caminando, 4.5, 90, -128, 600, -128, 450, 96); // zombie 4
 
-		movimiento(t_inicial_zombie1, t_inicial_zombie1 +10, zombie_caminando, 4.5, 90, -180, 240, -180, 120, 16);	 //ZOMBIE 5
+		movimiento(t_inicial_zombie1, t_inicial_zombie1 + 10.2, zombie_caminando, 4.5, 90, -180, 240, -180, 120, 16);	 //ZOMBIE 5
 		
 		movimiento(t_inicial_zombie1, t_inicial_zombie1 + 1.5, zombie_caminando, 4.5, 90, -80, 240, -80, 210, 16);	 //ZOMBIE 5
-		movimiento(t_inicial_zombie1+1.5, t_inicial_zombie1 + 10, zombie_caminando, 4.5, 90, -80, 210, -80, 90, 0);	 //ZOMBIE 5
+		movimiento(t_inicial_zombie1+1.5, t_inicial_zombie1 + 10.2, zombie_caminando, 4.5, 90, -80, 210, -80, 90, 0);	 //ZOMBIE 5
 
 		movimiento(t_inicial_zombie1, t_inicial_zombie1 + 3.5, zombie_caminando, 4.5, 90, 0, 240, 0, 180, 16);	 //ZOMBIE 5
-		movimiento(t_inicial_zombie1+3.5, t_inicial_zombie1 + 10, zombie_caminando, 4.5, 90, 0, 180, 0, 0, 0);	 //ZOMBIE 5
-
+		movimiento(t_inicial_zombie1+3.5, t_inicial_zombie1 + 10.2, zombie_caminando, 4.5, 90, 0, 180, 0, 0, 0);	 //ZOMBIE 5
 
 	}
 
