@@ -84,7 +84,7 @@ float camaraZ = -340;//AZUL
 
 float angulo = 0;
 
-float tiempo = 50;
+float tiempo = 0;
 
 float tiempoAnochese = 60;
 
@@ -1888,7 +1888,7 @@ void dibujar() {
 	}
 
 	//Se muestra como los zombies fueron instanciados una vez se hizo de noche
-	if (tiempo >= 50 && tiempo < 60)
+	if (tiempo >= 49.9 && tiempo < 60)
 	{
 		camaraX = (0 + (tiempo - 50) * 4);//ROJO
 		camaraY = 240;//VERDE
@@ -2047,29 +2047,32 @@ void dibujar() {
 
 		/* ZOMBIE -> MUERE*/
 		if (tiempo >= t_inicial_Steve + 8.5 && tiempo < 95) {
-			glPushMatrix();
+			
 
-			glTranslated(-100 - 8, 8, -260);
-			glRotated(90, 1, 0, 0);
-			zombie(4.5);
-			glPopMatrix();
+			if (tiempo >= t_inicial_Steve + 8.5 && tiempo < 72) {
+				glPushMatrix();
+				glTranslated(-100 - 8, 8, -275);
+				glRotated(90, 1, 0, 0);
+				zombie(4.5);
+				glPopMatrix();
+			}
+
 			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 9, steve_con_espada, 9, 0, -100, -300, -100, -300, 0);
 
 			/* ZOMBIES(3) -> Acercandose a Steve */
 			// Primer Zombie.
 
 			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 12.5, zombie_caminando, 4.5, 60, -200, -100, -196, -300, 0);
+			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 12.5, zombie_caminando, 4.5, 60, -196, -100, -196, -300, 0);
 			movimiento(t_inicial_Steve + 12.5, t_inicial_Steve + 15.5, zombie_caminando, 4.5, 90, -196, -300, -196, -515, 0);
 
-			//// Segundo Zombie.
-			//movimiento(t_inicial_Steve + -2, t_inicial_Steve + 12, zombie_caminando, 4.5, 90, -100, +300, -100, -325, 0);
-			//movimiento(t_inicial_Steve + 12, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -100, -325, -250, -325, 0);
-			//movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 17, zombie_caminando, 4.5, 90, -250, -325, -250, -555, 0);
+			// Segundo Zombie.
+			movimiento(t_inicial_Steve + 8.5, t_inicial_Steve + 12.5, zombie_caminando, 4.5, 110, -70, -0, -100, -150, 0);
+			movimiento(t_inicial_Steve + 12.5, t_inicial_Steve + 19, zombie_caminando, 4.5, 120, -100, -150, -190, -500, 0);
 
-			//// Tercer Zombie
-			//movimiento(t_inicial_Steve - 2, t_inicial_Steve + 13.5, zombie_caminando, 4.5, 90, -200, 400, -160, -300, 0);
-			//movimiento(t_inicial_Steve + 13.5, t_inicial_Steve + 14.5, zombie_caminando, 4.5, -90, -160, -300, -250, -300, 0);
-			//movimiento(t_inicial_Steve + 14.5, t_inicial_Steve + 17, zombie_caminando, 4.5, 90, -250, -300, -250, -530, 0);
+			// Tercer Zombie
+			movimiento(t_inicial_Steve + 10, t_inicial_Steve + 13.5, zombie_caminando, 4.5, -10, -320, -120, -240, -220, 0);
+			movimiento(t_inicial_Steve + 13.5, t_inicial_Steve + 19, zombie_caminando, 4.5, 60, -240, -220, -196, -400, 0);
 		}
 
 		//----------------------------------------------------------------------------------------------------------------------
@@ -2077,12 +2080,11 @@ void dibujar() {
 		if (tiempo >= t_inicial_Steve + 9 && tiempo < t_inicial_Steve + 35) {
 
 			/* ZOMBIE -> MUERE*/
-			glPushMatrix();
-
-			glTranslated(-100 - 8, 8, -260);
-			glRotated(90, 1, 0, 0);
-			zombie(4.5);
-			glPopMatrix();
+			//glPushMatrix();
+			//glTranslated(-100 - 8, 8, -260);
+			//glRotated(90, 1, 0, 0);
+			//zombie(4.5);
+			//glPopMatrix();
 
 			camaraX = -(400 + (tiempo - 30) * 1);//ROJO
 			camaraY = 70;//VERDE
@@ -2275,7 +2277,7 @@ void dibujar() {
 
 void timer(int t) {
 	glutPostRedisplay();
-	glutTimerFunc(20, timer, 0);
+	glutTimerFunc(100, timer, 0);
 }
 
 void teclado(int tecla, int x, int y) {
